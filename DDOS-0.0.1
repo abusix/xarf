@@ -1,0 +1,55 @@
+{
+"ReporterInfo": {
+  "ReporterOrg": "freetext - must",
+  "ReporterOrgDomain": "domain.tld - must",
+  "ReporterOrgEmail": "email-address - must",
+  "ReporterContactEmail": "email-address - should",
+  "ReporterContactName": "full name - should",
+  "ReporterContactPhone": "phone number - may"
+},
+"on_behalf_of": {
+  "ComplainantOrg": "freetext - must",
+  "ComplainantOrgDomain": "domain.tld - must",
+  "ComplainantOrgEmail": "email-address - must",
+  "ComplainantContactEmail": "email-address - should",
+  "ComplainantContactName": "full name - should",
+  "ComplainantContactPhone": "phone number - may"
+},
+
+"Disclosure": "boolean - must [defaults to true]",
+"Notes": "freetext - may",
+
+"Reports": [
+  {
+  "ReportClass": "Activity - must",
+  "ReportType": "DOS - must",
+  "ReportSubType": ".../... - should", 
+  "ReporterCaseID": "freetext - may",
+  "ReporterSeverity": "low/medium/high - may",
+  "ReporterNotes": "freetext - may",    
+  "SourceIp": "ipv4,ipv6,ip-address - must",
+  "SourcePort": "number - may",
+  "DestinationIp": "ipv4,ipv6,ip-address - may",
+  "DestinationPort": "number - may",
+  "Date": "date - must",
+  "ongoing": "boolean - may",
+  "byteCount": "BYTES (per second) - should",
+  "packetCount": "PACKETS (per second) - should",
+  "ThreatActor": "freeText - could",
+
+  "Samples": [
+    {
+    "ContentType":"image/jpg | application/rfc822 | ... - must", 
+    "Base64Encoded":"boolean - [defaults to false]", 
+    "Description":"PlainText - may",
+    "Payload": "must"
+    },     
+    {
+    "ContentType":"image/jpg | application/rfc822 | ... - must", 
+    "Base64Encoded":"boolean - [defaults to false]", 
+    "Description":"PlainText - may",
+    "Payload": "must"
+    }]
+  }
+]
+}
