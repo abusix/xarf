@@ -2,7 +2,7 @@
 This is the place to share and discuss new schemas
 
 ### Schema Overview
-
+```
 ReporterInfo *object*
 on_behalf_of *object*
 disclosure *object*
@@ -18,4 +18,4 @@ report *array*
 		sample *array*
 		sample *array*
 	...
-		
+```		
