@@ -211,5 +211,52 @@
             "ContentType",
             "Payload"
         ]
+    },
+    "CommonProps": {
+        "Ongoing": {
+            "type": "boolean",
+            "description": "is the reported abuse ongoing?"
+        },
+        "ThreatActor": {
+            "type": "string",
+            "description": "!TODO!"
+        },
+        "Samples": {
+            "type": "array",
+            "description": "Samples of the malware",
+            "items": {
+                "$ref": "#/Sample"
+            },
+            "minItems": 1
+        }
+    },
+    "WithDestination": {
+        "DestinationIp": {
+            "description": "targeted ip",
+            "anyOf": [
+                {
+                    "type": "string",
+                    "format": "ipv4"
+                },
+                {
+                    "type": "string",
+                    "format": "ipv6"
+                }
+            ]
+        },
+        "DestinationPort": {
+            "type": "integer",
+            "description": "targeted port",
+            "minimum": 0,
+            "maximum": 65535
+        },
+        "ByteCount": {
+            "type": "integer",
+            "description": "Bytes per second"
+        },
+        "PacketCount": {
+            "type": "integer",
+            "description": "Packets per second"
+        }
     }
 }

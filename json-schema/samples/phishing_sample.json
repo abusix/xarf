@@ -1,0 +1,28 @@
+{
+    "ReporterInfo": {
+        "ReporterOrg": "TestOrg",
+        "ReporterOrgDomain": "testorg.com",
+        "ReporterOrgEmail": "reports@testorg.com",
+        "ReporterContactEmail": "contact@testorg.com",
+        "ReporterContactName": "Mr. Contact",
+        "ReporterContactPhone": "+ 01 000 1234567"
+    },
+    "Disclosure": true,
+    "Report": {
+        "ReportClass": "Content",
+        "ReportType": "Phishing",
+        "Date": "2018-02-05T14:17:10Z",
+        "SourceIp": "8.8.8.8",
+        "SourcePort": 80,
+        "SourceUrl": "http://phishy.corp/index.html",
+        "Ongoing": true,
+        "Samples": [
+            {
+                "ContentType": "text/html",
+                "Base64Encoded": false,
+                "Description": "Just a test sample",
+                "Payload": "<html>Phishy</html>"
+            }
+        ]
+    }
+}

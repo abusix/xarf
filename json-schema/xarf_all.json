@@ -11,6 +11,12 @@
         },
         {
             "$ref": "malware.schema.json"
+        },
+        {
+            "$ref": "phishing.schema.json"
+        },
+        {
+            "$ref": "portscan.schema.json"
         }
     ]
 }

@@ -19,30 +19,16 @@
                             "properties": {
                                 "ReportClass": {
                                     "type": "string",
-                                    "enum": [
-                                        "Content"
-                                    ]
+                                    "enum": ["Activity"]
                                 },
                                 "ReportType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Malware"
-                                    ]
-                                },
-                                "SourceUrl": {
-                                    "type": "string",
-                                    "description": "where the content is available",
-                                    "format": "uri"
-                                },
-                                "MalwareName": {
-                                    "type": "string",
-                                    "description": "name of the malware",
-                                    "format": "uri"
+                                    "enum": ["PortScan"]
                                 }
-                            },
-                            "required": [
-                                "SourceUrl"
-                            ]
+                            }
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/WithDestination"
                         },
                         {
                             "$ref": "xarf_shared.schema.json#/CommonProps"

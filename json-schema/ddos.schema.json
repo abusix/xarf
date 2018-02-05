@@ -24,51 +24,14 @@
                                 "ReportType": {
                                     "type": "string",
                                     "enum": ["DOS"]
-                                },
-                                "DestinationIp": {
-                                    "description": "targeted ip",
-                                    "anyOf": [
-                                        {
-                                            "type": "string",
-                                            "format": "ipv4"
-                                        },
-                                        {
-                                            "type": "string",
-                                            "format": "ipv6"
-                                        }
-                                    ]
-                                },
-                                "DestinationPort": {
-                                    "type": "integer",
-                                    "description": "targeted port",
-                                    "minimum": 0,
-                                    "maximum": 65535
-                                },
-                                "Ongoing": {
-                                    "type": "boolean",
-                                    "description": "is the attack still ongoing?"
-                                },
-                                "ByteCount": {
-                                    "type": "integer",
-                                    "description": "Bytes per second"
-                                },
-                                "PacketCount": {
-                                    "type": "integer",
-                                    "description": "Packets per second"
-                                },
-                                "ThreatActor": {
-                                    "type": "string",
-                                    "description": "!TODO!"
-                                },
-                                "Samples": {
-                                    "type": "array",
-                                    "description": "Samples of evidence for the abuse event",
-                                    "items": {
-                                        "$ref": "xarf_shared.schema.json#/Sample"
-                                    },
-                                    "minItems": 1
                                 }
                             }
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/WithDestination"
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/CommonProps"
                         }
                     ]
                 }

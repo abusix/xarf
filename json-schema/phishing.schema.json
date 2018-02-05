@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "XARF DDOS",
-    "description": "A format to report DDOS events.",
+    "title": "XARF RPZ",
+    "description": "A format to report RPZ events.",
     "allOf": [
         {
             "$ref": "xarf_shared.schema.json#/XarfBase"
@@ -19,24 +19,15 @@
                             "properties": {
                                 "ReportClass": {
                                     "type": "string",
-                                    "enum": [
-                                        "Content"
-                                    ]
+                                    "enum": ["Content"]
                                 },
                                 "ReportType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Malware"
-                                    ]
+                                    "enum": ["Phishing"]
                                 },
                                 "SourceUrl": {
                                     "type": "string",
                                     "description": "where the content is available",
-                                    "format": "uri"
-                                },
-                                "MalwareName": {
-                                    "type": "string",
-                                    "description": "name of the malware",
                                     "format": "uri"
                                 }
                             },
