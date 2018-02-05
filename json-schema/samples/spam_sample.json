@@ -10,12 +10,20 @@
     "Disclosure": true,
     "Report": {
         "ReportClass": "Activity",
-        "ReportType": "Malware",
-        "ReportSubType": "RPZ-Rewrite",
+        "ReportType": "Spam",
+        "ReportSubType": "Trap",
         "Date": "2018-02-05T14:17:10Z",
         "SourceIp": "8.8.8.8",
         "SourcePort": 54321,
-        "RpzDomain": "malicious.org",
-        "MalwareName": "necurs"
+        "DestinationIp": "1.2.3.4",
+        "DestinationPort": 25,
+        "Samples": [
+            {
+                "ContentType": "message/rfc822",
+                "Base64Encoded": true,
+                "Description": "The spam mail",
+                "Payload": "bWFpbA=="
+            }
+        ]
     }
 }

@@ -2,5 +2,5 @@
 
 ```
 pip install jsonschema
-python validate.py rpz.schema.json samples/rpz_sample.json
+python validate.py xarf.schema.json samples/*.json
 ```		

@@ -17,6 +17,9 @@
         },
         {
             "$ref": "portscan.schema.json"
+        },
+        {
+            "$ref": "spam.schema.json"
         }
     ]
 }

@@ -31,6 +31,9 @@
                             "$ref": "xarf_shared.schema.json#/WithDestination"
                         },
                         {
+                            "$ref": "xarf_shared.schema.json#/WithTrafficStats"
+                        },
+                        {
                             "$ref": "xarf_shared.schema.json#/CommonProps"
                         }
                     ]

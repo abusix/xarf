@@ -249,7 +249,9 @@
             "description": "targeted port",
             "minimum": 0,
             "maximum": 65535
-        },
+        }
+    },
+    "WithTrafficStats": {
         "ByteCount": {
             "type": "integer",
             "description": "Bytes per second"
