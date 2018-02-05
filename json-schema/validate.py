@@ -5,6 +5,7 @@ import json
 import jsonschema
 import argparse
 import traceback
+import sys
 
 from jsonschema.exceptions import ValidationError, SchemaError
 

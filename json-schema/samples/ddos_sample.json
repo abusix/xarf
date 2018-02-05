@@ -10,12 +10,22 @@
     "Disclosure": true,
     "Report": {
         "ReportClass": "Activity",
-        "ReportType": "Malware",
-        "ReportSubType": "RPZ-REWRITE",
+        "ReportType": "DOS",
         "Date": "2018-02-05T14:17:10Z",
         "SourceIp": "8.8.8.8",
         "SourcePort": 54321,
-        "RpzDomain": "malicious.org",
-        "MalwareName": "necurs"
+        "DestinationIp": "1.2.3.4",
+        "DestinationPort": 80,
+        "Ongoing": true,
+        "ByteCount": 20000000,
+        "PacketCount": 10000,
+        "Samples": [
+            {
+                "ContentType": "text/plain",
+                "Base64Encoded": false,
+                "Description": "Just a test sample",
+                "Payload": "bla bla bla bla"
+            }
+        ]
     }
 }

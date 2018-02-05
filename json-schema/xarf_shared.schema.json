@@ -185,5 +185,31 @@
                 ]
             }
         ]
+    },
+    "Sample": {
+        "description": "Evidence sample",
+        "properties": {
+            "ContentType": {
+                "type": "string",
+                "description": "content type of the sample (e.g. application/rfc822 or image/jpg)"
+            },
+            "Base64Encoded": {
+                "type": "boolean",
+                "description": "if payload is base64 encoded. Useful to avoid losing encoding information (e.g. in mails)",
+                "default": false
+            },
+            "Description": {
+                "type": "string",
+                "description": "description of the sample in plain text"
+            },
+            "Payload": {
+                "type": "string",
+                "description": "actual sample"
+            }
+        },
+        "required": [
+            "ContentType",
+            "Payload"
+        ]
     }
 }

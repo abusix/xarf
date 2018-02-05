@@ -27,16 +27,16 @@
                                 },
                                 "ReportSubType": {
                                     "type": "string",
-                                    "enum": ["RPZ"]
+                                    "enum": ["RPZ-Rewrite"]
                                 },
                                 "RpzDomain": {
                                     "type": "string",
-                                    "description": "domain that was looked up",
+                                    "description": "Domain that was looked up",
                                     "format": "hostname"
                                 },
                                 "MalwareName": {
                                     "type": "string",
-                                    "description": "name of malware that probably performed the lookup"
+                                    "description": "Name of malware that performed the lookup"
                                 }
                             }
                         }
