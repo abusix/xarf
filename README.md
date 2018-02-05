@@ -9,7 +9,7 @@ pip install jsonschema
 python validate.py xarf.schema.json samples/*.json
 ```		
 
-If it validation fails for a sample you can get better error messages by using the concrete schema:
+If it validation fails for a sample you can get better error messages by using the specific schema:
 
 ```
 python validate.py rpz.schema.json samples/rpz_sample.json
@@ -19,9 +19,9 @@ python validate.py rpz.schema.json samples/rpz_sample.json
 
 | File(s)                 | Content                                             |
 | ----------------------- |:---------------------------------------------------:|
-| xarf.schema.json        | contains links to all concrete schemas              |
+| xarf.schema.json        | contains links to all specific schemas              |
 | xarf_shared.schema.json | reusable sub schemas                                |
-| *.schema.json           | concrete schemas                                    |
+| *.schema.json           | specific schemas                                    |
 | validate.py             | script for validating documents against the schemas |
 | samples/*               | example documents for the schemas                   |
 
