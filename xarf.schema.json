@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "XARF",
+    "description": "Any xarf schema.",
+    "anyOf": [
+        {
+            "$ref": "rpz.schema.json"
+        },
+        {
+            "$ref": "ddos.schema.json"
+        },
+        {
+            "$ref": "malware.schema.json"
+        },
+        {
+            "$ref": "phishing.schema.json"
+        },
+        {
+            "$ref": "portscan.schema.json"
+        },
+        {
+            "$ref": "spam.schema.json"
+        }
+    ]
+}

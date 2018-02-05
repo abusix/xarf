@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "XARF DDOS",
+    "description": "A format to report DDOS events.",
+    "allOf": [
+        {
+            "$ref": "xarf_shared.schema.json#/XarfBase"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "Report": {
+                    "allOf": [
+                        {
+                            "$ref": "xarf_shared.schema.json#/IpBasedReport"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "ReportClass": {
+                                    "type": "string",
+                                    "enum": ["Activity"]
+                                },
+                                "ReportType": {
+                                    "type": "string",
+                                    "enum": ["PortScan"]
+                                }
+                            }
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/WithDestination"
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/WithTrafficStats"
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/CommonProps"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

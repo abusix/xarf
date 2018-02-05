@@ -1,0 +1,29 @@
+{
+    "ReporterInfo": {
+        "ReporterOrg": "TestOrg",
+        "ReporterOrgDomain": "testorg.com",
+        "ReporterOrgEmail": "reports@testorg.com",
+        "ReporterContactEmail": "contact@testorg.com",
+        "ReporterContactName": "Mr. Contact",
+        "ReporterContactPhone": "+ 01 000 1234567"
+    },
+    "Disclosure": true,
+    "Report": {
+        "ReportClass": "Activity",
+        "ReportType": "Spam",
+        "ReportSubType": "Trap",
+        "Date": "2018-02-05T14:17:10Z",
+        "SourceIp": "8.8.8.8",
+        "SourcePort": 54321,
+        "DestinationIp": "1.2.3.4",
+        "DestinationPort": 25,
+        "Samples": [
+            {
+                "ContentType": "message/rfc822",
+                "Base64Encoded": true,
+                "Description": "The spam mail",
+                "Payload": "bWFpbA=="
+            }
+        ]
+    }
+}
