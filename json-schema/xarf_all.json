@@ -8,6 +8,9 @@
         },
         {
             "$ref": "ddos.schema.json"
+        },
+        {
+            "$ref": "malware.schema.json"
         }
     ]
 }
