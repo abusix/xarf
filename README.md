@@ -27,7 +27,7 @@ If you want to start validating xarf documents in your code you can use this sni
 ```
 import jsonschema
 
-schema_link = {'$ref': 'xarf.schema.json'}
+schema_link = {'$ref': 'https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json'}
 
 def validate_xarf(document):
     jsonschema.validate(document, schema_link)
