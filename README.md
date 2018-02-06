@@ -67,3 +67,47 @@ except ValidationError as e:
 2. Add an example sample to samples/*
 3. Add the new schema to the list in xarf.schema.json
 4. Discuss and improve
+
+## Writing the schema to a single file:
+
+For some json schema tools and use cases (code generation, e.g.) you need a single schema file because for one reason or another the dereferencing doesn't work. The following steps allow to create a single schema file on the fly.
+
+### Step 0 - Install Nodejs (and npm)
+
+[Download and Install from here](https://nodejs.org/en/download/)
+
+### Step 1 - Install Dependencies
+
+```
+npm install jsonfile json-schema-ref-parser
+```
+### Step 2 - Create script.js
+
+```
+const $RefParser = require('json-schema-ref-parser');
+const jsonfile = require('jsonfile')
+const fullUri = 'https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json'
+
+$RefParser.dereference(fullUri)
+  .then(function(schema) {
+    var file = 'xarf_full.schema.json'
+    jsonfile.writeFile(file, schema, function (err) {
+        if (err != null){
+            console.error(err)
+            process.exit(2)
+        }
+        console.error('done')
+        process.exit()
+    })
+  })
+  .catch(function(err) {
+    console.error(err)
+  });
+
+```
+
+### Step 3 - Run the script
+```
+node script.js
+```
+The full schema can now be found in xarf_full.schema.json
