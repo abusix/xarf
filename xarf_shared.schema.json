@@ -161,7 +161,7 @@
                     },
                     "SourceIp": {
                         "description": "ip from that the abuse event originated",
-                        "anyOf": [
+                        "oneOf": [
                             {
                                 "type": "string",
                                 "format": "ipv4"
@@ -233,7 +233,7 @@
     "WithDestination": {
         "DestinationIp": {
             "description": "targeted ip",
-            "anyOf": [
+            "oneOf": [
                 {
                     "type": "string",
                     "format": "ipv4"
