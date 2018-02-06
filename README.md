@@ -2,6 +2,9 @@
 This is the place to share and discuss new xarf schemas.
 The schemas are written in [json schema](http://json-schema.org/) and use its extension mechanisms to allow sharing common sub schemas.
 
+## Build status
+[![Build Status](https://travis-ci.org/xarf/schema-discussion.svg?branch=master)](https://travis-ci.org/xarf/schema-discussion)
+
 ## Validating json-schema samples
 
 ```
