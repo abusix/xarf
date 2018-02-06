@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json"
+    "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json",
     "title": "XARF",
     "description": "Any xarf schema.",
     "oneOf": [
