@@ -1,0 +1,8 @@
+language: python
+
+python:
+  - "3.6"
+
+script: 
+  - pip install jsonschema
+  - python validate.py xarf.schema.json samples/*.json
