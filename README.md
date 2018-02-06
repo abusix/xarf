@@ -30,7 +30,7 @@ import jsonschema
 schema_link = {'$ref': 'xarf.schema.json'}
 
 def validate_xarf(document):
-    jsonschema.validate(document, schema_link, resolver=ref_resolver)
+    jsonschema.validate(document, schema_link)
 ```
 
 schema_link is only a reference to the mail xarf schema root, so that everything else is loaded from the web. The schemas are cached after first load.
