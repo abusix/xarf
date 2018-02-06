@@ -149,7 +149,7 @@
         "description": "Base properties for the report part of all xarf report types",
         "allOf": [
             {
-                "$ref": "#ReportBase"
+                "$ref": "#/ReportBase"
             },
             {
                 "type": "object",
