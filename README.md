@@ -27,14 +27,13 @@ If you want to start validating xarf documents in your code you can use this sni
 ```
 import jsonschema
 
-ref_resolver = jsonschema.RefResolver('https://raw.githubusercontent.com/xarf/schema-discussion/master/', None)
 schema_link = {'$ref': 'xarf.schema.json'}
 
 def validate_xarf(document):
     jsonschema.validate(document, schema_link, resolver=ref_resolver)
 ```
 
-The RefResolver makes sure that the references between the schema files can be resolved and it uses the master branch of this repository (this should change when xarf is released and hosted somewhere). So schema_link is only a reference to the mail xarf schema root, so that everything else is loaded from the web. The schemas are cached after first load.
+schema_link is only a reference to the mail xarf schema root, so that everything else is loaded from the web. The schemas are cached after first load.
 
 The validate_xarf method can be called from your code (this is just an example):
 
