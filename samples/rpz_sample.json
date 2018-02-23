@@ -1,10 +1,10 @@
 {
     "ReporterInfo": {
-        "ReporterOrg": "TestOrg",
-        "ReporterOrgDomain": "testorg.com",
-        "ReporterOrgEmail": "reports@testorg.com",
-        "ReporterContactEmail": "contact@testorg.com",
-        "ReporterContactName": "Mr. Contact",
+        "ReporterOrg": "ExampleOrg",
+        "ReporterOrgDomain": "example.com",
+        "ReporterOrgEmail": "reports@example.com",
+        "ReporterContactEmail": "contact@example.com",
+        "ReporterContactName": "Mr. Example",
         "ReporterContactPhone": "+ 01 000 1234567"
     },
     "Disclosure": true,
@@ -15,7 +15,7 @@
         "Date": "2018-02-05T14:17:10Z",
         "SourceIp": "192.0.2.55",
         "SourcePort": 54321,
-        "RpzDomain": "malicious.org",
+        "RpzDomain": "malicious.example.org",
         "MalwareName": "necurs"
     }
 }
