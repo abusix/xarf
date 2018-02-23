@@ -12,7 +12,7 @@
         "ReportClass": "Content",
         "ReportType": "Phishing",
         "Date": "2018-02-05T14:17:10Z",
-        "SourceIp": "8.8.8.8",
+        "SourceIp": "192.0.2.55",
         "SourcePort": 80,
         "SourceUrl": "http://phishy.corp/index.html",
         "Ongoing": true,
