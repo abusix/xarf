@@ -230,6 +230,43 @@
             "minItems": 1
         }
     },
+    "AlreadySeen": {
+        "description": "Properties for reports that base on a event that has already happened",
+        "type": "object",
+        "FirstSeen": {
+            "description": "date-time the event was first noticed",
+            "type": "string",
+            "format": "date-time",
+            "optional": true
+        },
+        "DatesSeen": {
+            "type": "array",
+            "description": "array of date-times the event was noticed",
+            "items": {
+                "type": "string",
+                "format": "date-time"
+            }
+        }
+    },
+    "File": {
+        "description": "Additional properties for xarf report types about a specific file",
+        "type": "object",
+        "properties": {
+            "FileName": {
+                "type": "string",
+                "description": "name of the file"
+            },
+            "FileSize": {
+                "type": "integer",
+                "description": "file size in byte",
+                "minimum": 0
+            },
+            "FileHash": {
+                "type": "string",
+                "description": "hash value of the"
+            }
+        }
+    },
     "WithDestination": {
         "DestinationIp": {
             "description": "targeted ip",
