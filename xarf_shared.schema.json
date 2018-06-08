@@ -175,6 +175,12 @@
                         "description": "source port from that the abuse event originated",
                         "minimum": 0,
                         "maximum": 65535
+                    },
+                    "ASN": {
+                        "type": "integer",
+                        "description": "autonomous system number the reportet ip belongs to",
+                        "minimum": 1,
+                        "maximum": 4199999999
                     }
                 },
                 "required": [
@@ -285,12 +291,27 @@
                 }
             ]
         },
-        "DestinationPort": {
-            "type": "integer",
-            "description": "targeted port",
-            "minimum": 0,
-            "maximum": 65535
-        }
+        "oneOf": [
+            {
+                "DestinationPort": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "description": "targeted port",
+                        "minimum": 0,
+                        "maximum": 65535
+                    }
+                }
+            },
+            {
+                "DestinationPort": {
+                    "type": "integer",
+                    "description": "targeted port",
+                    "minimum": 0,
+                    "maximum": 65535
+                }
+            }
+        ]
     },
     "WithTrafficStats": {
         "ByteCount": {
