@@ -15,6 +15,9 @@
                             "$ref": "xarf_shared.schema.json#/IpBasedReport"
                         },
                         {
+                            "$ref": "xarf_shared.schema.json#/Date"
+                        },
+                        {
                             "type": "object",
                             "properties": {
                                 "ReportClass": {
@@ -36,33 +39,24 @@
                                 },
                                 "MaterialType": {
                                     "type": "string",
-                                    "description": "type of copyrighted material, eg. Movie, Music, etc.",
-                                    "optional": true
+                                    "description": "type of copyrighted material, eg. Movie, Music, etc."
                                 },
                                 "SharingProtocol": {
                                     "type": "string",
-                                    "description": "protocol used to distribute the material",
-                                    "optional": true
+                                    "description": "protocol used to distribute the material"
                                 },
                                 "CourtOrder": {
                                     "type": "string",
                                     "description": "url to the court order about this infringement",
-                                    "format": "url",
-                                    "optional": true
+                                    "format": "url"
                                 }
                             },
                             "required": [
-                                "InfringingUrl"
+                                "ReportClass", "ReportType", "InfringedMaterial", "InfringingUrl"
                             ]
                         },
                         {
-                            "$ref": "xarf_shared.schema.json#/AlreadySeen"
-                        },
-                        {
                             "$ref": "xarf_shared.schema.json#/File"
-                        },
-                        {
-                            "$ref": "xarf_shared.schema.json#/CommonProps"
                         }
                     ]
                 }
