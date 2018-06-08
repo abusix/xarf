@@ -15,9 +15,6 @@
                             "$ref": "xarf_shared.schema.json#/IpBasedReport"
                         },
                         {
-                            "$ref": "xarf_shared.schema.json#/Date"
-                        },
-                        {
                             "type": "object",
                             "properties": {
                                 "ReportClass": {
