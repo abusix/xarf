@@ -291,9 +291,9 @@
                 }
             ]
         },
-        "oneOf": [
-            {
-                "DestinationPort": {
+        "DestinationPort": {
+            "oneOf": [
+                {
                     "type": "array",
                     "items": {
                         "type": "integer",
@@ -301,17 +301,15 @@
                         "minimum": 0,
                         "maximum": 65535
                     }
-                }
-            },
-            {
-                "DestinationPort": {
+                },
+                {
                     "type": "integer",
                     "description": "targeted port",
                     "minimum": 0,
                     "maximum": 65535
                 }
-            }
-        ]
+            ]
+        }
     },
     "WithTrafficStats": {
         "ByteCount": {
