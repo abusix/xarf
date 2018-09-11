@@ -9,9 +9,9 @@ var url_location_part = process.env.TRAVIS_TAG || process.env.TRAVIS_COMMIT || "
 
 schema.$id = util.format('https://raw.githubusercontent.com/xarf/schema-discussion/%s/xarf.schema.json', url_location_part)
 
-$RefParser.dereference(schema)
+$RefParser.bundle(schema)
   .then(function(schema) {
-    var file = 'xarf_full.schema.json'
+    var file = util.format('xarf_bundled_%s.schema.json', url_location_part)
     jsonfile.writeFile(file, schema, function (err) {
         if (err != null){
             console.error(err)
@@ -24,4 +24,21 @@ $RefParser.dereference(schema)
   .catch(function(err) {
     console.error(err)
   });
+
+$RefParser.dereference(schema)
+  .then(function(schema) {
+    var file = util.format('xarf_deref_%s.schema.json', url_location_part)
+    jsonfile.writeFile(file, schema, function (err) {
+        if (err != null){
+            console.error(err)
+            process.exit(2)
+        }
+        console.error('done')
+        process.exit()
+    })
+  })
+  .catch(function(err) {
+    console.error(err)
+  });
+
 

@@ -3,8 +3,27 @@ This is the place to share and discuss new xarf schemas.
 The schemas are written in [json schema](http://json-schema.org/) and use its extension mechanisms to allow sharing common sub schemas.
 
 ## Latest Release
-Find the latest schema release [on the releases page](https://github.com/xarf/schema-discussion/releases). The file `xarf_full.schema.json`
-contains a fully dereferenced version of the schema and has been fully tested against the sample files.
+Find the latest schema release [on the releases page](https://github.com/xarf/schema-discussion/releases).
+
+* `xarf_bundled_<VERSION>.schema.json`
+** all schema definitions in one file
+** contains only internal references
+** small file size
+** best for most use cases
+* `xarf_deref_<VERSION>.schema.json`
+** all schema definitions in one file
+** contains no references
+** pretty big file size
+** can be useful for some not-so-sophisticated code generation tools that can't handle references
+
+You can also load the schema dynamically (see python example below) using this url:
+
+```
+https://raw.githubusercontent.com/xarf/schema-discussion/<VERSION>/xarf.schema.json
+```
+
+Replace <VERSION> with the version tag (e.g. 'alpha5') or 'master' for the latest version. Be aware that, when using 'master', updates
+to the schema can break your application.
 
 ## Build status
 [![Build Status](https://travis-ci.org/xarf/schema-discussion.svg?branch=master)](https://travis-ci.org/xarf/schema-discussion)
