@@ -110,7 +110,8 @@
                 "description": "class of the reported abuse event",
                 "enum": [
                     "Content",
-                    "Activity"
+                    "Activity",
+                    "Vulnerability"
                 ]
             },
             "ReportType": {
