@@ -16,14 +16,14 @@ Find the latest schema release [on the releases page](https://github.com/xarf/sc
   * pretty big file size
   * can be useful for some not-so-sophisticated code generation tools that can't handle references
 
-You can also load the schema dynamically (see python example below) using this url:
+You can also load the schema dynamically (see python example below) referencing the url:
 
 ```
-https://raw.githubusercontent.com/xarf/schema-discussion/<VERSION>/xarf.schema.json
+{'$ref': 'https://raw.githubusercontent.com/xarf/schema-discussion/<VERSION>/xarf.schema.json'}
 ```
 
-Replace <VERSION> with the version tag (e.g. 'alpha5') or 'master' for the latest version. Be aware that, when using 'master', updates
-to the schema can break your application.
+Replace <VERSION> with the version tag (e.g. 'alpha5') or 'master' for the latest version. Be aware that, when using 'master', updates to the schema can break your application. Also, depending on caching, this method
+can be quite slow.
 
 ## Build status
 [![Build Status](https://travis-ci.org/xarf/schema-discussion.svg?branch=master)](https://travis-ci.org/xarf/schema-discussion)
