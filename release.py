@@ -29,7 +29,7 @@ with open(main_schema_path, 'w') as main_schema_file:
 
 index = repo.index
 
-index.add(main_schema_path)
+index.add([main_schema_path])
 index.commit('{0} release'.format(version))
 
 repo.create_tag(version)
@@ -40,6 +40,6 @@ main_schema['$id'] = 'https://raw.githubusercontent.com/xarf/schema-discussion/m
 with open(main_schema_path, 'w') as main_schema_file:
     json.dump(main_schema, main_schema_file, indent=True)
 
-index.add(main_schema_path)
+index.add([main_schema_path])
 index.commit('revert url to master after release')
 
