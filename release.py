@@ -22,7 +22,7 @@ main_schema_path = 'xarf.schema.json'
 with open(main_schema_path) as main_schema_file:
     main_schema = json.load(main_schema_file)
 
-main_schema['$id'] = 'https://raw.githubusercontent.com/xarf/schema-discussion/${0}/xarf.schema.json'.format(version)
+main_schema['$id'] = 'https://raw.githubusercontent.com/xarf/schema-discussion/{0}/xarf.schema.json'.format(version)
 
 with open(main_schema_path, 'w') as main_schema_file:
     json.dump(main_schema, main_schema_file, indent=True)
