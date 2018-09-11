@@ -153,13 +153,11 @@
                 "$ref": "#/ReportBase"
             },
             {
+                "$ref": "#/Date"
+            },
+            {
                 "type": "object",
                 "properties": {
-                    "Date": {
-                        "type": "string",
-                        "description": "date the abuse event occured in rfc3339 format",
-                        "format": "date-time"
-                    },
                     "SourceIp": {
                         "description": "ip from that the abuse event originated",
                         "anyOf": [
@@ -178,10 +176,15 @@
                         "description": "source port from that the abuse event originated",
                         "minimum": 0,
                         "maximum": 65535
+                    },
+                    "ASN": {
+                        "type": "integer",
+                        "description": "autonomous system number the reportet ip belongs to",
+                        "minimum": 1,
+                        "maximum": 4199999999
                     }
                 },
                 "required": [
-                    "Date",
                     "SourceIp"
                 ]
             }
@@ -231,6 +234,50 @@
             "minItems": 1
         }
     },
+    "Date": {
+        "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
+        "type": "object",
+        "properties": {
+            "Date": {
+                "format": "date-time",
+                "type": "string",
+                "description": "most recent date-time the event was noticed"
+            },
+            "FirstSeen": {
+                "format": "date-time",
+                "type": "string",
+                "description": "date-time the event was first noticed. Can be omitted if it is the same as Date",
+                "optional": true
+            }
+        }
+    },
+    "File": {
+        "description": "Additional properties for xarf report types about a specific file",
+        "type": "object",
+        "properties": {
+            "File": {
+                "type": "object",
+                "properties": {
+                    "FileName": {
+                        "type": "string",
+                        "description": "name of the file"
+                    },
+                    "FileSize": {
+                        "type": "integer",
+                        "description": "file size in byte",
+                        "minimum": 0
+                    },
+                    "FileHash": {
+                        "type": "string",
+                        "description": "hash value of the file"
+                    }
+                }
+            },
+            "required": [
+                "FileName"
+            ]
+        }
+    },
     "WithDestination": {
         "DestinationIp": {
             "description": "targeted ip",
@@ -246,10 +293,23 @@
             ]
         },
         "DestinationPort": {
-            "type": "integer",
-            "description": "targeted port",
-            "minimum": 0,
-            "maximum": 65535
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "description": "targeted port",
+                        "minimum": 0,
+                        "maximum": 65535
+                    }
+                },
+                {
+                    "type": "integer",
+                    "description": "targeted port",
+                    "minimum": 0,
+                    "maximum": 65535
+                }
+            ]
         }
     },
     "WithTrafficStats": {

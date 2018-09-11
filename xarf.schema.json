@@ -21,6 +21,9 @@
         },
         {
             "$ref": "spam.schema.json"
+        },
+        {
+            "$ref": "copyright.schema.json"
         }
     ]
 }

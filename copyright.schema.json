@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "XARF COPYRIGHT",
+    "description": "A format to report Copyright infringements.",
+    "allOf": [
+        {
+            "$ref": "xarf_shared.schema.json#/XarfBase"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "Report": {
+                    "allOf": [
+                        {
+                            "$ref": "xarf_shared.schema.json#/IpBasedReport"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "ReportClass": {
+                                    "type": "string",
+                                    "enum": ["Content"]
+                                },
+                                "ReportType": {
+                                    "type": "string",
+                                    "enum": ["Copyright"]
+                                },
+                                "InfringedMaterial": {
+                                    "type": "string",
+                                    "description": "name of the copyrighted material"
+                                },
+                                "InfringingUrl": {
+                                    "type": "string",
+                                    "description": "url to the illegally hosted material",
+                                    "format": "url"
+                                },
+                                "MaterialType": {
+                                    "type": "string",
+                                    "description": "type of copyrighted material, eg. Movie, Music, etc."
+                                },
+                                "SharingProtocol": {
+                                    "type": "string",
+                                    "description": "protocol used to distribute the material"
+                                },
+                                "CourtOrder": {
+                                    "type": "string",
+                                    "description": "url to the court order about this infringement",
+                                    "format": "url"
+                                }
+                            },
+                            "required": [
+                                "ReportClass", "ReportType", "InfringedMaterial", "InfringingUrl"
+                            ]
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/File"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
