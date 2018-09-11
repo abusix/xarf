@@ -6,6 +6,7 @@ script:
 - node create_full_schema_file.js
 - pip install jsonschema
 - cp xarf_bundled_*.schema.json xarf_bundled.schema.json
+- cat xarf_bundled.schema.json
 - python validate.py xarf_bundled.schema.json samples/*.json
 
 deploy:
@@ -13,9 +14,10 @@ deploy:
   prerelease: true
   api_key:
     secure: Ab55Dd4Bu/ijYQFF6tTu+dlSJPXIEJLEPWoZ0CrWcoqVZWzUYA+T3HDOSRlrFNR3PJBr4T6LUKdldr0El2eQXImiKZmoLAbUP8xMgU2E8xszC1o+S/mQE84IKH8Q4UyYOzHke3KdH2De7hjYYKsupdVM7c+aZiftwIexKyGSHcioo/kd8I26h5rvppk0AgNImvHzfIdXnciwUw7tweKG9S5/GnK72JEVD8u/rzokOOTAIsSAGmeSYOaTk+l7kT8JJN6TCY6AcGqheQ0b5WeZ29mo/ct6D7Lwhx7SO6i/0NzX/5xMj6eYGG6lbl02GbcqD2ua4w8voaAu1now9CzCLostDk/9PnU41R+t/2CoFofcqT2uaxdDuCS9J0/U8Nvfw0zEymYnqkopql1JZP28tII8SD/sSrLV1DA1yhMOSKCSuevlLy00seq0mwGxBrnv0RVY8W7que5DUw0EnVIizD6O6Ppe42UrDpT0WfJfjy9QpCICnFxdvLStUizw2b9guhOP//IRs85xp460V1YUlsYxk7B7wFYhzLn1jNQeroWeWWNYziCm9g2S/6wPwRa0drNmj3qMZPNx9xBWmsNfaL9quxynFXhg7B68+WYGxob2I8vY5zGJaTm8suluT1aMueHgBOMdkEByM0VqRhxT9eGHIoTZLl6p+h7v/XYih7g=
+  file_glob: true
   file:
-    - xarf_bundled.schema.json
-    - xarf_deref.schema.json
+    - xarf_bundled_*.schema.json
+    - xarf_deref_*.schema.json
   skip_cleanup: true
   on:
     repo: xarf/schema-discussion
