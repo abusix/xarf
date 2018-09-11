@@ -43,3 +43,5 @@ with open(main_schema_path, 'w') as main_schema_file:
 index.add([main_schema_path])
 index.commit('revert url to master after release')
 
+repo.remotes.origin.push()
+repo.remotes.origin.push('--tags')

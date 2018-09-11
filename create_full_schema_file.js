@@ -1,13 +1,12 @@
 // npm install jsonfile json-schema-ref-parser
 const $RefParser = require('json-schema-ref-parser');
 const jsonfile = require('jsonfile')
-const util = require('util')
 
 var schema = require('./xarf.schema.json')
 
 $RefParser.bundle(schema)
   .then(function(schema) {
-    var file = util.format('xarf_bundled.schema.json', url_location_part)
+    var file = 'xarf_bundled.schema.json'
     jsonfile.writeFile(file, schema, function (err) {
         if (err != null){
             console.error(err)
@@ -23,7 +22,7 @@ $RefParser.bundle(schema)
 
 $RefParser.dereference(schema)
   .then(function(schema) {
-    var file = util.format('xarf_deref.schema.json', url_location_part)
+    var file = 'xarf_deref.schema.json'
     jsonfile.writeFile(file, schema, function (err) {
         if (err != null){
             console.error(err)
