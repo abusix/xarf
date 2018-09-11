@@ -1,9 +1,10 @@
 language: generic
 script:
+- pyenv local 3.6
 - npm install jsonfile json-schema-ref-parser
 - node create_full_schema_file.js
-- pip3 install jsonschema
-- python3 validate.py xarf_full.schema.json samples/*.json
+- pip install jsonschema
+- python validate.py xarf_full.schema.json samples/*.json
 
 deploy:
   provider: releases
