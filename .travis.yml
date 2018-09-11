@@ -6,6 +6,7 @@ script:
   - node create_full_schema_file.js
   - pip install jsonschema
   - python validate.py xarf_bundled.schema.json samples/*.json
+  - python validate.py xarf_deref.schema.json samples/*.json
 
 before_deploy:
   - cp xarf_bundled.schema.json xarf_bundled_${TRAVIS_TAG}.schema.json
