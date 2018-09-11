@@ -6,15 +6,15 @@ The schemas are written in [json schema](http://json-schema.org/) and use its ex
 Find the latest schema release [on the releases page](https://github.com/xarf/schema-discussion/releases).
 
 * `xarf_bundled_<VERSION>.schema.json`
-** all schema definitions in one file
-** contains only internal references
-** small file size
-** best for most use cases
+  * all schema definitions in one file
+ * contains only internal references
+ * small file size
+ * best for most use cases
 * `xarf_deref_<VERSION>.schema.json`
-** all schema definitions in one file
-** contains no references
-** pretty big file size
-** can be useful for some not-so-sophisticated code generation tools that can't handle references
+ * all schema definitions in one file
+ * contains no references
+ * pretty big file size
+ * can be useful for some not-so-sophisticated code generation tools that can't handle references
 
 You can also load the schema dynamically (see python example below) using this url:
 
