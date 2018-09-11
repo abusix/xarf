@@ -271,11 +271,11 @@
                         "type": "string",
                         "description": "hash value of the file"
                     }
-                }
-            },
-            "required": [
-                "FileName"
-            ]
+                },
+                "required": [
+                    "FileName"
+                ]
+            }
         }
     },
     "WithDestination": {
