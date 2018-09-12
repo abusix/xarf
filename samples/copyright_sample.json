@@ -8,12 +8,12 @@
     "Report": {
         "ReportType": "Copyright",
         "ReportClass": "Content",
-        "FirstDate": "2018-02-05T14:17:10Z",
+        "FirstSeen": "2018-02-05T14:17:10Z",
         "Date": "2018-02-05T18:17:10Z",
         "SourceIp": "192.0.2.55",
         "SourcePort": 54321,
         "InfringedMaterial": "Example - Mr. Example",
-        "InfringingUrl": "badexample.com/badexapmplesong.mp3",
+        "InfringingUrl": "http://www.badexample.com/badexapmplesong.mp3",
         "MaterialType": "Music",
         "File": {
             "FileName": "badexamplesong.mp3"
