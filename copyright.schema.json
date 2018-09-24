@@ -49,7 +49,7 @@
                                 }
                             },
                             "required": [
-                                "ReportClass", "ReportType", "InfringedMaterial", "InfringingUrl"
+                                "ReportClass", "ReportType", "InfringedMaterial"
                             ]
                         },
                         {
