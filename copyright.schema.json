@@ -32,7 +32,7 @@
                                 "InfringingUrl": {
                                     "type": "string",
                                     "description": "url to the illegally hosted material",
-                                    "format": "url"
+                                    "format": "uri"
                                 },
                                 "MaterialType": {
                                     "type": "string",
@@ -45,7 +45,7 @@
                                 "CourtOrder": {
                                     "type": "string",
                                     "description": "url to the court order about this infringement",
-                                    "format": "url"
+                                    "format": "uri"
                                 }
                             },
                             "required": [
