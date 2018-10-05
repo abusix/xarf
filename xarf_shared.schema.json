@@ -321,5 +321,19 @@
             "type": "integer",
             "description": "Packets per second"
         }
+    },
+    "EMail": {
+        "FromAddress": {
+            "type": "string",
+            "pattern": "email"
+        },
+        "ToAddress": {
+            "type": "string",
+            "pattern": "email"
+        },
+        "RawMail": {
+            "type": "string",
+            "description": "Complete raw e-mail"
+        }
     }
 }
