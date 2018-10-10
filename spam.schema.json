@@ -32,6 +32,9 @@
                         },
                         {
                             "$ref": "xarf_shared.schema.json#/CommonProps"
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/EMail"
                         }
                     ]
                 }
