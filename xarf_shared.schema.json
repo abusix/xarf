@@ -18,6 +18,10 @@
                 "description": "email-address of the reporter organisation",
                 "format": "email"
             },
+            "ReporterOrgAddress": {
+                "type": "string",
+                "description": "address of the reporter organisation",
+            },
             "ReporterContactEmail": {
                 "type": "string",
                 "description": "email-address of the reporter contact",
