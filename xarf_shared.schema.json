@@ -339,5 +339,23 @@
             "type": "string",
             "description": "Complete raw e-mail"
         }
+    },
+    "IP": {
+        "type": "object",
+        "description": "IP address",
+        "anyOf": [
+            {
+                "properties": {
+                    "type": "string",
+                    "format": "ipv4"
+                }
+            },
+            {
+                "properties": {
+                    "type": "string",
+                    "format": "ipv6"
+                }
+            }
+        ]
     }
 }
