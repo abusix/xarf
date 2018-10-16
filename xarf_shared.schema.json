@@ -20,7 +20,7 @@
             },
             "ReporterOrgAddress": {
                 "type": "string",
-                "description": "address of the reporter organisation",
+                "description": "address of the reporter organisation"
             },
             "ReporterContactEmail": {
                 "type": "string",
@@ -341,19 +341,25 @@
         }
     },
     "IP": {
-        "type": "object",
-        "description": "IP address",
         "anyOf": [
             {
+                "type": "object",
+                "description": "IP address",
                 "properties": {
-                    "type": "string",
-                    "format": "ipv4"
+                    "IP": {
+                        "type": "string",
+                        "format": "ipv4"
+                    }
                 }
             },
             {
+                "type": "object",
+                "description": "IP address",
                 "properties": {
-                    "type": "string",
-                    "format": "ipv6"
+                    "IP": {
+                        "type": "string",
+                        "format": "ipv6"
+                    }
                 }
             }
         ]
