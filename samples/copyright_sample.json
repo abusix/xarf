@@ -15,8 +15,6 @@
         "InfringedMaterial": "Example - Mr. Example",
         "InfringingUrl": "http://www.badexample.com/badexapmplesong.mp3",
         "MaterialType": "Music",
-        "File": {
-            "FileName": "badexamplesong.mp3"
-        }
+        "FileName": "badexamplesong.mp3"
     }
 }

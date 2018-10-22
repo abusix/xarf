@@ -151,7 +151,6 @@
         ]
     },
     "IpBasedReport": {
-        "description": "Base properties for the report part of all xarf report types",
         "allOf": [
             {
                 "$ref": "#/ReportBase"
@@ -164,7 +163,7 @@
                 "properties": {
                     "SourceIp": {
                         "description": "ip from that the abuse event originated",
-                        "anyOf": [
+                        "oneOf": [
                             {
                                 "type": "string",
                                 "format": "ipv4"
@@ -196,6 +195,7 @@
     },
     "Sample": {
         "description": "Evidence sample",
+        "type": "object",
         "properties": {
             "ContentType": {
                 "type": "string",
@@ -221,26 +221,33 @@
         ]
     },
     "CommonProps": {
-        "Ongoing": {
-            "type": "boolean",
-            "description": "is the reported abuse ongoing?"
-        },
-        "ThreatActor": {
-            "type": "string",
-            "description": "!TODO!"
-        },
-        "Samples": {
-            "type": "array",
-            "description": "Samples of the malware",
-            "items": {
-                "$ref": "#/Sample"
+        "type": "object",
+        "description": "collection of common, but not easily classified fields",
+        "properties": {
+            "Ongoing": {
+                "type": "boolean",
+                "description": "is the reported abuse ongoing?"
             },
-            "minItems": 1
+            "ThreatActor": {
+                "type": "string",
+                "description": "!TODO!"
+            },
+            "Samples": {
+                "type": "array",
+                "description": "Samples of the malware",
+                "items": {
+                    "$ref": "#/Sample"
+                },
+                "minItems": 1
+            }
         }
     },
     "Date": {
         "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
         "type": "object",
+        "required": [
+            "Date"
+        ],
         "properties": {
             "Date": {
                 "format": "date-time",
@@ -250,8 +257,7 @@
             "FirstSeen": {
                 "format": "date-time",
                 "type": "string",
-                "description": "date-time the event was first noticed. Can be omitted if it is the same as Date",
-                "optional": true
+                "description": "date-time the event was first noticed. Can be omitted if it is the same as Date"
             }
         }
     },
@@ -259,92 +265,98 @@
         "description": "Additional properties for xarf report types about a specific file",
         "type": "object",
         "properties": {
-            "File": {
-                "type": "object",
-                "properties": {
-                    "FileName": {
-                        "type": "string",
-                        "description": "name of the file"
-                    },
-                    "FileSize": {
-                        "type": "integer",
-                        "description": "file size in byte",
-                        "minimum": 0
-                    },
-                    "FileHash": {
-                        "type": "string",
-                        "description": "hash value of the file"
-                    }
-                },
-                "required": [
-                    "FileName"
-                ]
+            "FileName": {
+                "type": "string",
+                "description": "name of the file"
+            },
+            "FileSize": {
+                "type": "integer",
+                "description": "file size in byte",
+                "minimum": 0
+            },
+            "FileHash": {
+                "type": "string",
+                "description": "hash value of the file"
             }
-        }
+        },
+        "required": [
+            "FileName"
+        ]
     },
     "WithDestination": {
-        "DestinationIp": {
-            "description": "targeted ip",
-            "anyOf": [
-                {
-                    "type": "string",
-                    "format": "ipv4"
-                },
-                {
-                    "type": "string",
-                    "format": "ipv6"
-                }
-            ]
-        },
-        "DestinationPort": {
-            "oneOf": [
-                {
-                    "type": "array",
-                    "items": {
+        "type": "object",
+        "description": "specify a target or destination",
+        "properties": {
+            "DestinationIp": {
+                "description": "targeted ip",
+                "oneOf": [
+                    {
+                        "type": "string",
+                        "format": "ipv4"
+                    },
+                    {
+                        "type": "string",
+                        "format": "ipv6"
+                    }
+                ]
+            },
+            "DestinationPort": {
+                "oneOf": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "description": "targeted port",
+                            "minimum": 0,
+                            "maximum": 65535
+                        }
+                    },
+                    {
                         "type": "integer",
                         "description": "targeted port",
                         "minimum": 0,
                         "maximum": 65535
                     }
-                },
-                {
-                    "type": "integer",
-                    "description": "targeted port",
-                    "minimum": 0,
-                    "maximum": 65535
-                }
-            ]
+                ]
+            }
         }
     },
     "WithTrafficStats": {
-        "ByteCount": {
-            "type": "integer",
-            "description": "Bytes per second"
-        },
-        "PacketCount": {
-            "type": "integer",
-            "description": "Packets per second"
+        "type": "object",
+        "properties": {
+            "ByteCount": {
+                "type": "integer",
+                "description": "Bytes per second"
+            },
+            "PacketCount": {
+                "type": "integer",
+                "description": "Packets per second"
+            }
         }
     },
     "EMail": {
-        "FromAddress": {
-            "type": "string",
-            "pattern": "email"
-        },
-        "ToAddress": {
-            "type": "string",
-            "pattern": "email"
-        },
-        "RawMail": {
-            "type": "string",
-            "description": "Complete raw e-mail"
+        "type": "object",
+        "description": "Simplified e-mail object to attach the source e-mail to a report",
+        "properties": {
+            "FromAddress": {
+                "type": "string",
+                "format": "email"
+            },
+            "ToAddress": {
+                "type": "string",
+                "format": "email"
+            },
+            "RawMail": {
+                "type": "string",
+                "description": "Complete raw e-mail"
+            }
         }
     },
     "IP": {
-        "anyOf": [
+        "oneOf": [
             {
                 "type": "object",
-                "description": "IP address",
+                "description": "IPv4 address",
                 "properties": {
                     "IP": {
                         "type": "string",
@@ -354,7 +366,7 @@
             },
             {
                 "type": "object",
-                "description": "IP address",
+                "description": "IPv6 address",
                 "properties": {
                     "IP": {
                         "type": "string",
