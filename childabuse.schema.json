@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "XARF CHILDABUSE",
+    "description": "A format to report child abuse events.",
+    "allOf": [
+        {
+            "$ref": "xarf_shared.schema.json#/XarfBase"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "Report": {
+                    "allOf": [
+                        {
+                            "$ref": "xarf_shared.schema.json#/IpAndUrlBasedReport"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "ReportClass": {
+                                    "type": "string",
+                                    "enum": ["Content"]
+                                },
+                                "ReportType": {
+                                    "type": "string",
+                                    "enum": ["ChildAbuse"]
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

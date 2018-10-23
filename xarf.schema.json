@@ -30,6 +30,9 @@
   },
   {
    "$ref": "loginattack.schema.json"
+  },
+  {
+   "$ref": "childabuse.schema.json"
   }
  ]
 }
