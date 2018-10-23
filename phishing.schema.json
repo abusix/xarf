@@ -12,7 +12,7 @@
                 "Report": {
                     "allOf": [
                         {
-                            "$ref": "xarf_shared.schema.json#/IpBasedReport"
+                            "$ref": "xarf_shared.schema.json#/IpAndUrlBasedReport"
                         },
                         {
                             "type": "object",
@@ -24,11 +24,6 @@
                                 "ReportType": {
                                     "type": "string",
                                     "enum": ["Phishing"]
-                                },
-                                "SourceUrl": {
-                                    "type": "string",
-                                    "description": "where the content is available",
-                                    "format": "uri"
                                 }
                             },
                             "required": [
