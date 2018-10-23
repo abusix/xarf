@@ -33,6 +33,9 @@
   },
   {
    "$ref": "childabuse.schema.json"
+  },
+  {
+   "$ref": "botnet.schema.json"
   }
  ]
 }
