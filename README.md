@@ -35,9 +35,9 @@ can be quite slow.
 ```
 pip install jsonschema
 python validate.py xarf.schema.json samples/*.json
-```		
+```
 
-If it validation fails for a sample you can get better error messages by using the specific schema:
+If the validation fails for a sample you can get better error messages by using the specific schema:
 
 ```
 python validate.py rpz.schema.json samples/rpz_sample.json
@@ -53,26 +53,13 @@ import jsonschema
 schema_link = {'$ref': 'https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json'}
 
 def validate_xarf(document):
-    jsonschema.validate(document, schema_link)
+    jsonschema.validate(document, schema_link, format_checker=FormatChecker())
 ```
 
 schema_link is only a reference to the mail xarf schema root, so that everything else is loaded from the web. The schemas are cached after first load.
 
-The validate_xarf method can be called from your code (this is just an example):
+It is important to include the `format_checker` kwarg, otherwise most schemas won't validate. The format checker validates the `format` property in string fields. 
 
-```
-import json
-
-from jsonschema.exceptions import ValidationError
-
-with open('samples/rpz_sample.json') as json_file:
-    document = json.load(json_file)
-    
-try:
-    validate_xarf(document)
-except ValidationError as e:
-    //handle error here. For example return 400 status code in web app
-```
 
 ## Project structure
 
@@ -94,6 +81,11 @@ except ValidationError as e:
 ## Writing the schema to a single file:
 
 For some json schema tools and use cases (code generation, e.g.) you need a single schema file because for one reason or another the dereferencing doesn't work. The following steps allow to create a single schema file on the fly.
+
+__We recently had some issues with the ref-parser not copying objects correctly.__ 
+So don't get a headache is your sample report doesn't validate right away. 
+Try to use a specific schema or use the `validate.py` script.
+If you have a better ref-parser or know why the parsing doesn't work, __contact us right away!__ 
 
 ### Step 0 - Install Nodejs (and npm)
 
