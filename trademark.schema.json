@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "XARF TRADEMARK",
+    "description": "A format to report Trademark infringements.",
+    "allOf": [
+        {
+            "$ref": "xarf_shared.schema.json#/XarfBase"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "Report": {
+                    "allOf": [
+                        {
+                            "$ref": "xarf_shared.schema.json#/IpAndUrlBasedReport"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "ReportClass": {
+                                    "type": "string",
+                                    "enum": ["Content"]
+                                },
+                                "ReportType": {
+                                    "type": "string",
+                                    "enum": ["Trademark"]
+                                },
+                                "TrademarkedMaterial": {
+                                    "type": "string",
+                                    "description": "description of what is trademarked"
+                                },
+                                "InfringingUrl": {
+                                    "type": "string",
+                                    "description": "url to the illegally hosted material",
+                                    "format": "uri"
+                                },
+                                "RegistrationOffice": {
+                                    "type": "string",
+                                    "description": "office the trademark has been registered"
+                                },
+                                "RegistrationNumber": {
+                                    "type": "string",
+                                    "description": "trademark registration number"
+                                }
+                            },
+                            "required": [
+                                "ReportClass", "ReportType", "TrademarkedMaterial"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

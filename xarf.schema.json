@@ -24,6 +24,9 @@
   },
   {
    "$ref": "copyright.schema.json"
+  },
+  {
+   "$ref": "trademark.schema.json"
   }
  ]
 }
