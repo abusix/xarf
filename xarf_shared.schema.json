@@ -193,6 +193,72 @@
             }
         ]
     },
+    "IpAndUrlBasedReport": {
+        "description": "",
+        "allOf": [
+            {
+                "$ref": "#/ReportBase"
+            },
+            {
+                "$ref": "#/Date"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "SourcePort": {
+                        "type": "integer",
+                        "description": "source port from that the abuse event originated",
+                        "minimum": 0,
+                        "maximum": 65535
+                    }
+                }
+            },
+            {
+                "anyOf": [
+                    {
+                        "type": "object",
+                        "required": [
+                            "SourceIp"
+                        ],
+                        "properties": {
+                            "SourceIp": {
+                                "description": "ip from that the abuse event originated",
+                                "oneOf": [
+                                    {
+                                        "type": "string",
+                                        "format": "ipv4"
+                                    },
+                                    {
+                                        "type": "string",
+                                        "format": "ipv6"
+                                    }
+                                ]
+                            },
+                            "ASN": {
+                                "type": "integer",
+                                "description": "autonomous system number the reportet ip belongs to",
+                                "minimum": 1,
+                                "maximum": 4199999999
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "SourceUrl"
+                        ],
+                        "properties": {
+                            "SourceUrl": {
+                                "type": "string",
+                                "description": "url of the abuse event origin",
+                                "format": "uri"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
     "Sample": {
         "description": "Evidence sample",
         "type": "object",
