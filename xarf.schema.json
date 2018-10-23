@@ -27,6 +27,9 @@
   },
   {
    "$ref": "trademark.schema.json"
+  },
+  {
+   "$ref": "loginattack.schema.json"
   }
  ]
 }
