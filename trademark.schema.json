@@ -44,7 +44,7 @@
                                 }
                             },
                             "required": [
-                                "ReportClass", "ReportType", "TrademarkedMaterial"
+                                "TrademarkedMaterial"
                             ]
                         }
                     ]
