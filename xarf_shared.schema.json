@@ -194,7 +194,6 @@
         ]
     },
     "IpAndUrlBasedReport": {
-        "description": "",
         "allOf": [
             {
                 "$ref": "#/ReportBase"
