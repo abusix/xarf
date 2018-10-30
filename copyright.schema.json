@@ -12,7 +12,7 @@
                 "Report": {
                     "allOf": [
                         {
-                            "$ref": "xarf_shared.schema.json#/IpBasedReport"
+                            "$ref": "xarf_shared.schema.json#/IpAndUrlBasedReport"
                         },
                         {
                             "type": "object",
