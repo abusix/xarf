@@ -1,7 +1,9 @@
 language: generic
 script:
   - nvm use 8
-  - pyenv local 3.6
+  - pyenv versions
+  - pyenv install 3.8
+  - pyenv local 3.8
   - npm install jsonfile json-schema-ref-parser
   - node create_full_schema_file.js
   - pip install jsonschema
