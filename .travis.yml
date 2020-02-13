@@ -5,8 +5,8 @@ script:
   - pyenv local 3.7
   - npm install jsonfile json-schema-ref-parser
   - node create_full_schema_file.js
-  - pip install jsonschema
-  - python validate.py xarf_bundled.schema.json samples/*.json
+  - pip install fastjsonschema
+# skip for now due to https://github.com/Julian/jsonschema/issues/657:  -  python validate.py xarf_bundled.schema.json samples/*.json
   - python validate.py xarf_deref.schema.json samples/*.json
 
 before_deploy:

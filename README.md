@@ -9,7 +9,7 @@ Find the latest schema release [on the releases page](https://github.com/xarf/sc
   * all schema definitions in one file
   * contains only internal references
   * small file size
-  * best for most use cases
+  * best for most use cases, when the used tool is good enough to understand complex internal references (multiple hops)
 * `xarf_deref_<VERSION>.schema.json`
   * all schema definitions in one file
   * contains no references
