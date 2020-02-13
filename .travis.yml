@@ -2,8 +2,9 @@ language: node_js
 node_js:
   - 13
 script:
-  - npm install -g jsonfile json-schema-ref-parser ajv-cli
+  - npm install -g ajv-cli
   - ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
+  - npm install jsonfile json-schema-ref-parse
   - node create_full_schema_file.js
   - ajv -s xarf_bundled.schema.json -d "samples/*.json"
   - ajv -s xarf_deref.schema.json -d "samples/*.json"
