@@ -1,13 +1,12 @@
-language: generic
+language: node_js
+node_js:
+  - 13
 script:
-  - nvm use 8
-  - pyenv versions
-  - pyenv local 3.7
-  - npm install jsonfile json-schema-ref-parser
+  - npm install -g jsonfile json-schema-ref-parser ajv-cli
+  - ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
   - node create_full_schema_file.js
-  - pip install jsonschema
-# skip for now due to https://github.com/Julian/jsonschema/issues/657:  -  python validate.py xarf_bundled.schema.json samples/*.json
-  - python validate.py xarf_deref.schema.json samples/*.json
+  - ajv -s xarf_bundled.schema.json -d "samples/*.json"
+  - ajv -s xarf_deref.schema.json -d "samples/*.json"
 
 before_deploy:
   - cp xarf_bundled.schema.json xarf_bundled_${TRAVIS_TAG}.schema.json

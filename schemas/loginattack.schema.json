@@ -1,7 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "XARF BOTNET",
-    "description": "A format to report Botnet events.",
+    "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/loginattack.schema.json",
+    "title": "XARF LOGINATTACK",
+    "description": "A format to report login attacks.",
     "allOf": [
         {
             "$ref": "xarf_shared.schema.json#/XarfBase"
@@ -12,28 +13,26 @@
                 "Report": {
                     "allOf": [
                         {
-                            "$ref": "xarf_shared.schema.json#/IpAndUrlBasedReport"
+                            "$ref": "xarf_shared.schema.json#/IpBasedReport"
                         },
                         {
                             "type": "object",
                             "properties": {
                                 "ReportClass": {
                                     "type": "string",
-                                    "enum": [
-                                        "Content"
-                                    ]
+                                    "enum": ["Activity"]
                                 },
                                 "ReportType": {
                                     "type": "string",
-                                    "enum": [
-                                        "Botnet"
-                                    ]
-                                },
-                                "BotnetName": {
-                                    "type": "string",
-                                    "description": "name of the botnet"
+                                    "enum": ["LoginAttack"]
                                 }
                             }
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/WithDestination"
+                        },
+                        {
+                            "$ref": "xarf_shared.schema.json#/WithTrafficStats"
                         },
                         {
                             "$ref": "xarf_shared.schema.json#/CommonProps"

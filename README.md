@@ -16,15 +16,6 @@ Find the latest schema release [on the releases page](https://github.com/xarf/sc
   * pretty big file size
   * can be useful for some not-so-sophisticated code generation tools that can't handle references
 
-You can also load the schema dynamically (see python example below) referencing the url:
-
-```
-{'$ref': 'https://raw.githubusercontent.com/xarf/schema-discussion/<VERSION>/xarf.schema.json'}
-```
-
-Replace <VERSION> with the version tag (e.g. 'alpha5') or 'master' for the latest version. Be aware that, when using 'master', updates to the schema can break your application. Also, depending on caching, this method
-can be quite slow.
-
 ## Build status
 [![Build Status](https://travis-ci.org/xarf/schema-discussion.svg?branch=master)](https://travis-ci.org/xarf/schema-discussion)
 
@@ -32,44 +23,20 @@ can be quite slow.
 
 ### Command line
 
+```bash
+npm install -g jsonfile json-schema-ref-parser ajv-cli
+ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
 ```
-pip install jsonschema
-python validate.py xarf.schema.json samples/*.json
-```
-
-If the validation fails for a sample you can get better error messages by using the specific schema:
-
-```
-python validate.py rpz.schema.json samples/rpz_sample.json
-```
-
-### Python
-
-If you want to start validating xarf documents in your code you can use this snippet:
-
-```
-import jsonschema
-
-schema_link = {'$ref': 'https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json'}
-
-def validate_xarf(document):
-    jsonschema.validate(document, schema_link, format_checker=FormatChecker())
-```
-
-schema_link is only a reference to the mail xarf schema root, so that everything else is loaded from the web. The schemas are cached after first load.
-
-It is important to include the `format_checker` kwarg, otherwise most schemas won't validate. The format checker validates the `format` property in string fields. 
-
 
 ## Project structure
 
-| File(s)                 | Content                                             |
-| ----------------------- |:---------------------------------------------------:|
-| xarf.schema.json        | contains links to all specific schemas              |
-| xarf_shared.schema.json | reusable sub schemas                                |
-| *.schema.json           | specific schemas                                    |
-| validate.py             | script for validating documents against the schemas |
-| samples/*               | example documents for the schemas                   |
+| File(s)                         | Content                                             |
+| -----------------------         |:---------------------------------------------------:|
+| xarf.schema.json                | contains links to all specific schemas              |
+| schemas/xarf_shared.schema.json | reusable sub schemas                                |
+| schemas/*.schema.json           | specific schemas                                    |
+| samples/*.json                  | example documents for the schemas                   |
+| create_full_schema_file.js      | allows combining the schema into a single file      |
 
 ## Adding a new schema
 
@@ -80,49 +47,16 @@ It is important to include the `format_checker` kwarg, otherwise most schemas wo
 
 ## Writing the schema to a single file:
 
-For some json schema tools and use cases (code generation, e.g.) you need a single schema file because for one reason or another the dereferencing doesn't work. The following steps allow to create a single schema file on the fly.
+Use [create_full_schema_file.js](create_full_schema_file.js) to create a single file schema. 
 
-__We recently had some issues with the ref-parser not copying objects correctly.__ 
-So don't get a headache is your sample report doesn't validate right away. 
-Try to use a specific schema or use the `validate.py` script.
-If you have a better ref-parser or know why the parsing doesn't work, __contact us right away!__ 
-
-### Step 0 - Install Nodejs (and npm)
-
-[Download and Install from here](https://nodejs.org/en/download/)
-
-### Step 1 - Install Dependencies
-
-```
+```bash
 npm install jsonfile json-schema-ref-parser
-```
-### Step 2 - Create script.js
-
-```
-const $RefParser = require('json-schema-ref-parser');
-const jsonfile = require('jsonfile')
-const fullUri = 'https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json'
-
-$RefParser.dereference(fullUri)
-  .then(function(schema) {
-    var file = 'xarf_full.schema.json'
-    jsonfile.writeFile(file, schema, function (err) {
-        if (err != null){
-            console.error(err)
-            process.exit(2)
-        }
-        console.error('done')
-        process.exit()
-    })
-  })
-  .catch(function(err) {
-    console.error(err)
-  });
-
+node create_full_schema_file.js
 ```
 
-### Step 3 - Run the script
-```
-node script.js
-```
-The full schema can now be found in xarf_full.schema.json
+It will generate two files:
+
+| File                     | Content                                                                                |
+| -----------------------  |:--------------------------------------------------------------------------------------:|
+| xarf_bundled.schema.json | bundled and minimized using internal refs, might not work with all json schema tools   |
+| xarf_deref.schema.json   | bundled and completely derefed. might be bigger in size, but should work with all tools|

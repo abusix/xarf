@@ -1,7 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "XARF DDOS",
-    "description": "A format to report DDOS events.",
+    "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/spam.schema.json",
+    "title": "XARF SPAM",
+    "description": "A format to report SPAM events.",
     "allOf": [
         {
             "$ref": "xarf_shared.schema.json#/XarfBase"
@@ -23,7 +24,7 @@
                                 },
                                 "ReportType": {
                                     "type": "string",
-                                    "enum": ["DOS"]
+                                    "enum": ["Spam"]
                                 }
                             }
                         },
@@ -31,10 +32,10 @@
                             "$ref": "xarf_shared.schema.json#/WithDestination"
                         },
                         {
-                            "$ref": "xarf_shared.schema.json#/WithTrafficStats"
+                            "$ref": "xarf_shared.schema.json#/CommonProps"
                         },
                         {
-                            "$ref": "xarf_shared.schema.json#/CommonProps"
+                            "$ref": "xarf_shared.schema.json#/EMail"
                         }
                     ]
                 }

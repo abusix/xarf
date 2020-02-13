@@ -1,7 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "XARF LOGINATTACK",
-    "description": "A format to report login attacks.",
+    "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/rpz.schema.json",
+    "title": "XARF RPZ",
+    "description": "A format to report RPZ events.",
     "allOf": [
         {
             "$ref": "xarf_shared.schema.json#/XarfBase"
@@ -23,18 +24,22 @@
                                 },
                                 "ReportType": {
                                     "type": "string",
-                                    "enum": ["LoginAttack"]
+                                    "enum": ["Malware"]
+                                },
+                                "ReportSubType": {
+                                    "type": "string",
+                                    "enum": ["RPZ-Rewrite"]
+                                },
+                                "RpzDomain": {
+                                    "type": "string",
+                                    "description": "Domain that was looked up",
+                                    "format": "hostname"
+                                },
+                                "MalwareName": {
+                                    "type": "string",
+                                    "description": "Name of malware that performed the lookup"
                                 }
                             }
-                        },
-                        {
-                            "$ref": "xarf_shared.schema.json#/WithDestination"
-                        },
-                        {
-                            "$ref": "xarf_shared.schema.json#/WithTrafficStats"
-                        },
-                        {
-                            "$ref": "xarf_shared.schema.json#/CommonProps"
                         }
                     ]
                 }

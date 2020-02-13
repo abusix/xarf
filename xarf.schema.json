@@ -1,40 +1,41 @@
 {
  "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json",
  "title": "XARF",
  "description": "Any xarf schema.",
  "oneOf": [
   {
-   "$ref": "rpz.schema.json"
+   "$ref": "schemas/rpz.schema.json"
   },
   {
-   "$ref": "ddos.schema.json"
+   "$ref": "schemas/ddos.schema.json"
   },
   {
-   "$ref": "malware.schema.json"
+   "$ref": "schemas/malware.schema.json"
   },
   {
-   "$ref": "phishing.schema.json"
+   "$ref": "schemas/phishing.schema.json"
   },
   {
-   "$ref": "portscan.schema.json"
+   "$ref": "schemas/portscan.schema.json"
   },
   {
-   "$ref": "spam.schema.json"
+   "$ref": "schemas/spam.schema.json"
   },
   {
-   "$ref": "copyright.schema.json"
+   "$ref": "schemas/copyright.schema.json"
   },
   {
-   "$ref": "trademark.schema.json"
+   "$ref": "schemas/trademark.schema.json"
   },
   {
-   "$ref": "loginattack.schema.json"
+   "$ref": "schemas/loginattack.schema.json"
   },
   {
-   "$ref": "childabuse.schema.json"
+   "$ref": "schemas/childabuse.schema.json"
   },
   {
-   "$ref": "botnet.schema.json"
+   "$ref": "schemas/botnet.schema.json"
   }
  ]
 }
