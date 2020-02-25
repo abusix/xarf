@@ -307,7 +307,7 @@
             },
             "Samples": {
                 "type": "array",
-                "description": "Samples of the malware",
+                "description": "Samples of the abuse taking place, e.g. malware file or spam email",
                 "items": {
                     "$ref": "#/Sample"
                 },
@@ -418,10 +418,6 @@
             "ToAddress": {
                 "type": "string",
                 "format": "email"
-            },
-            "RawMail": {
-                "type": "string",
-                "description": "Complete raw e-mail"
             }
         }
     },
