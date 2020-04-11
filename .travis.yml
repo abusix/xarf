@@ -25,4 +25,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    repo: xarf/schema-discussion
+    repo: abusix/xarf
