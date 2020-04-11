@@ -1,7 +1,7 @@
 # XARF - eXtended Abuse Reporting Format
 
 ## Latest Release
-Find the latest schema release [on the releases page](https://github.com/xarf/schema-discussion/releases).
+Find the latest schema release [on the releases page](https://github.com/abusix/xarf/releases).
 
 * `xarf_bundled_<VERSION>.schema.json`
   * all schema definitions in one file
