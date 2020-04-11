@@ -1,6 +1,4 @@
-# schema-discussion
-This is the place to share and discuss new xarf schemas.
-The schemas are written in [json schema](http://json-schema.org/) and use its extension mechanisms to allow sharing common sub schemas.
+# XARF - eXtended Abuse Reporting Format
 
 ## Latest Release
 Find the latest schema release [on the releases page](https://github.com/xarf/schema-discussion/releases).
