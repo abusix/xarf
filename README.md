@@ -15,7 +15,7 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
   * can be useful for some not-so-sophisticated code generation tools that can't handle references
 
 ## Build status
-[![Build Status](https://travis-ci.org/xarf/schema-discussion.svg?branch=master)](https://travis-ci.org/xarf/schema-discussion)
+[![Build Status](https://travis-ci.org/abusix/xarf.svg?branch=master)](https://travis-ci.org/abusix/xarf)
 
 ## Validating json-schema samples
 
