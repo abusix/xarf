@@ -18,7 +18,13 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
 ## Build status
 
 [![Build Status](https://travis-ci.org/abusix/xarf.svg?branch=master)](https://travis-ci.org/abusix/xarf)
+
+## Coverage
+
 [![Coverage Status](https://coveralls.io/repos/github/abusix/xarf/badge.svg)](https://coveralls.io/github/abusix/xarf)
+
+Please note that you won't be able to see source code for the generated code due to the way coveralls works. CodeCov is even worse, it doesn't even show percentages for code that doesn't exist in the repo.
+The coverage will probably never reach 100% because of the way the code is generated, but it is still a useful metric to see how well our samples cover the schema.
 
 ## Validating json-schema samples
 

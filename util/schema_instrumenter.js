@@ -1,4 +1,4 @@
-// https://github.com/ajv-validator/ajv-istanbul
+// Original sourcee: https://github.com/ajv-validator/ajv-istanbul (index.js)
 // see ./ajv-istanbul-LICENSE for original LICENSE
 
 // modified to use up to date istanbul intrumenter by Frederik Petersen, fp@abusix.com, 2020
