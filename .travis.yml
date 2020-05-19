@@ -11,7 +11,7 @@ script:
   - yarn bundle-xarf
   - ajv -s xarf_bundled.schema.json -d "samples/*.json"
   - ajv -s xarf_deref.schema.json -d "samples/*.json"
-after_success: yarn report-coverage
+after_success: yarn report-coverage-coveralls
 
 before_deploy:
   - cp xarf_bundled.schema.json xarf_bundled_${TRAVIS_TAG}.schema.json

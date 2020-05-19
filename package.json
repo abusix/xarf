@@ -8,7 +8,9 @@
   "scripts": {
     "bundle-xarf": "node bundle_xarf.js",
     "test-xarf": "nyc --reporter=lcov mocha test_xarf.js",
-    "report-coverage": "codecov"
+    "report-coverage-codecov": "codecov",
+    "report-coverage-coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "clean-coverage": "rm -rf .nyc_output .ajv_istanbul coverage"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.1",
@@ -17,6 +19,7 @@
   "devDependencies": {
     "ajv": "^6.12.2",
     "codecov": "^3.7.0",
+    "coveralls": "^3.1.0",
     "eslint": "^7.0.0",
     "eslint-plugin-mocha": "^7.0.0",
     "husky": ">=4",
