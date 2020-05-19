@@ -1,20 +1,20 @@
 {
-    "ReporterInfo": {
-        "ReporterOrg": "ExampleOrg",
-        "ReporterOrgDomain": "example.com",
-        "ReporterOrgEmail": "reports@example.com"
-    },
-    "Disclosure": true,
-    "Report": {
-        "ReportType": "Copyright",
-        "ReportClass": "Content",
-        "FirstSeen": "2018-02-05T14:17:10Z",
-        "Date": "2018-02-05T18:17:10Z",
-        "SourceIp": "192.0.2.55",
-        "SourcePort": 54321,
-        "InfringedMaterial": "Example - Mr. Example",
-        "InfringingUrl": "http://www.badexample.com/badexapmplesong.mp3",
-        "MaterialType": "Music",
-        "FileName": "badexamplesong.mp3"
-    }
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportType": "Copyright",
+    "ReportClass": "Content",
+    "FirstSeen": "2018-02-05T14:17:10Z",
+    "Date": "2018-02-05T18:17:10Z",
+    "SourceIp": "192.0.2.55",
+    "SourcePort": 54321,
+    "InfringedMaterial": "Example - Mr. Example",
+    "InfringingUrl": "http://www.badexample.com/badexapmplesong.mp3",
+    "MaterialType": "Music",
+    "FileName": "badexamplesong.mp3"
+  }
 }

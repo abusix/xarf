@@ -1,31 +1,29 @@
-'use strict';
+"use strict";
 
-var Ajv = require('ajv');
-var istanbul = require('istanbul');
-var ajvIstanbul = require('ajv-istanbul')
-var assert = require('assert')
+var Ajv = require("ajv");
+var istanbul = require("istanbul");
+var ajvIstanbul = require("ajv-istanbul");
+var assert = require("assert");
 
-var fs = require('fs')
-var path = require('path')
+var fs = require("fs");
+var path = require("path");
 
-
-
-describe('xarf', () => {
+describe("xarf", () => {
   var validate;
 
   before(() => {
-    var ajv = new Ajv;
+    var ajv = new Ajv();
     ajvIstanbul(ajv);
-    var rootSchema = require('./xarf.schema.json')
+    var rootSchema = require("./xarf.schema.json");
 
-    const dir = './schemas'
+    const dir = "./schemas";
 
     fs.readdirSync(dir)
-        .filter(name => name.endsWith('.schema.json'))
-        .map(name => {
-            ajv.addSchema(require('./' + path.join(dir, name)))
-        });
-    validate = ajv.compile(rootSchema)
+      .filter((name) => name.endsWith(".schema.json"))
+      .map((name) => {
+        ajv.addSchema(require("./" + path.join(dir, name)));
+      });
+    validate = ajv.compile(rootSchema);
   });
 
   after(() => {
@@ -35,22 +33,23 @@ describe('xarf', () => {
 
     collector.add(global.__coverage__);
 
-    reporter.addAll([ 'lcov', 'html' ]);
+    reporter.addAll(["lcov", "html"]);
 
     reporter.write(collector, sync, function () {
-        console.log('reports generated');
-    })
+      console.log("reports generated");
+    });
   });
 
-  it('all samples should validate', () => {
-    const dir = './samples'
+  it("all samples should validate", () => {
+    const dir = "./samples";
 
     fs.readdirSync(dir)
-        .filter(name => path.extname(name) === '.json')
-        .map(name => {
-            assert.strictEqual(validate(require('./' + path.join(dir, name))), true );
-        });
-
-    
+      .filter((name) => path.extname(name) === ".json")
+      .map((name) => {
+        assert.strictEqual(
+          validate(require("./" + path.join(dir, name))),
+          true
+        );
+      });
   });
 });

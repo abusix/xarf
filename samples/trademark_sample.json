@@ -1,19 +1,19 @@
 {
-    "ReporterInfo": {
-        "ReporterOrg": "ExampleOrg",
-        "ReporterOrgDomain": "example.com",
-        "ReporterOrgEmail": "reports@example.com"
-    },
-    "Disclosure": true,
-    "Report": {
-        "ReportType": "Trademark",
-        "ReportClass": "Content",
-        "FirstSeen": "2018-02-05T15:17:10Z",
-        "Date": "2018-10-23T18:17:10Z",
-        "SourceUrl": "http://www.i-steal-your-trademark.com/your.logo",
-        "InfringingUrl": "http://www.i-steal-your-trademark.com/your.logo",
-        "TrademarkedMaterial": "The logo of my company",
-        "RegistrationOffice": "uspto",
-        "RegistrationNumber": "99999999999"
-    }
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportType": "Trademark",
+    "ReportClass": "Content",
+    "FirstSeen": "2018-02-05T15:17:10Z",
+    "Date": "2018-10-23T18:17:10Z",
+    "SourceUrl": "http://www.i-steal-your-trademark.com/your.logo",
+    "InfringingUrl": "http://www.i-steal-your-trademark.com/your.logo",
+    "TrademarkedMaterial": "The logo of my company",
+    "RegistrationOffice": "uspto",
+    "RegistrationNumber": "99999999999"
+  }
 }
