@@ -8,25 +8,33 @@ var assert = require("assert");
 var fs = require("fs");
 var path = require("path");
 
-describe("xarf", () => {
+describe("xarf", function () {
   var validate;
 
-  before(() => {
+  it("all samples should validate", function () {
     var ajv = new Ajv();
     ajvIstanbul(ajv);
     var rootSchema = require("./xarf.schema.json");
 
-    const dir = "./schemas";
+    const schemaDir = "./schemas";
 
-    fs.readdirSync(dir)
+    fs.readdirSync(schemaDir)
       .filter((name) => name.endsWith(".schema.json"))
       .map((name) => {
-        ajv.addSchema(require("./" + path.join(dir, name)));
+        ajv.addSchema(require("./" + path.join(schemaDir, name)));
       });
     validate = ajv.compile(rootSchema);
-  });
 
-  after(() => {
+    const samplesDir = "./samples";
+
+    fs.readdirSync(samplesDir)
+      .filter((name) => path.extname(name) === ".json")
+      .map((name) => {
+        assert.strictEqual(
+          validate(require("./" + path.join(samplesDir, name))),
+          true
+        );
+      });
     var collector = new istanbul.Collector();
     var reporter = new istanbul.Reporter();
     var sync = true;
@@ -38,18 +46,5 @@ describe("xarf", () => {
     reporter.write(collector, sync, function () {
       console.log("reports generated");
     });
-  });
-
-  it("all samples should validate", () => {
-    const dir = "./samples";
-
-    fs.readdirSync(dir)
-      .filter((name) => path.extname(name) === ".json")
-      .map((name) => {
-        assert.strictEqual(
-          validate(require("./" + path.join(dir, name))),
-          true
-        );
-      });
   });
 });

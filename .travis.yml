@@ -6,6 +6,7 @@ script:
   - ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
   - yarn install --frozen-lockfile
   - prettier --check .
+  - eslint .
   - mocha test_xarf.js
   - yarn bundle_xarf
   - ajv -s xarf_bundled.schema.json -d "samples/*.json"

@@ -14,11 +14,12 @@ function removeKeys(obj, keys, depth = 0) {
   for (var prop in obj) {
     // important check that this is objects own property
     // not from prototype prop inherited
+    // eslint-disable-next-line no-prototype-builtins
     if (obj.hasOwnProperty(prop)) {
       switch (typeof obj[prop]) {
         case "string":
           index = keys.indexOf(prop);
-          if ((index > -1) & (depth > 0)) {
+          if ((index > -1) & (depth > 0)) { 
             delete obj[prop];
           }
           break;
