@@ -19,7 +19,7 @@ function removeKeys(obj, keys, depth = 0) {
       switch (typeof obj[prop]) {
         case "string":
           index = keys.indexOf(prop);
-          if ((index > -1) & (depth > 0)) { 
+          if ((index > -1) & (depth > 0)) {
             delete obj[prop];
           }
           break;
