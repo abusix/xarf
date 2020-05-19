@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "bundle-xarf": "node bundle_xarf.js",
-    "test-xarf": "nyc --reporter=lcov mocha test_xarf.js",
+    "test-xarf": "nyc --reporter=lcov mocha -t 10000 test_xarf.js",
     "report-coverage": "codecov"
   },
   "dependencies": {
