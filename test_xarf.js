@@ -1,11 +1,11 @@
 "use strict";
 
-var Ajv = require("ajv");
-var ajvIstanbul = require("./util/schema_instrumenter");
-var assert = require("assert");
+const Ajv = require("ajv");
+const ajvIstanbul = require("./util/schema_instrumenter");
+const assert = require("assert");
 
-var fs = require("fs");
-var path = require("path");
+const fs = require("fs");
+const path = require("path");
 
 describe("xarf", function () {
   this.timeout(10000);

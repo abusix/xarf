@@ -8,8 +8,14 @@
 const beautify = require("js-beautify").js_beautify;
 const { createInstrumenter } = require("istanbul-lib-instrument");
 const instrumenter = createInstrumenter();
+const fs = require("fs");
+const path = require("path");
+const { v4: uuidv4 } = require("uuid");
+
+const codeDir = "./.ajv_istanbul";
 
 module.exports = function (ajv) {
+  fs.mkdirSync(codeDir, { recursive: true });
   compileAddedSchemas(ajv, "_refs");
   compileAddedSchemas(ajv, "_schemas");
   ajv._opts.processCode = instrument;
@@ -21,6 +27,8 @@ function compileAddedSchemas(ajv, schemasKey) {
 }
 
 function instrument(code) {
+  var filePath = path.join(codeDir, "schema_gen" + uuidv4() + ".js");
   code = beautify(code, { indent_size: 2 });
-  return instrumenter.instrumentSync(code);
+  fs.writeFileSync(filePath, code);
+  return instrumenter.instrumentSync(code, filePath);
 }
