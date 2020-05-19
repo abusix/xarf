@@ -1,5 +1,4 @@
-// npm install jsonfile json-schema-ref-parser
-const $RefParser = require('json-schema-ref-parser');
+const $RefParser = require('@apidevtools/json-schema-ref-parser');
 const jsonfile = require('jsonfile')
 
 var schema = require('./xarf.schema.json')

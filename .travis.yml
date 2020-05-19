@@ -4,8 +4,8 @@ node_js:
 script:
   - npm install -g ajv-cli
   - ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
-  - npm install jsonfile json-schema-ref-parser
-  - node create_full_schema_file.js
+  - yarn install --frozen-lockfile
+  - yarn bundle_xarf
   - ajv -s xarf_bundled.schema.json -d "samples/*.json"
   - ajv -s xarf_deref.schema.json -d "samples/*.json"
 

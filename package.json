@@ -1,0 +1,15 @@
+{
+  "name": "xarf-bundler",
+  "version": "0.1.0",
+  "description": "Created bundled and fully derefed versions of xarf schema",
+  "repository": "https://github.com/abusix/xarf.git",
+  "author": "Frederik Petersen <fp@abusix.com>",
+  "license": "MIT",
+  "scripts": {
+    "bundle_xarf": "node bundle_xarf.js"
+  },
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^9.0.1",
+    "jsonfile": "^6.0.1"
+  }
+}

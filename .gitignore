@@ -1,5 +1,4 @@
 .vscode
 node_modules/
-package-lock.json
 xarf_bundled*.schema.json
 xarf_deref*.schema.json

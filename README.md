@@ -45,11 +45,13 @@ ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
 
 ## Writing the schema to a single file:
 
-Use [create_full_schema_file.js](create_full_schema_file.js) to create a single file schema. 
+Use [our bundling script](bundle_xarf.js) to create a single file schema. 
 
 ```bash
-npm install jsonfile json-schema-ref-parser
-node create_full_schema_file.js
+git clone https://github.com/abusix/xarf.git
+cd xarf
+yarn install --frozen-lockfile
+yarn bundle_xarf
 ```
 
 It will generate two files:
