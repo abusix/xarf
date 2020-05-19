@@ -5,6 +5,7 @@ script:
   - npm install -g ajv-cli
   - ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
   - yarn install --frozen-lockfile
+  - mocha test_xarf.js
   - yarn bundle_xarf
   - ajv -s xarf_bundled.schema.json -d "samples/*.json"
   - ajv -s xarf_deref.schema.json -d "samples/*.json"
