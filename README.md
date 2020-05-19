@@ -22,7 +22,7 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
 ### Command line
 
 ```bash
-npm install -g jsonfile json-schema-ref-parser ajv-cli
+npm install -g ajv-cli
 ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
 ```
 

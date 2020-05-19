@@ -11,5 +11,10 @@
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.1",
     "jsonfile": "^6.0.1"
+  },
+  "devDependencies": {
+    "ajv": "^6.12.2",
+    "ajv-istanbul": "^0.1.0",
+    "mocha": "^7.1.2"
   }
 }
