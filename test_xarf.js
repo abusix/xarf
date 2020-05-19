@@ -8,6 +8,7 @@ var fs = require("fs");
 var path = require("path");
 
 describe("xarf", function () {
+  this.timeout(10000);
   var validate;
 
   before(function () {
