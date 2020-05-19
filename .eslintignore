@@ -1,2 +1,3 @@
 coverage
 .ajv_istanbul
+.nyc_output
