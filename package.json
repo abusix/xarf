@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "bundle-xarf": "node bundle_xarf.js",
-    "test-xarf": "nyc mocha test_xarf.js",
-    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "test-xarf": "nyc --reporter=lcov mocha test_xarf.js",
+    "report-coverage": "codecov"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.1",
