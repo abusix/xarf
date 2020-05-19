@@ -18,6 +18,7 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
 ## Build status
 
 [![Build Status](https://travis-ci.org/abusix/xarf.svg?branch=master)](https://travis-ci.org/abusix/xarf)
+[![Coverage Status](https://coveralls.io/repos/github/abusix/xarf/badge.svg)](https://coveralls.io/github/abusix/xarf)
 
 ## Validating json-schema samples
 
