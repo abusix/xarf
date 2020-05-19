@@ -53,7 +53,7 @@ Use [our bundling script](bundle_xarf.js) to create a single file schema.
 git clone https://github.com/abusix/xarf.git
 cd xarf
 yarn install --frozen-lockfile
-yarn bundle_xarf
+yarn bundle-xarf
 ```
 
 It will generate two files:

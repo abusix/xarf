@@ -7,8 +7,9 @@ script:
   - yarn install --frozen-lockfile
   - prettier --check .
   - eslint .
-  - mocha test_xarf.js
-  - yarn bundle_xarf
+  - yarn test-xarf
+  - yarn report-coverage
+  - yarn bundle-xarf
   - ajv -s xarf_bundled.schema.json -d "samples/*.json"
   - ajv -s xarf_deref.schema.json -d "samples/*.json"
 

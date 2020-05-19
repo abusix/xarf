@@ -6,7 +6,9 @@
   "author": "Frederik Petersen <fp@abusix.com>",
   "license": "MIT",
   "scripts": {
-    "bundle_xarf": "node bundle_xarf.js"
+    "bundle-xarf": "node bundle_xarf.js",
+    "test-xarf": "nyc mocha test_xarf.js",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.1",
@@ -15,11 +17,13 @@
   "devDependencies": {
     "ajv": "^6.12.2",
     "ajv-istanbul": "^0.1.0",
+    "codecov": "^3.7.0",
     "eslint": "^7.0.0",
     "eslint-plugin-mocha": "^7.0.0",
     "husky": ">=4",
     "lint-staged": ">=10",
     "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
     "prettier": "2.0.5"
   },
   "husky": {

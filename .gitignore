@@ -2,4 +2,6 @@
 node_modules/
 xarf_bundled*.schema.json
 xarf_deref*.schema.json
-coverage/
+.nyc_output
+coverage
+*.lcov

@@ -1,7 +1,6 @@
 "use strict";
 
 var Ajv = require("ajv");
-var istanbul = require("istanbul");
 var ajvIstanbul = require("ajv-istanbul");
 var assert = require("assert");
 
@@ -35,16 +34,5 @@ describe("xarf", function () {
           true
         );
       });
-    var collector = new istanbul.Collector();
-    var reporter = new istanbul.Reporter();
-    var sync = true;
-
-    collector.add(global.__coverage__);
-
-    reporter.addAll(["lcov", "html"]);
-
-    reporter.write(collector, sync, function () {
-      console.log("reports generated");
-    });
   });
 });
