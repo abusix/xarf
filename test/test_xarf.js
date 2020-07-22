@@ -48,19 +48,46 @@ describe("xarf", function () {
   });
 
   it("all positive samples should validate", function () {
-    const samplesDir = "samples";
-    return new Promise((resolve) => {
+    const samplesDir = "samples/positive";
+    return new Promise((resolve, reject) => {
       (async () => {
-        for await (const f of getFiles(samplesDir)) {
-          if (f.endsWith(".json")) {
-            //console.log(`Validating sample: ${f}`);
-            assert.strictEqual(validate(require(f)), true);
+        try {
+          for await (const f of getFiles(samplesDir)) {
+            if (f.endsWith(".json")) {
+              //console.log(`Validating sample: ${f}`);
+              assert.strictEqual(validate(require(f)), true);
+            }
           }
+        } catch (reason) {
+          console.log(`Testing positive samples failed: ${reason}`);
+          reject(reason);
         }
         resolve();
       })();
+    }).catch((reason) => {
+      assert.fail(`Testing positive samples failed: ${reason}`);
     });
   });
 
-  it("no negative samples should validate", function () {});
+  it("no negative samples should validate", function () {
+    const samplesDir = "samples/negative";
+    return new Promise((resolve, reject) => {
+      (async () => {
+        try {
+          for await (const f of getFiles(samplesDir)) {
+            if (f.endsWith(".json")) {
+              //console.log(`Validating sample: ${f}`);
+              assert.notStrictEqual(validate(require(f)), true);
+            }
+          }
+        } catch (reason) {
+          console.log(`Testing negative samples failed: ${reason}`);
+          reject(reason);
+        }
+        resolve();
+      })();
+    }).catch((reason) => {
+      assert.fail(`Testing negative samples failed: ${reason}`);
+    });
+  });
 });

@@ -1,0 +1,12 @@
+{
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportType": "Copyright",
+    "ReportClass": "Content"
+  }
+}
