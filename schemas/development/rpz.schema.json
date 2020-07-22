@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/rpz.schema.json",
+  "title": "XARF RPZ",
+  "description": "A format to report RPZ events.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/IpBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Activity"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["Malware"]
+                },
+                "ReportSubType": {
+                  "type": "string",
+                  "enum": ["RPZ-Rewrite"]
+                },
+                "RpzDomain": {
+                  "type": "string",
+                  "description": "Domain that was looked up",
+                  "format": "hostname"
+                },
+                "MalwareName": {
+                  "type": "string",
+                  "description": "Name of malware that performed the lookup"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
