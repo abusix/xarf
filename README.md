@@ -32,23 +32,24 @@ The coverage will probably never reach 100% because of the way the code is gener
 
 ```bash
 npm install -g ajv-cli
-ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
+ajv -s xarf.schema.json -d "samples/**/*.json" -r "schemas/**/*.schema.json"
 ```
 
 ## Project structure
 
-| File(s)                         |                    Content                     |
-| ------------------------------- | :--------------------------------------------: |
-| xarf.schema.json                |     contains links to all specific schemas     |
-| schemas/xarf_shared.schema.json |              reusable sub schemas              |
-| schemas/\*.schema.json          |                specific schemas                |
-| samples/\*.json                 |       example documents for the schemas        |
-| create_full_schema_file.js      | allows combining the schema into a single file |
+| File(s)                                   |                       Content                        |
+| ----------------------------------------- | :--------------------------------------------------: |
+| xarf.schema.json                          | super schema containing links to all schema versions |
+| schemas/{version}/xarf.schema.json        |            contains links to schema types            |
+| schemas/{version}/xarf_shared.schema.json |                 reusable sub schemas                 |
+| schemas/{version}/\*.schema.json          |                   specific schemas                   |
+| samples/{version}/\*.json                 |          example documents for the schemas           |
+| bundle_xarf.js                            |    allows combining the schema into a single file    |
 
 ## Adding a new schema
 
-1. Add a new schema as [subtype].schema.json and try to reuse as much as possible from xarf_shared.schema.json
-2. Add an example sample to samples/\*
+1. Add a new schema in `schemas/development/` as [subtype].schema.json and try to reuse as much as possible from xarf_shared.schema.json
+2. Add an example sample to `samples/development/`
 3. Add the new schema to the list in xarf.schema.json
 4. Discuss and improve
 

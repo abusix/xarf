@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/trademark.schema.json",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/alpha/trademark.schema.json",
   "title": "XARF TRADEMARK",
   "description": "A format to report Trademark infringements.",
   "allOf": [
