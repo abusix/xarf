@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/childabuse.schema.json",
-  "title": "XARF CHILDABUSE",
-  "description": "A format to report child abuse events.",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/alpha/phishing.schema.json",
+  "title": "XARF PHISHING",
+  "description": "A format to report Phishing events.",
   "allOf": [
     {
       "$ref": "xarf_shared.schema.json#/XarfBase"
@@ -24,9 +24,13 @@
                 },
                 "ReportType": {
                   "type": "string",
-                  "enum": ["ChildAbuse"]
+                  "enum": ["Phishing"]
                 }
-              }
+              },
+              "required": ["SourceUrl"]
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/CommonProps"
             }
           ]
         }

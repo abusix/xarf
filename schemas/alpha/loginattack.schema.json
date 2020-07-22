@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/ddos.schema.json",
-  "title": "XARF DDOS",
-  "description": "A format to report DDOS events.",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/alpha/loginattack.schema.json",
+  "title": "XARF LOGINATTACK",
+  "description": "A format to report login attacks.",
   "allOf": [
     {
       "$ref": "xarf_shared.schema.json#/XarfBase"
@@ -24,7 +24,7 @@
                 },
                 "ReportType": {
                   "type": "string",
-                  "enum": ["DOS"]
+                  "enum": ["LoginAttack"]
                 }
               }
             },

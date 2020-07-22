@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "bundle-xarf": "node bundle_xarf.js",
-    "test-xarf": "nyc --reporter=lcov mocha test_xarf.js",
+    "test-xarf": "nyc --reporter=lcov mocha test/test_xarf.js",
     "report-coverage-codecov": "codecov",
     "report-coverage-coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "clean-coverage": "rm -rf .nyc_output .ajv_istanbul coverage"
