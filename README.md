@@ -4,12 +4,14 @@
 
 Find the latest schema release [on the releases page](https://github.com/abusix/xarf/releases).
 
-- `xarf_bundled_<VERSION>.schema.json`
+- `xarf_bundled.schema.json`
+  - includes all versions (superschema)
   - all schema definitions in one file
   - contains only internal references
   - small file size
   - best for most use cases, when the used tool is good enough to understand complex internal references (multiple hops)
-- `xarf_deref_<VERSION>.schema.json`
+- `xarf_deref.schema.json`
+  - includes all versions (superschema)
   - all schema definitions in one file
   - contains no references
   - pretty big file size
@@ -43,7 +45,8 @@ ajv -s xarf.schema.json -d "samples/**/*.json" -r "schemas/**/*.schema.json"
 | schemas/{version}/xarf.schema.json        |            contains links to schema types            |
 | schemas/{version}/xarf_shared.schema.json |                 reusable sub schemas                 |
 | schemas/{version}/\*.schema.json          |                   specific schemas                   |
-| samples/{version}/\*.json                 |          example documents for the schemas           |
+| samples/positive/{version}/\*.json        |          example documents for the schemas           |
+| samples/negative/{version}/\*.json        |                   invalid examples                   |
 | bundle_xarf.js                            |    allows combining the schema into a single file    |
 
 ## Adding a new schema

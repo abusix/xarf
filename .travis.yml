@@ -3,19 +3,15 @@ node_js:
   - 13
 script:
   - npm install -g ajv-cli
-  - ajv -s xarf.schema.json -d "samples/*.json" -r "schemas/*.schema.json"
+  - ajv -s xarf.schema.json -d "samples/**/*.json" -r "schemas/**/*.schema.json"
   - yarn install --frozen-lockfile
   - prettier --check .
   - eslint .
   - yarn test-xarf
   - yarn bundle-xarf
-  - ajv -s xarf_bundled.schema.json -d "samples/*.json"
-  - ajv -s xarf_deref.schema.json -d "samples/*.json"
+  - ajv -s xarf_bundled.schema.json -d "samples/**/*.json"
+  - ajv -s xarf_deref.schema.json -d "samples/**/*.json"
 after_success: yarn report-coverage-coveralls
-
-before_deploy:
-  - cp xarf_bundled.schema.json xarf_bundled_${TRAVIS_TAG}.schema.json
-  - cp xarf_deref.schema.json xarf_deref_${TRAVIS_TAG}.schema.json
 
 deploy:
   provider: releases
@@ -24,9 +20,9 @@ deploy:
     secure: J62sGDGBsDFIgHdzNm8+rXcpx3y+W9ZsngODvQdi83HqC2nvgQyOuOM01ZyM4k4X9Z65lInkuCTwTfjiO12dvaPsjjb05QCpokHKJvZkauA5eqBnSHMsSN2WOgZEQHPb8sEOI71tzqBESiTLPT/vNq+GQby314gXnA29YerCTueuqSzNblMZ/uFYvncaE2MHOXU2kRdoH+JUD1I0/IFVbH+GDc6WTUzbHjKVeZ9eGB4v9ZU8em6u812dzHpLK9YEeB3u9pL3bDEkXQ7cxafkKNCg2wdAEPME3C04ibWsfopNJ1Jm+5jIVyHyM77MOww83z26kg6zFpsqVBTS6qdaO0/qyAQY4+YlflSE8YIoRg8asHTru/hr97G9ZqAEyeXctc/nuf2cty1WgAHtf5+noC8nKAc/kH/4Uf7xXYdgBIeoBxTdcRdjeRzxfzL0c8Z/KT9ddHOh+khnFOVt50jYhi3GlbAihjQp57RDQBuZN1gsievBIpB6IY7FiicOgv8oZmpLlXR6jjublPVMyqPNs921m932rqEhDgs1tC+gBAqbcgaZe8xd9j3TPMydVODMEI1zYIEGsR1qYzEhp30CoyIjv7XnWEWZkOZy4UhvTnZvBtk1FPl8L7KJ97onx3IMBmhslDHVptiUPAGjSHfUIBnAAwNRVpA02V/3uaUNxss=
   file_glob: true
   file:
-    - xarf_bundled_${TRAVIS_TAG}.schema.json
-    - xarf_deref_${TRAVIS_TAG}.schema.json
+    - xarf_bundled.schema.json
+    - xarf_deref.schema.json
   skip_cleanup: true
   on:
-    tags: true
+    branch: master
     repo: abusix/xarf
