@@ -3,14 +3,14 @@ node_js:
   - 13
 script:
   - npm install -g ajv-cli
-  - ajv -s xarf.schema.json -d "samples/**/*.json" -r "schemas/**/*.schema.json"
+  - ajv -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.json"
   - yarn install --frozen-lockfile
   - prettier --check .
   - eslint .
   - yarn test-xarf
   - yarn bundle-xarf
-  - ajv -s xarf_bundled.schema.json -d "samples/**/*.json"
-  - ajv -s xarf_deref.schema.json -d "samples/**/*.json"
+  - ajv -s xarf_bundled.schema.json -d "samples/positive/**/*.json"
+  - ajv -s xarf_deref.schema.json -d "samples/positive/**/*.json"
 after_success: yarn report-coverage-coveralls
 
 deploy:
