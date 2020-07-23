@@ -3,9 +3,12 @@
   "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json",
   "title": "XARF",
   "description": "Super-Schema containing all XARF schema versions going forward.",
-  "oneOf": [
+  "anyOf": [
     {
       "$ref": "schemas/alpha/xarf.schema.json"
+    },
+    {
+      "$ref": "schemas/development/xarf.schema.json"
     }
   ]
 }

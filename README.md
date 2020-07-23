@@ -28,6 +28,11 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
 Please note that you won't be able to see source code for the generated code due to the way coveralls works. CodeCov is even worse, it doesn't even show percentages for code that doesn't exist in the repo.
 The coverage will probably never reach 100% because of the way the code is generated, but it is still a useful metric to see how well our samples cover the schema.
 
+## Superschema
+
+The xarf schema contains the history of all versions including the current development preview. It is recommended to use latest version.
+Be aware that in `alpha` there was no requirement to specify the version. `development` should not be used in production and is unstable.
+
 ## Validating json-schema samples
 
 ### Command line
@@ -52,8 +57,8 @@ ajv -s xarf.schema.json -d "samples/**/*.json" -r "schemas/**/*.schema.json"
 ## Adding a new schema
 
 1. Add a new schema in `schemas/development/` as [subtype].schema.json and try to reuse as much as possible from xarf_shared.schema.json
-2. Add an example sample to `samples/development/`
-3. Add the new schema to the list in xarf.schema.json
+2. Add an example sample to `samples/positive/development/`
+3. Add the new schema to the list in `schemas/development/xarf.schema.json`
 4. Discuss and improve
 
 ## Writing the schema to a single file:

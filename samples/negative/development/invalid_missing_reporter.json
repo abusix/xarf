@@ -1,14 +1,5 @@
 {
-  "Version": "alpha",
-  "ReporterInfo": {
-    "ReporterOrg": "ExampleOrg",
-    "ReporterOrgDomain": "example.com",
-    "ReporterOrgEmail": "reports@example.com",
-    "ReporterContactEmail": "contact@example.com",
-    "ReporterContactName": "Mr. Example",
-    "ReporterContactPhone": "+ 01 000 1234567"
-  },
-  "Disclosure": true,
+  "Version": "development",
   "Report": {
     "ReportClass": "Activity",
     "ReportType": "Spam",
@@ -22,7 +13,7 @@
     "Samples": [
       {
         "ContentType": "message/rfc822",
-        "Base64Encoded": "yes not I don't know",
+        "Base64Encoded": true,
         "Description": "The spam mail",
         "Payload": "bWFpbA=="
       }

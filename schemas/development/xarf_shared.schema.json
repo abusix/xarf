@@ -95,9 +95,12 @@
         "type": "boolean",
         "description": "if this event is disclosed or not",
         "default": true
+      },
+      "Version": {
+        "const": "development"
       }
     },
-    "required": ["ReporterInfo", "Disclosure"]
+    "required": ["ReporterInfo", "Disclosure", "Version"]
   },
   "ReportBase": {
     "description": "Base properties for the report part of all xarf report types",

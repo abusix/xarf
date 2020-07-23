@@ -1,5 +1,5 @@
 {
-  "Version": "alpha",
+  "Version": "development",
   "ReporterInfo": {
     "ReporterOrg": "ExampleOrg",
     "ReporterOrgDomain": "example.com",
@@ -11,20 +11,10 @@
   "Disclosure": true,
   "Report": {
     "ReportClass": "Content",
-    "ReportType": "Malware",
+    "ReportType": "ChildAbuse",
     "Date": "2018-02-05T14:17:10Z",
     "SourceIp": "192.0.2.55",
-    "SourcePort": 54321,
-    "SourceUrl": "http://example.org/hosted_malware.exe",
-    "MalwareName": "conficker",
-    "Ongoing": true,
-    "Samples": [
-      {
-        "ContentType": "text/plain",
-        "Base64Encoded": false,
-        "Description": "Just a test sample",
-        "Payload": "bla bla bla bla"
-      }
-    ]
+    "SourcePort": 80,
+    "SourceUrl": "http://evil.website.com/index.html"
   }
 }
