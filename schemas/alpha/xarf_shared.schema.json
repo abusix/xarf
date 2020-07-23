@@ -95,6 +95,9 @@
         "type": "boolean",
         "description": "if this event is disclosed or not",
         "default": true
+      },
+      "Version": {
+        "const": "alpha"
       }
     },
     "required": ["ReporterInfo", "Disclosure"]

@@ -1,5 +1,5 @@
 {
-  "Version": "alpha",
+  "Version": "development",
   "ReporterInfo": {
     "ReporterOrg": "ExampleOrg",
     "ReporterOrgDomain": "example.com",
@@ -9,7 +9,7 @@
   "Report": {
     "ReportType": "Trademark",
     "ReportClass": "Content",
-    "FirstSeen": "This is no date",
+    "FirstSeen": "2018-02-05T15:17:10Z",
     "Date": "2018-10-23T18:17:10Z",
     "SourceUrl": "http://www.i-steal-your-trademark.com/your.logo",
     "InfringingUrl": "http://www.i-steal-your-trademark.com/your.logo",

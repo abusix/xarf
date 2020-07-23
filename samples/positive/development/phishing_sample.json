@@ -1,5 +1,5 @@
 {
-  "Version": "alpha",
+  "Version": "development",
   "ReporterInfo": {
     "ReporterOrg": "ExampleOrg",
     "ReporterOrgDomain": "example.com",
@@ -10,22 +10,19 @@
   },
   "Disclosure": true,
   "Report": {
-    "ReportClass": "Activity",
-    "ReportType": "DOS",
+    "ReportClass": "Content",
+    "ReportType": "Phishing",
     "Date": "2018-02-05T14:17:10Z",
     "SourceIp": "192.0.2.55",
-    "SourcePort": "PORT54321",
-    "DestinationIp": "198.51.100.33",
-    "DestinationPort": "PORT80",
+    "SourcePort": 80,
+    "SourceUrl": "http://phish.example.org/index.html",
     "Ongoing": true,
-    "ByteCount": 20000000,
-    "PacketCount": 10000,
     "Samples": [
       {
-        "ContentType": "text/plain",
+        "ContentType": "text/html",
         "Base64Encoded": false,
         "Description": "Just a test sample",
-        "Payload": "bla bla bla bla"
+        "Payload": "<html>Phishy</html>"
       }
     ]
   }

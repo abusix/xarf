@@ -1,5 +1,5 @@
 {
-  "Version": "alpha",
+  "Version": "development",
   "ReporterInfo": {
     "ReporterOrg": "ExampleOrg",
     "ReporterOrgDomain": "example.com",
@@ -8,12 +8,5 @@
     "ReporterContactName": "Mr. Example",
     "ReporterContactPhone": "+ 01 000 1234567"
   },
-  "Disclosure": true,
-  "Report": {
-    "ReportClass": "Content",
-    "ReportType": "ChildAbuse",
-    "Date": "2018-02-05T14:17:10Z",
-    "SourceIp": "not an IP",
-    "SourcePort": 80
-  }
+  "Disclosure": true
 }

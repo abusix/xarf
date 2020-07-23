@@ -55,7 +55,12 @@ describe("xarf", function () {
           for await (const f of getFiles(samplesDir)) {
             if (f.endsWith(".json")) {
               //console.log(`Validating sample: ${f}`);
-              assert.strictEqual(validate(require(f)), true);
+              const valid = validate(require(f));
+              if (!valid) {
+                console.log(`Erros while validating sample: ${f}`);
+                console.log(validate.errors);
+              }
+              assert.strictEqual(valid, true);
             }
           }
         } catch (reason) {
@@ -77,7 +82,11 @@ describe("xarf", function () {
           for await (const f of getFiles(samplesDir)) {
             if (f.endsWith(".json")) {
               //console.log(`Validating sample: ${f}`);
-              assert.notStrictEqual(validate(require(f)), true);
+              const valid = validate(require(f));
+              if (valid) {
+                console.log(`Expected error but did not throw one: ${f}`);
+              }
+              assert.notStrictEqual(valid, true);
             }
           }
         } catch (reason) {
