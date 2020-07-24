@@ -68,6 +68,11 @@ ajv -s xarf.schema.json -d "samples/**/*.json" -r "schemas/**/*.schema.json"
 1. Open up a github PR
 1. Discuss and improve
 
+## Release a new schema version
+
+1. Make sure tests are green
+1. ./relase_new_version.sh {version}
+
 ## Writing the schema to a single file:
 
 Use [our bundling script](bundle_xarf.js) to create a single file schema.
