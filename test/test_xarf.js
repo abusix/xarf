@@ -21,7 +21,7 @@ async function* getFiles(dir) {
 }
 
 describe("xarf", function () {
-  this.timeout(10000);
+  this.timeout(20000);
   var validate;
 
   before(function () {
