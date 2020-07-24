@@ -11,6 +11,8 @@ cp -r schemas/development schemas/${version}
 cp -r samples/positive/development samples/positive/${version}
 cp -r samples/negative/development samples/negative/${version}
 
-sed -i 's/development/${version}/g' schemas/${version}/xarf.schema.json
-sed -i 's/development/${version}/g' samples/positive/${version}/xarf.schema.json
-sed -i 's/development/${version}/g' samples/negative/${version}/xarf.schema.json
+sed -i "s/development/${version}/g" schemas/${version}/*
+sed -i "s/development/${version}/g" samples/positive/${version}/*
+sed -i "s/development/${version}/g" samples/negative/${version}/*
+
+jq ".anyOf += [{\"\$ref\": \"schemas/${version}/xarf.schema.json\"}]" xarf.schema.json | sponge xarf.schema.json
