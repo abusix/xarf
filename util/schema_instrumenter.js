@@ -10,7 +10,6 @@ const { createInstrumenter } = require("istanbul-lib-instrument");
 const instrumenter = createInstrumenter();
 const fs = require("fs");
 const path = require("path");
-const { v4: uuidv4 } = require("uuid");
 
 const codeDir = "./.ajv_istanbul";
 
@@ -26,9 +25,20 @@ function compileAddedSchemas(ajv, schemasKey) {
   for (var key in ajv[schemasKey]) ajv.getSchema(key);
 }
 
+function hashCode(s) {
+  for (var i = 0, h = 0; i < s.length; i++)
+    h = (Math.imul(31, h) + s.charCodeAt(i)) | 0;
+  return h;
+}
+
 function instrument(code) {
-  var filePath = path.join(codeDir, "schema_gen" + uuidv4() + ".js");
+  var filePath = path.join(
+    codeDir,
+    "schema_gen" + Math.abs(hashCode(code)) + ".js"
+  );
   code = beautify(code, { indent_size: 2 });
-  fs.writeFileSync(filePath, code);
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, code);
+  }
   return instrumenter.instrumentSync(code, filePath);
 }
