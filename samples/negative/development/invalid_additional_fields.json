@@ -19,8 +19,8 @@
     "Custom": {
       "DNSResolver": "de-example-dnsres-07",
       "MalwareName": "suppobox",
-      "NumberOfIncidents": 5,
-      "TimeframeSeconds": 600
+      "NumberOfIncidents": [5],
+      "TimeframeSeconds": { "no": 600 }
     }
   }
 }

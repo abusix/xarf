@@ -132,6 +132,13 @@
       "ReporterNotes": {
         "type": "string",
         "description": "free text - notes by the reporter"
+      },
+      "Custom": {
+        "type": "object",
+        "description": "allows for custom key-value fields",
+        "additionalProperties": {
+          "anyOf": [{ "type": "string" }, { "type": "integer" }]
+        }
       }
     },
     "required": ["ReportClass", "ReportType"]
