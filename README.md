@@ -56,10 +56,13 @@ ajv -s xarf.schema.json -d "samples/**/*.json" -r "schemas/**/*.schema.json"
 
 ## Adding a new schema
 
+1. Fork the github repo
 1. Add a new schema in `schemas/development/` as [subtype].schema.json and try to reuse as much as possible from xarf_shared.schema.json
-2. Add an example sample to `samples/positive/development/`
-3. Add the new schema to the list in `schemas/development/xarf.schema.json`
-4. Discuss and improve
+1. Add an example sample to `samples/positive/development/`
+1. Add the new schema to the list in `schemas/development/xarf.schema.json`
+1. Run tests locally: `yarn test-xarf`
+1. Open up a github PR
+1. Discuss and improve
 
 ## Writing the schema to a single file:
 
