@@ -21,12 +21,10 @@
     "Date": "2018-02-05T18:17:10Z",
     "SourceIp": "192.0.2.55",
     "SourcePort": 54321,
-    "InfringedMaterial": "Example - Mr. Example",
-    "InfringingUrl": "http://www.badexample.com/badexapmplesong.mp3",
-    "MaterialType": "Music",
+    "InfringedMaterial": 2,
+    "InfringingUrl": 6,
+    "MaterialType": 3,
     "FileName": "badexamplesong.mp3",
-    "CourtOrder": "https://court.example.com/courtorder.pdf",
-    "FileSize": 56,
-    "FileHash": "somehashhere"
+    "CourtOrder": "no"
   }
 }

@@ -26,7 +26,7 @@ describe("xarf", function () {
 
   before(function () {
     console.log("Instrumenting schema code ...");
-    var ajv = new Ajv();
+    var ajv = new Ajv({ allErrors: true });
     ajvIstanbul(ajv);
     var rootSchema = require("../xarf.schema.json");
 

@@ -1,5 +1,5 @@
 {
-  "Version": "development",
+  "Version": "alpha",
   "ReporterInfo": {
     "ReporterOrg": "ExampleOrg",
     "ReporterOrgDomain": "example.com",
@@ -11,10 +11,7 @@
   "Disclosure": true,
   "Report": {
     "ReportClass": "Activity",
-    "ReportType": "DOS",
-    "ReporterCaseID": "InternalCaseId",
-    "ReporterSeverity": "high",
-    "ReporterNotes": "free text",
+    "ReportType": "LoginAttack",
     "Date": "2018-02-05T14:17:10Z",
     "SourceIp": "192.0.2.55",
     "SourcePort": 54321,
@@ -25,10 +22,22 @@
     "PacketCount": 10000,
     "Samples": [
       {
-        "ContentType": "text/plain",
         "Base64Encoded": false,
+        "Description": 42,
+        "Payload": []
+      },
+      {
+        "ContentType": 32,
         "Description": "Just a test sample",
         "Payload": "bla bla bla bla"
+      },
+      {
+        "ContentType": 32,
+        "Description": 56,
+        "Payload": "bla bla bla bla"
+      },
+      {
+        "Description": "Just a test sample"
       }
     ]
   }
