@@ -17,7 +17,7 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
   - pretty big file size
   - can be useful for some not-so-sophisticated code generation tools that can't handle references
 
-## Current Release
+## Current Version
 
 `alpha`
 
