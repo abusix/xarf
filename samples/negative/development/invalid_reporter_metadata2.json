@@ -12,9 +12,9 @@
   "Report": {
     "ReportClass": "Activity",
     "ReportType": "DOS",
-    "ReporterCaseID": "InternalCaseId",
-    "ReporterSeverity": "high",
-    "ReporterNotes": "free text",
+    "ReporterCaseID": [],
+    "ReporterSeverity": 45,
+    "ReporterNotes": null,
     "Date": "2018-02-05T14:17:10Z",
     "SourceIp": "192.0.2.55",
     "SourcePort": 54321,

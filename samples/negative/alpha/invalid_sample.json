@@ -20,6 +20,6 @@
     "Ongoing": true,
     "ByteCount": 20000000,
     "PacketCount": 10000,
-    "Samples": [{}]
+    "Samples": {}
   }
 }

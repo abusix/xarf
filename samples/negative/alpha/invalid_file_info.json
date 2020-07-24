@@ -1,5 +1,5 @@
 {
-  "Version": "development",
+  "Version": "alpha",
   "ReporterInfo": {
     "ReporterOrg": "ExampleOrg",
     "ReporterOrgDomain": "example.com",
@@ -26,7 +26,7 @@
     "MaterialType": "Music",
     "FileName": "badexamplesong.mp3",
     "CourtOrder": "https://court.example.com/courtorder.pdf",
-    "FileSize": 56,
-    "FileHash": "somehashhere"
+    "FileSize": -3,
+    "FileHash": 15
   }
 }

@@ -24,6 +24,9 @@
     "InfringedMaterial": "Example - Mr. Example",
     "InfringingUrl": "http://www.badexample.com/badexapmplesong.mp3",
     "MaterialType": "Music",
-    "FileName": "badexamplesong.mp3"
+    "FileName": "badexamplesong.mp3",
+    "CourtOrder": "https://court.example.com/courtorder.pdf",
+    "FileSize": 56,
+    "FileHash": "somehashhere"
   }
 }
