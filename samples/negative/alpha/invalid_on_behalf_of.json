@@ -1,17 +1,17 @@
 {
-  "Version": "development",
+  "Version": "alpha",
   "ReporterInfo": {
     "ReporterOrg": "ExampleOrg",
     "ReporterOrgDomain": "example.com",
     "ReporterOrgEmail": "reports@example.com"
   },
   "OnBehalfOf": {
-    "ComplainantOrg": "ExampleComplainantOrg",
-    "ComplainantOrgDomain": "complainant.example.com",
-    "ComplainantOrgEmail": "complainant@complainant.example.com",
-    "ComplainantContactEmail": "legal@complainant.example.com",
-    "ComplainantContactName": "Legal Team",
-    "ComplainantContactPhone": "0012345678"
+    "ComplainantOrg": "1",
+    "ComplainantOrgDomain": "meh",
+    "ComplainantOrgEmail": "complainant.example.com",
+    "ComplainantContactEmail": "legal",
+    "ComplainantContactName": "L",
+    "ComplainantContactPhone": 2
   },
   "Disclosure": true,
   "Report": {
