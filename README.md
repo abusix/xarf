@@ -17,6 +17,10 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
   - pretty big file size
   - can be useful for some not-so-sophisticated code generation tools that can't handle references
 
+## Current Release
+
+`alpha`
+
 ## Build status
 
 [![Build Status](https://travis-ci.org/abusix/xarf.svg?branch=master)](https://travis-ci.org/abusix/xarf)
