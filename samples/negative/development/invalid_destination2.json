@@ -18,7 +18,7 @@
     "SourcePort": 54321,
     "DestinationIp": 45,
     "DestinationPort": "mh",
-    "FromAddress": "spam@domain.com",
+    "SmtpMailFromAddress": "spam@domain.com",
     "Samples": [
       {
         "ContentType": "message/rfc822",

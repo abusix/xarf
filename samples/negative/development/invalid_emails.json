@@ -1,7 +1,14 @@
 {
   "Version": "development",
-  "ReporterInfo": {},
-  "OnBehalfOf": {},
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
   "Report": {
     "ReportClass": "Activity",
     "ReportType": "Spam",
@@ -11,7 +18,8 @@
     "SourcePort": 54321,
     "DestinationIp": "198.51.100.33",
     "DestinationPort": 25,
-    "SmtpMailFromAddress": "spam@domain.com",
+    "SmtpMailFromAddress": "spamexample.com",
+    "SmtpRcptToAddress": "0012345678",
     "Samples": [
       {
         "ContentType": "message/rfc822",
