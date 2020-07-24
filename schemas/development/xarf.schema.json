@@ -36,6 +36,9 @@
     },
     {
       "$ref": "botnet.schema.json"
+    },
+    {
+      "$ref": "openservice.schema.json"
     }
   ]
 }
