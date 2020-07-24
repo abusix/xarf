@@ -71,7 +71,9 @@ ajv -s xarf.schema.json -d "samples/**/*.json" -r "schemas/**/*.schema.json"
 ## Release a new schema version
 
 1. Make sure tests are green
+1. Script dependencies: jq, sponge (part of moreutils in debian/ubuntu)
 1. ./relase_new_version.sh {version}
+1. Update "Current Release" Info in this Readme
 
 ## Writing the schema to a single file:
 
