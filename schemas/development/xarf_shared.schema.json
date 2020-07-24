@@ -390,11 +390,11 @@
     "type": "object",
     "description": "Simplified e-mail object to attach the source e-mail to a report",
     "properties": {
-      "FromAddress": {
+      "SmtpMailFromAddress": {
         "type": "string",
         "format": "email"
       },
-      "ToAddress": {
+      "SmtpRcptToAddress": {
         "type": "string",
         "format": "email"
       }

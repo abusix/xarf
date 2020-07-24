@@ -18,7 +18,8 @@
     "SourcePort": 54321,
     "DestinationIp": "198.51.100.33",
     "DestinationPort": 25,
-    "FromAddress": "spam@domain.com",
+    "SmtpMailFromAddress": "spam@example.com",
+    "SmtpRcptToAddress": "victim@example.com",
     "Samples": [
       {
         "ContentType": "message/rfc822",
