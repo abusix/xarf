@@ -1,3 +1,5 @@
 Version 1 (unreleased)
 
 - Top level field "Version" is required from now on
+- Removed InfringingUrl from trademark and copyright. SourceUrl should be used from now on
+- 

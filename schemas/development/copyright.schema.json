@@ -30,11 +30,6 @@
                   "type": "string",
                   "description": "name of the copyrighted material"
                 },
-                "InfringingUrl": {
-                  "type": "string",
-                  "description": "url to the illegally hosted material",
-                  "format": "uri"
-                },
                 "MaterialType": {
                   "type": "string",
                   "description": "type of copyrighted material, eg. Movie, Music, etc."

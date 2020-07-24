@@ -30,11 +30,6 @@
                   "type": "string",
                   "description": "description of what is trademarked"
                 },
-                "InfringingUrl": {
-                  "type": "string",
-                  "description": "url to the illegally hosted material",
-                  "format": "uri"
-                },
                 "RegistrationOffice": {
                   "type": "string",
                   "description": "office the trademark has been registered"

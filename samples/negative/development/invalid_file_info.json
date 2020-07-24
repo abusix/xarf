@@ -22,7 +22,7 @@
     "SourceIp": "192.0.2.55",
     "SourcePort": 54321,
     "InfringedMaterial": "Example - Mr. Example",
-    "InfringingUrl": "http://www.badexample.com/badexapmplesong.mp3",
+    "SourceUrl": "http://www.badexample.com/badexapmplesong.mp3",
     "MaterialType": "Music",
     "FileName": "badexamplesong.mp3",
     "CourtOrder": "https://court.example.com/courtorder.pdf",
