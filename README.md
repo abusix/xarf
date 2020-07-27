@@ -45,7 +45,7 @@ Be aware that in `alpha` there was no requirement to specify the version. `devel
 
 ```bash
 npm install -g ajv-cli
-ajv -s xarf.schema.json -d "samples/**/*.json" -r "schemas/**/*.schema.json"
+ajv -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.json"
 ```
 
 ## Project structure
