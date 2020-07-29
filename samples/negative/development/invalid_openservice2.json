@@ -16,8 +16,8 @@
     "Date": "2020-07-24T14:17:10Z",
     "SourceIp": "192.0.2.55",
     "SourcePort": 54321,
-    "Service": "bla",
-    "Protocol": "thisisnoprotocol",
+    "ServiceName": "bla",
+    "TransportProtocol": "thisisnoprotocol",
     "Samples": [
       {
         "ContentType": "text/plain",

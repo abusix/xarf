@@ -18,7 +18,6 @@
     "ServiceVersion": 2,
     "SourceIp": "192.0.2.55",
     "SourcePort": 54321,
-    "TransportProtocol": "thisisnoprotocol",
     "Samples": [
       {
         "ContentType": "text/plain",

@@ -16,7 +16,7 @@
     "Date": "2020-07-24T14:17:10Z",
     "SourceIp": "192.0.2.55",
     "SourcePort": 54321,
-    "Protocol": "thisisnoprotocol",
+    "TransportProtocol": "tcp",
     "Samples": [
       {
         "ContentType": "text/plain",
