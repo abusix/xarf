@@ -443,8 +443,8 @@
     "description": "Transport protocol used by the reportee",
     "properties": {
       "TransportProtocol": {
-          "type": "string",
-          "enum": ["tcp", "udp"]
+        "type": "string",
+        "enum": ["tcp", "udp"]
       }
     }
   }
