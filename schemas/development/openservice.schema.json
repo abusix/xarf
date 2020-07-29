@@ -20,7 +20,7 @@
               "properties": {
                 "ReportClass": {
                   "type": "string",
-                  "enum": ["Content"]
+                  "enum": ["Vulnerability"]
                 },
                 "ReportType": {
                   "type": "string",
