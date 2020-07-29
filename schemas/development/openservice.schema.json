@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/openservice.schema.json",
-  "title": "XARF BOTNET",
+  "title": "XARF OPENSERVICE",
   "description": "A format to report open service events.",
   "allOf": [
     {
