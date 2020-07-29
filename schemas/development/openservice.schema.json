@@ -25,12 +25,14 @@
                 "ReportType": {
                   "type": "string",
                   "enum": ["OpenService"]
-                },
-                "Service": {
-                  "$ref": "xarf_shared.schema.json#/Service"
                 }
-              },
-              "required": ["Service"]
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/TransportProtocol"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/Service"
             },
             {
               "$ref": "xarf_shared.schema.json#/CommonProps"

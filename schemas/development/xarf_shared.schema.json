@@ -426,17 +426,26 @@
   },
   "Service": {
     "type": "object",
-    "description": "Describes a service running on the network",
+    "description": "Specify a service to report",
+    "required": ["ServiceName"],
     "properties": {
-      "Name": {
-        "description": "The name of the service. E.g. redis",
+      "ServiceName": {
         "type": "string"
       },
-      "Version": {
-        "description": "Version of the service. E.g. 1.2.0 or 5.4",
-        "type": "string"
+      "ServiceVersion": {
+        "type": "string",
+        "description": "Affected service version or version range"
       }
-    },
-    "required": ["Name"]
+    }
+  },
+  "TransportProtocol": {
+    "type": "object",
+    "description": "Transport protocol used by the reportee",
+    "properties": {
+      "TransportProtocol": {
+          "type": "string",
+          "enum": ["tcp", "udp"]
+      }
+    }
   }
 }

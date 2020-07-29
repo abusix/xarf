@@ -14,12 +14,9 @@
     "ReportClass": "Vulnerability",
     "FirstSeen": "2020-03-15T15:17:10Z",
     "Date": "2020-07-24T14:17:10Z",
-    "Service": {
-      "Version": 2
-    },
+    "ServiceVersion": 2,
     "SourceIp": "192.0.2.55",
     "SourcePort": 54321,
-    "Protocol": "thisisnoprotocol",
     "Samples": [
       {
         "ContentType": "text/plain",
