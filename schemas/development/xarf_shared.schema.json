@@ -423,5 +423,17 @@
         }
       }
     ]
+  },
+  "Service": {
+    "type": "object",
+    "description": "Describes a service running on the network",
+    "properties": {
+      "Name": {
+        "type": "string"
+      },
+      "Version": {
+        "type": "string"
+      }
+    }
   }
 }

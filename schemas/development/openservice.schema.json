@@ -27,15 +27,10 @@
                   "enum": ["OpenService"]
                 },
                 "Service": {
-                  "type": "string",
-                  "description": "name of the service (e.g. redis)"
-                },
-                "Protocol": {
-                  "type": "string",
-                  "enum": ["tcp", "udp"],
-                  "description": "transport protocol"
+                  "$ref": "xarf_shared.schema.json#/Service"
                 }
-              }
+              },
+              "required": ["Service"]
             },
             {
               "$ref": "xarf_shared.schema.json#/CommonProps"
