@@ -11,7 +11,7 @@
   "Disclosure": true,
   "Report": {
     "ReportType": "OpenService",
-    "ReportClass": "Content",
+    "ReportClass": "Vulnerability",
     "FirstSeen": "2020-03-15T15:17:10Z",
     "Date": "2020-07-24T14:17:10Z",
     "Service": "redis",
