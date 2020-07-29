@@ -429,11 +429,14 @@
     "description": "Describes a service running on the network",
     "properties": {
       "Name": {
+        "description": "The name of the service. E.g. redis",
         "type": "string"
       },
       "Version": {
+        "description": "Version of the service. E.g. 1.2.0 or 5.4",
         "type": "string"
       }
-    }
+    },
+    "required": ["Name"]
   }
 }
