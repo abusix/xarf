@@ -19,9 +19,9 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
 
 ## Current Version
 
-`alpha`
+`1`
 
-[Up-To-Date Tested Sample XARF Reports](samples/positive/alpha)
+[Up-To-Date Tested Sample XARF Reports](samples/positive/1)
 
 ## Build status
 

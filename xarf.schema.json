@@ -9,6 +9,9 @@
     },
     {
       "$ref": "schemas/development/xarf.schema.json"
+    },
+    {
+      "$ref": "schemas/1/xarf.schema.json"
     }
   ]
 }

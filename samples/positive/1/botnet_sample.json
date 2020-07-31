@@ -1,0 +1,30 @@
+{
+  "Version": "1",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Content",
+    "ReportType": "Botnet",
+    "Date": "2018-02-05T14:17:10Z",
+    "SourceIp": "192.0.2.55",
+    "SourcePort": 54321,
+    "BotnetName": "Mariposa",
+    "Ongoing": true,
+    "Samples": [
+      {
+        "ContentType": "application/octet-stream",
+        "Base64Encoded": true,
+        "Description": "botnet executable",
+        "FileName": "run_me.exe",
+        "Payload": "AAAAAAAAAAAAAAAAAAAAAA"
+      }
+    ]
+  }
+}

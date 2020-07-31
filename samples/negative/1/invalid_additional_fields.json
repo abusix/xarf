@@ -1,0 +1,26 @@
+{
+  "Version": "1",
+  "ReporterInfo": {
+    "ReporterOrg": "Example",
+    "ReporterOrgDomain": "example.de",
+    "ReporterOrgEmail": "abuse-rpz@example.de",
+    "ReporterContactEmail": "abuse@example.de",
+    "ReporterContactName": "Abuse-Desk"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Activity",
+    "ReportType": "Malware",
+    "ReportSubType": "RPZ-Rewrite",
+    "Date": "2020-07-19T19:39:54Z",
+    "SourceIp": "2001:db8:1300:9:3949:9d93:bd2:9da5",
+    "SourcePort": 48107,
+    "RpzDomain": "example.net",
+    "Custom": {
+      "DNSResolver": "de-example-dnsres-07",
+      "MalwareName": "suppobox",
+      "NumberOfIncidents": [5],
+      "TimeframeSeconds": { "no": 600 }
+    }
+  }
+}

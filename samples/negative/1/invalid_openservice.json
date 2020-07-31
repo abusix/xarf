@@ -1,0 +1,34 @@
+{
+  "Version": "1",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportType": "OpenService",
+    "ReportClass": "Vulnerability",
+    "FirstSeen": "2020-03-15T15:17:10Z",
+    "Date": "2020-07-24T14:17:10Z",
+    "ServiceName": 6,
+    "ServiceVersion": 2,
+    "SourceIp": "192.0.2.55",
+    "SourcePort": 54321,
+    "Samples": [
+      {
+        "ContentType": "text/plain",
+        "Base64Encoded": false,
+        "Description": "Log line",
+        "Payload": "EXAMPLE Nmap done: 1 IP address (1 host up) scanned in 5.58 seconds EXAMPLE"
+      }
+    ],
+    "Custom": {
+      "whatever": "examplevalue",
+      "whatever2": "examplevalue2"
+    }
+  }
+}

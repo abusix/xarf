@@ -1,0 +1,30 @@
+{
+  "Version": "1",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com"
+  },
+  "OnBehalfOf": {
+    "ComplainantOrg": "ExampleComplainantOrg",
+    "ComplainantOrgDomain": "complainant.example.com",
+    "ComplainantOrgEmail": "complainant@complainant.example.com",
+    "ComplainantContactEmail": "legal@complainant.example.com",
+    "ComplainantContactName": "Legal Team",
+    "ComplainantContactPhone": "0012345678"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportType": "Copyright",
+    "ReportClass": "Content",
+    "FirstSeen": "2018-02-05T14:17:10Z",
+    "Date": "2018-02-05T18:17:10Z",
+    "SourceIp": "192.0.2.55",
+    "SourcePort": 54321,
+    "InfringedMaterial": 2,
+    "SourceUrl": 6,
+    "MaterialType": 3,
+    "FileName": "badexamplesong.mp3",
+    "CourtOrder": "no"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/1/openservice.schema.json",
+  "title": "XARF OPENSERVICE",
+  "description": "A format to report open service events.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/IpAndUrlBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Vulnerability"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["OpenService"]
+                }
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/TransportProtocol"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/Service"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/CommonProps"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
