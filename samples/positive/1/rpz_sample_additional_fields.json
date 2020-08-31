@@ -16,9 +16,9 @@
     "SourceIp": "2001:db8:1300:9:3949:9d93:bd2:9da5",
     "SourcePort": 48107,
     "RpzDomain": "example.net",
+    "MalwareName": "suppobox",
     "Custom": {
       "DNSResolver": "de-example-dnsres-07",
-      "MalwareName": "suppobox",
       "NumberOfIncidents": 5,
       "TimeframeSeconds": 600
     }
