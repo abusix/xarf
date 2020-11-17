@@ -39,6 +39,52 @@ The coverage will probably never reach 100% because of the way the code is gener
 The xarf schema contains the history of all versions including the current development preview. It is recommended to use latest version.
 Be aware that in `alpha` there was no requirement to specify the version. `development` should not be used in production and is unstable.
 
+## XARF via SMTP
+
+For the purpose of sending XARF reports in an email we "extend" RFC5965 (An Extensible Format for Email Feedback Reports) which defines the ARF format, this is so that anyone that currently parses ARF can extend their code slightly to receive XARF reports.
+
+RFC5965 requires that the email sent uses an outer Content-Type of `multipart/report; report-type=feedback-report` (defined in [https://tools.ietf.org/html/rfc6522](https://tools.ietf.org/html/rfc6522)) and this requires an additional two MIME parts minimum:
+
+- A human-readable part to describe the condition(s) that caused the report to be generated
+- A machine-readable part that RFC5965 defines. This requires a minimum of 3 fields: Feedback-Type, User-Agent and Version.
+
+The Feedback-Type field in the standard only allows for `abuse`, `fraud`, `virus`, `other` or `not-spam` values but we unofficially add the `xarf` type, so that a normal ARF receiver would fail at this point, but an XARF compatible parser will then know to expect an XARF report in the next MIME part. 
+
+The 3rd MIME part in a RFC6522 message would normally be a `message/rfc822` part containing the message being reported, but for XARF this would be `application/json` and will contain the XARF report.
+
+Here is an example of the proposed XARF message:
+
+```
+Content-Type: multipart/report; report-type=feedback-report;
+    boundary="--_NmP-f348b15e0b4a4931-Part_1"
+From: Abusix <noreply@abusix.org>
+To: Max Musterman <max@abusix.com>
+Subject: XARF test
+Message-ID: <9a271f0f-8929-421b-5bfa-80e50dabf32d@abusix.org>
+Date: Tue, 21 Apr 2020 10:25:47 +0000
+MIME-Version: 1.0
+
+----_NmP-f348b15e0b4a4931-Part_1
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+This is the human readable description
+----_NmP-f348b15e0b4a4931-Part_1
+Content-Type: message/feedback-report
+Content-Disposition: inline
+
+Feedback-Type: xarf
+User-Agent: Abusix/1.0
+Version: 1
+----_NmP-f348b15e0b4a4931-Part_1
+Content-Type: application/json; name=xarf.json
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename=xarf.json
+
+ewogICJWZXJzaW9uIjogIjEiLAogICJSZXBvcnRlckluZm8iOiB7CiAgICAiUmVwb3J0ZXJPcmciOiAiRXhhbXBsZU9yZyIsCiAgICAiUmVwb3J0ZXJPcmdEb21haW4iOiAiZXhhbXBsZS5jb20iLAogICAgIlJlcG9ydGVyT3JnRW1haWwiOiAicmVwb3J0c0BleGFtcGxlLmNvbSIsCiAgICAiUmVwb3J0ZXJDb250YWN0RW1haWwiOiAiY29udGFjdEBleGFtcGxlLmNvbSIsCiAgICAiUmVwb3J0ZXJDb250YWN0TmFtZSI6ICJNci4gRXhhbXBsZSIsCiAgICAiUmVwb3J0ZXJDb250YWN0UGhvbmUiOiAiKyAwMSAwMDAgMTIzNDU2NyIKICB9LAogICJEaXNjbG9zdXJlIjogdHJ1ZSwKICAiUmVwb3J0IjogewogICAgIlJlcG9ydENsYXNzIjogIkFjdGl2aXR5IiwKICAgICJSZXBvcnRUeXBlIjogIlNwYW0iLAogICAgIlJlcG9ydFN1YlR5cGUiOiAiVHJhcCIsCiAgICAiRGF0ZSI6ICIyMDE4LTAyLTA1VDE0OjE3OjEwWiIsCiAgICAiU291cmNlSXAiOiAiMTkyLjAuMi41NSIsCiAgICAiU291cmNlUG9ydCI6IDU0MzIxLAogICAgIkRlc3RpbmF0aW9uSXAiOiAiMTk4LjUxLjEwMC4zMyIsCiAgICAiRGVzdGluYXRpb25Qb3J0IjogMjUsCiAgICAiU210cE1haWxGcm9tQWRkcmVzcyI6ICJzcGFtQGV4YW1wbGUuY29tIiwKICAgICJTbXRwUmNwdFRvQWRkcmVzcyI6ICJ2aWN0aW1AZXhhbXBsZS5jb20iLAogICAgIlNhbXBsZXMiOiBbCiAgICAgIHsKICAgICAgICAiQ29udGVudFR5cGUiOiAibWVzc2FnZS9yZmM4MjIiLAogICAgICAgICJCYXNlNjRFbmNvZGVkIjogdHJ1ZSwKICAgICAgICAiRGVzY3JpcHRpb24iOiAiVGhlIHNwYW0gbWFpbCIsCiAgICAgICAgIlBheWxvYWQiOiAiYldGcGJBPT0iCiAgICAgIH0KICAgIF0KICB9Cn0=
+----_NmP-f348b15e0b4a4931-Part_1--
+```
+
 ## Validating json-schema samples
 
 ### Command line
