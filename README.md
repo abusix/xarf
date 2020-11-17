@@ -48,7 +48,7 @@ RFC5965 requires that the email sent uses an outer Content-Type of `multipart/re
 - A human-readable part to describe the condition(s) that caused the report to be generated
 - A machine-readable part that RFC5965 defines. This requires a minimum of 3 fields: Feedback-Type, User-Agent and Version.
 
-The Feedback-Type field in the standard only allows for `abuse`, `fraud`, `virus`, `other` or `not-spam` values but we unofficially add the `xarf` type, so that a normal ARF receiver would fail at this point, but an XARF compatible parser will then know to expect an XARF report in the next MIME part. 
+The Feedback-Type field in the standard only allows for `abuse`, `fraud`, `virus`, `other` or `not-spam` values but we unofficially add the `xarf` type, so that a normal ARF receiver would fail at this point, but an XARF compatible parser will then know to expect an XARF report in the next MIME part.
 
 The 3rd MIME part in a RFC6522 message would normally be a `message/rfc822` part containing the message being reported, but for XARF this would be `application/json` and will contain the XARF report.
 
