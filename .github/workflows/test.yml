@@ -11,9 +11,11 @@ jobs:
       NPM_CONFIG_PREFIX: "~/.npm-global"
     steps:
       - uses: actions/checkout@v2
-      - name: Run ajv-cli to validate README documentation
+      - name: Add new global npm .bin to PATH
         run: |
           echo "$HOME/.npm-global/lib/node_modules/.bin" >> $GITHUB_PATH
+      - name: Run ajv-cli to validate README documentation
+        run: |
           npm install -g ajv-cli ajv-formats
           ajv -c ajv-formats -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.json"
       - name: Install dependencies
