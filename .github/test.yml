@@ -1,0 +1,31 @@
+name: "schema-tests"
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run ajv-cli to validate README documentation
+      run: |
+        npm install -g ajv-cli ajv-formats
+        ajv -c ajv-formats -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.json"
+    - name: Install dependencies
+      run: |
+        npm install -g yarn
+        yarn install --frozen-lockfile
+    - name: Lint and formatting check
+      run: |
+        prettier --check .
+        eslint .
+    - name: Unit tests
+      run: |
+        yarn test-xarf
+    - name: Bundle xarf and test bundled schemas
+      run: |
+        yarn bundle-xarf
+        ajv -c ajv-formats -s xarf_bundled.schema.json -d "samples/positive/**/*.json"
+        ajv -c ajv-formats -s xarf_deref.schema.json -d "samples/positive/**/*.json"
