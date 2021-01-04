@@ -5,7 +5,7 @@
   "description": "A format to report DDOS events.",
   "allOf": [
     {
-      "$ref": "xarf_shared.schema.json#/XarfBase"
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
     },
     {
       "type": "object",
@@ -13,7 +13,7 @@
         "Report": {
           "allOf": [
             {
-              "$ref": "xarf_shared.schema.json#/IpBasedReport"
+              "$ref": "xarf_shared.schema.json#/properties/IpBasedReport"
             },
             {
               "type": "object",
@@ -29,13 +29,13 @@
               }
             },
             {
-              "$ref": "xarf_shared.schema.json#/WithDestination"
+              "$ref": "xarf_shared.schema.json#/properties/WithDestination"
             },
             {
-              "$ref": "xarf_shared.schema.json#/WithTrafficStats"
+              "$ref": "xarf_shared.schema.json#/properties/WithTrafficStats"
             },
             {
-              "$ref": "xarf_shared.schema.json#/CommonProps"
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
             }
           ]
         }

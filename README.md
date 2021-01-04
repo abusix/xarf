@@ -104,8 +104,17 @@ IF0KICB9Cn0=
 
 ### Command line
 
+## With ajv-cli >= 4.0.0
+
 ```bash
-npm install -g ajv-cli
+npm install -g ajv-cli ajv-formats
+ajv -c ajv-formats -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.json"
+```
+
+## With ajv-cli < 4.0.0
+
+```bash
+npm install -g ajv-cli@3.3.0
 ajv -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.json"
 ```
 

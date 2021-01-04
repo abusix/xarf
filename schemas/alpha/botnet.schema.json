@@ -5,7 +5,7 @@
   "description": "A format to report Botnet events.",
   "allOf": [
     {
-      "$ref": "xarf_shared.schema.json#/XarfBase"
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
     },
     {
       "type": "object",
@@ -13,7 +13,7 @@
         "Report": {
           "allOf": [
             {
-              "$ref": "xarf_shared.schema.json#/IpAndUrlBasedReport"
+              "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
             },
             {
               "type": "object",
@@ -33,7 +33,7 @@
               }
             },
             {
-              "$ref": "xarf_shared.schema.json#/CommonProps"
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
             }
           ]
         }

@@ -5,7 +5,7 @@
   "description": "A format to report RPZ events.",
   "allOf": [
     {
-      "$ref": "xarf_shared.schema.json#/XarfBase"
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
     },
     {
       "type": "object",
@@ -13,7 +13,7 @@
         "Report": {
           "allOf": [
             {
-              "$ref": "xarf_shared.schema.json#/IpBasedReport"
+              "$ref": "xarf_shared.schema.json#/properties/IpBasedReport"
             },
             {
               "type": "object",
