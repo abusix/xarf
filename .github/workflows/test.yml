@@ -8,15 +8,16 @@ jobs:
       matrix:
         node-version: [14.x]
     env:
-      NPM_CONFIG_PREFIX: "~/.npm-global"
+      NPM_CONFIG_PREFIX: "/home/runner/.npm-global"
     steps:
       - uses: actions/checkout@v2
       - name: Add new global npm .bin to PATH
         run: |
-          echo "$NPM_CONFIG_PREFIX/lib/node_modules/.bin/" >> $GITHUB_PATH
+          echo "/home/runner/.npm-global/lib/node_modules/.bin/" >> $GITHUB_PATH
       - name: Run ajv-cli to validate README documentation
         run: |
           env
+          ls /home/runner/.npm-global/lib/node_modules/.bin/
           npm install -g ajv-cli ajv-formats
           ajv -c ajv-formats -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.json"
       - name: Install dependencies
