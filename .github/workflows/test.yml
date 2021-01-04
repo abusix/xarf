@@ -26,8 +26,8 @@ jobs:
           yarn install --frozen-lockfile
       - name: Lint and formatting check
         run: |
-          prettier --check .
-          eslint .
+          npx prettier --check .
+          npx eslint .
       - name: Unit tests
         run: |
           yarn test-xarf
