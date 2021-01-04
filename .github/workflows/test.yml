@@ -17,8 +17,8 @@ jobs:
       - name: Run ajv-cli to validate README documentation
         run: |
           env
-          ls /home/runner/.npm-global/lib/node_modules/.bin/
           npm install -g ajv-cli ajv-formats
+          ls /home/runner/.npm-global/lib/node_modules/.bin/
           ajv -c ajv-formats -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.json"
       - name: Install dependencies
         run: |
