@@ -63,11 +63,11 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo "name=$(date --utc +%Y%m%dT%H%M%SZ)" >> $GITHUB_ENV
+          echo "CURRENT_DATETIME=$(date --utc +%Y%m%dT%H%M%SZ)" >> $GITHUB_ENV
       - name: Debug release tag
         id: debug_release_tag
         run: |
-          echo "${{ steps.date.outputs.date }}-${{ github.sha }}"
+          echo "${{ env.CURRENT_DATETIME }}-${{ github.sha }}"
       - name: Download bundled schemas from test build
         uses: actions/download-artifact@v2
         with:
@@ -78,8 +78,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.date.outputs.date }}-${{ github.sha }}
-          release_name: Release ${{ steps.date.outputs.date }}-${{ github.sha }}
+          tag_name: ${{ env.CURRENT_DATETIME }}-${{ github.sha }}
+          release_name: Release ${{ env.CURRENT_DATETIME }}-${{ github.sha }}
           draft: false
           prerelease: false
       - name: Upload XARF Bundled
