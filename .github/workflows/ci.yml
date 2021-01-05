@@ -40,13 +40,21 @@ jobs:
           yarn bundle-xarf
           ajv -c ajv-formats -s xarf_bundled.schema.json -d "samples/positive/**/*.json"
           ajv -c ajv-formats -s xarf_deref.schema.json -d "samples/positive/**/*.json"
-      - name: Archive artifacts
+      - name: Archive schemas
+        id: archive_schemas
         uses: actions/upload-artifact@v2
         with:
           name: bundled-schema
           path: |
             xarf_bundled.schema.json
             xarf_deref.schema.json
+      - name: Archive coverage
+        id: archive_coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: |
+            coverage/
   release:
     runs-on: ubuntu-latest
     needs: test
@@ -89,3 +97,16 @@ jobs:
           asset_path: ./xarf_deref.schema.json
           asset_name: xarf_deref.schema.json
           asset_content_type: application/json
+  report-coverage:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Download coverage from test build
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
+      - uses: codecov/codecov-action@v1
+        with:
+          directory: ./coverage/
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
