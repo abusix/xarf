@@ -54,7 +54,7 @@ jobs:
     steps:
       - name: Get current date
         id: date
-        run: echo "name=$(date --utc +%FT%TZ)" >> $GITHUB_ENV
+        run: echo "name=$(date --utc +%Y%m%dT%H%M%SZ)" >> $GITHUB_ENV
       - name: Download bundled schemas from test build
         uses: actions/download-artifact@v2
         with:
