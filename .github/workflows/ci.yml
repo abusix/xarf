@@ -1,5 +1,5 @@
 name: "schema-tests"
-on: [push]
+on: ["push", "pull_request"]
 
 jobs:
   test:
@@ -62,7 +62,12 @@ jobs:
     steps:
       - name: Get current date
         id: date
-        run: echo "name=$(date --utc +%Y%m%dT%H%M%SZ)" >> $GITHUB_ENV
+        run: |
+          echo "name=$(date --utc +%Y%m%dT%H%M%SZ)" >> $GITHUB_ENV
+      - name: Debug release tag
+        id: debug_release_tag
+        run: |
+          echo "${{ steps.date.outputs.date }}-${{ github.sha }}"
       - name: Download bundled schemas from test build
         uses: actions/download-artifact@v2
         with:
@@ -105,8 +110,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: codecov/codecov-action@v1
         with:
-          directory: ./coverage/
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)
