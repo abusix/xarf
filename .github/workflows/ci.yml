@@ -53,8 +53,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage
-          path: |
-            coverage/
+          path: coverage/
   release:
     runs-on: ubuntu-latest
     needs: test
@@ -110,6 +109,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage
+      - name: Debug downloaded artifacts
+        id: debug_downloaded_artifacts
+        run: |
+          ls -ahl
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
