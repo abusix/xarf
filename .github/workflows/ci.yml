@@ -112,14 +112,14 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage
-      - name: Debug downloaded artifacts
-        id: debug_downloaded_artifacts
-        run: |
-          ls -ahl
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Debug downloaded artifacts
+      #   id: debug_downloaded_artifacts
+      #   run: |
+      #     ls -ahl
+      # - name: Coveralls
+      #   uses: coverallsapp/github-action@master
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true # optional (default = false)
