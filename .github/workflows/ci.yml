@@ -1,0 +1,91 @@
+name: "schema-tests"
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    env:
+      NPM_CONFIG_PREFIX: "/home/runner/.npm-global"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add new global npm .bin to PATH
+        id: add_to_path
+        run: |
+          echo "/home/runner/.npm-global/bin/" >> $GITHUB_PATH
+      - name: Run ajv-cli to validate README documentation
+        id: validate_using_ajv_cli
+        run: |
+          npm install -g ajv-cli ajv-formats
+          ajv -c ajv-formats -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.json"
+      - name: Install dependencies
+        id: install_dependencies
+        run: |
+          npm install -g yarn
+          yarn install --frozen-lockfile
+      - name: Lint and formatting check
+        id: linting
+        run: |
+          npx prettier --check .
+          npx eslint .
+      - name: Unit tests
+        id: run_tests
+        run: |
+          yarn test-xarf
+      - name: Bundle xarf and test bundled schemas
+        id: bundle
+        run: |
+          yarn bundle-xarf
+          ajv -c ajv-formats -s xarf_bundled.schema.json -d "samples/positive/**/*.json"
+          ajv -c ajv-formats -s xarf_deref.schema.json -d "samples/positive/**/*.json"
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: bundled-schema
+          path: |
+            xarf_bundled.schema.json
+            xarf_deref.schema.json
+  release:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "name=$(date --utc +%FT%TZ)" >> $GITHUB_ENV
+      - name: Download bundled schemas from test build
+        uses: actions/download-artifact@v2
+        with:
+          name: bundled-schema
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.date.outputs.date }}-${{ github.sha }}
+          release_name: Release ${{ steps.date.outputs.date }}-${{ github.sha }}
+          draft: false
+          prerelease: false
+      - name: Upload XARF Bundled
+        id: upload-xarf-bundled
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./xarf_bundled.schema.json
+          asset_name: xarf_bundled.schema.json
+          asset_content_type: application/json
+      - name: Upload XARF Deref
+        id: upload-xarf-deref
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./xarf_deref.schema.json
+          asset_name: xarf_deref.schema.json
+          asset_content_type: application/json
