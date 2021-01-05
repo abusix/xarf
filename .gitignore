@@ -5,4 +5,4 @@ xarf_deref*.schema.json
 .nyc_output
 coverage
 *.lcov
-.ajv_istanbul
+gen_validate_schema*.js

@@ -1,7 +1,11 @@
 "use strict";
+var validate;
+try {
+  validate = require("../gen_validate_schema_pretty.js");
+} catch (error) {
+  console.error("Did you run yarn generate-code?", error);
+}
 
-const Ajv = require("ajv");
-const ajvIstanbul = require("../util/schema_instrumenter");
 const assert = require("assert");
 
 const path = require("path");
@@ -22,30 +26,6 @@ async function* getFiles(dir) {
 
 describe("xarf", function () {
   this.timeout(40000);
-  var validate;
-
-  before(function () {
-    console.log("Instrumenting schema code ...");
-    var ajv = new Ajv({ allErrors: true });
-    ajvIstanbul(ajv);
-    var rootSchema = require("../xarf.schema.json");
-
-    const schemaDir = "./schemas";
-    return new Promise((resolve) => {
-      (async () => {
-        for await (const f of getFiles(schemaDir)) {
-          if (f.endsWith(".schema.json")) {
-            //console.log(`Adding sub schema: ${f}`);
-            ajv.addSchema(require(f));
-          }
-        }
-        console.log("Compiling schema ...");
-        validate = ajv.compile(rootSchema);
-        console.log("Done instrumenting schema code ...");
-        resolve();
-      })();
-    });
-  });
 
   it("all positive samples should validate", function () {
     const samplesDir = "samples/positive";
