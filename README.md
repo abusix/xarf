@@ -79,7 +79,7 @@ Version: 1
 ----_NmP-f348b15e0b4a4931-Part_1
 Content-Type: application/json; name=xarf.json
 Content-Transfer-Encoding: base64
-Content-Disposition: inline; filename=xarf.json
+Content-Disposition: attachment; filename=xarf.json
 
 ewogICJWZXJzaW9uIjogIjEiLAogICJSZXBvcnRlckluZm8iOiB7CiAgICAiUmVwb3J0ZXJPcmci
 OiAiRXhhbXBsZU9yZyIsCiAgICAiUmVwb3J0ZXJPcmdEb21haW4iOiAiZXhhbXBsZS5jb20iLAog
