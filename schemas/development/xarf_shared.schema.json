@@ -100,6 +100,9 @@
         },
         "Version": {
           "const": "development"
+        },
+        "InternalProcessing": {
+          "$ref": "#/properties/InternalProcessing"
         }
       },
       "required": ["ReporterInfo", "Disclosure", "Version"]
@@ -139,7 +142,14 @@
           "type": "object",
           "description": "allows for custom key-value fields",
           "additionalProperties": {
-            "anyOf": [{ "type": "string" }, { "type": "integer" }]
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
           }
         }
       },
@@ -447,6 +457,53 @@
         "TransportProtocol": {
           "type": "string",
           "enum": ["tcp", "udp"]
+        }
+      }
+    },
+    "InternalProcessing": {
+      "type": "object",
+      "description": "Information about the reportee for internal processing. This should be ignored if the reporter isn't authorized. It's intended to be used for relaying internaly generated xarf-reports to automation software.",
+      "properties": {
+        "SubscriberInformation": {
+          "type": "object",
+          "description": "Information about the reportee/customer.",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "Internal ID of the reportee."
+            },
+            "SubscriberData": {
+              "type": "object",
+              "description": "Data about a customer normaly returned by a resolver in the process of determining the reportee.",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ContractInformation": {
+          "type": "object",
+          "description": "Information about the reportee's/customer's contract.",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "Internal ID of the reportee's contract."
+            },
+            "ResolverData": {
+              "type": "object",
+              "description": "Data about a customers contract normaly returned by a resolver in the process of determining the reportee.",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "EventTags": {
+          "type": "array",
+          "description": "Custom tags for classification, metrics and other internal uses.",
+          "items": {
+            "type": "string"
+          }
         }
       }
     }
