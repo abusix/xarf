@@ -9,8 +9,7 @@
     "ReporterContactPhone": "+ 01 000 1234567"
   },
   "Disclosure": true,
-  "InternalProcessing":
-  {
+  "InternalProcessing": {
     "SubscriberInformation": {
       "ID": "32141@customer.com",
       "SubscriberData": {
