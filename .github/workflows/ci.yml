@@ -23,8 +23,7 @@ jobs:
       - name: Install dependencies
         id: install_dependencies
         run: |
-          npm install -g yarn
-          yarn install --frozen-lockfile
+          npm install
       - name: Lint and formatting check
         id: linting
         run: |
@@ -33,11 +32,11 @@ jobs:
       - name: Unit tests
         id: run_tests
         run: |
-          yarn test-xarf
+          npm run test-xarf
       - name: Bundle xarf and test bundled schemas
         id: bundle
         run: |
-          yarn bundle-xarf
+          npm run bundle-xarf
           ajv -c ajv-formats -s xarf_bundled.schema.json -d "samples/positive/**/*.json"
           ajv -c ajv-formats -s xarf_deref.schema.json -d "samples/positive/**/*.json"
       - name: Archive schemas

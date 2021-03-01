@@ -136,7 +136,7 @@ ajv -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.
 1. Add a new schema in `schemas/development/` as [subtype].schema.json and try to reuse as much as possible from xarf_shared.schema.json
 1. Add an example sample to `samples/positive/development/`
 1. Add the new schema to the list in `schemas/development/xarf.schema.json`
-1. Run tests locally: `yarn test-xarf`
+1. Run tests locally: `npm run test-xarf`
 1. Open up a github PR
 1. Discuss and improve
 
@@ -154,8 +154,8 @@ Use [our bundling script](bundle_xarf.js) to create a single file schema.
 ```bash
 git clone https://github.com/abusix/xarf.git
 cd xarf
-yarn install --frozen-lockfile
-yarn bundle-xarf
+npm install
+npm bundle-xarf
 ```
 
 It will generate two files:

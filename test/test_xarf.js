@@ -3,7 +3,7 @@ var validate;
 try {
   validate = require("../gen_validate_schema_pretty.js");
 } catch (error) {
-  console.error("Did you run yarn generate-code?", error);
+  console.error("Did you run `npm run generate-code`?", error);
 }
 
 const assert = require("assert");
