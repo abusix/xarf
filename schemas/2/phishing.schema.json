@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/2/phishing.schema.json",
+  "title": "XARF PHISHING",
+  "description": "A format to report Phishing events.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Content"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["Phishing"]
+                }
+              },
+              "required": ["SourceUrl"]
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

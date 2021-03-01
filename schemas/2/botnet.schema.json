@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/2/botnet.schema.json",
+  "title": "XARF BOTNET",
+  "description": "A format to report Botnet events.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Content"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["Botnet"]
+                },
+                "BotnetName": {
+                  "type": "string",
+                  "description": "name of the botnet"
+                }
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

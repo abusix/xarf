@@ -1,3 +1,6 @@
+Version 2
+- Added optional InternalProcessing key that allows bundling subscriber+contract info and tags
+
 Version 1
 
 - Top level field "Version" is required from now on

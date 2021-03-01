@@ -1,0 +1,32 @@
+{
+  "Version": "2",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Activity",
+    "ReportType": "LoginAttack",
+    "Date": "2018-02-05T14:17:10Z",
+    "SourceIp": "192.0.2.55",
+    "SourcePort": 54321,
+    "DestinationIp": "198.51.100.33",
+    "DestinationPort": 80,
+    "Ongoing": true,
+    "ByteCount": 20000000,
+    "PacketCount": 10000,
+    "Samples": [
+      {
+        "ContentType": "text/plain",
+        "Base64Encoded": false,
+        "Description": "Log entry",
+        "Payload": "User at 192.0.2.55:54321 tried to log in unsuccessfully 123 times."
+      }
+    ]
+  }
+}

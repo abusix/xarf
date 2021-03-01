@@ -1,0 +1,20 @@
+{
+  "Version": "2",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Meh",
+    "ReportType": "DoesNotExist",
+    "Date": "2018-02-05T14:17:10Z",
+    "SourceIp": "192.0.2.55",
+    "SourcePort": 80,
+    "SourceUrl": "https://example.com/"
+  }
+}

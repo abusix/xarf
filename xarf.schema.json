@@ -12,6 +12,9 @@
     },
     {
       "$ref": "schemas/1/xarf.schema.json"
+    },
+    {
+      "$ref": "schemas/2/xarf.schema.json"
     }
   ]
 }

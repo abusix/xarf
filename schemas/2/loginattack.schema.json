@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/2/loginattack.schema.json",
+  "title": "XARF LOGINATTACK",
+  "description": "A format to report login attacks.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/properties/IpBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Activity"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["LoginAttack"]
+                }
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/WithDestination"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/WithTrafficStats"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
