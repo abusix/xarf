@@ -32,6 +32,9 @@
       "$ref": "loginattack.schema.json"
     },
     {
+      "$ref": "identity_theft.schema.json"
+    },
+    {
       "$ref": "childabuse.schema.json"
     },
     {
