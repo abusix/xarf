@@ -16,22 +16,54 @@
               "$ref": "xarf_shared.schema.json#/properties/IdentityBasedReport"
             },
             {
-              "not": {
-                "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
-              }
-            },
-            {
               "type": "object",
               "properties": {
                 "ReportClass": {
                   "type": "string",
-                  "enum": ["Activity"]
+                  "enum": [
+                    "Activity"
+                  ]
                 },
                 "ReportType": {
                   "type": "string",
-                  "enum": ["IdentityTheft"]
+                  "enum": [
+                    "IdentityTheft"
+                  ]
                 }
               }
+            },
+            {
+              "oneOf": [
+                {
+                  "not": {
+                    "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
+                  }
+                },
+                {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "ReportSubType": {
+                          "type": "string",
+                          "enum": [
+                            "LoginAttack"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "ReportSubType"
+                      ]
+                    },
+                    {
+                      "$ref": "xarf_shared.schema.json#/properties/IpBasedReport"
+                    },
+                    {
+                      "$ref": "xarf_shared.schema.json#/properties/WithTrafficStats"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "$ref": "xarf_shared.schema.json#/properties/WithDestination"
