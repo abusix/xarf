@@ -29,33 +29,12 @@
               }
             },
             {
-              "oneOf": [
-                {
-                  "not": {
-                    "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
-                  }
-                },
-                {
-                  "allOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "ReportSubType": {
-                          "type": "string",
-                          "enum": ["LoginAttack"]
-                        }
-                      },
-                      "required": ["ReportSubType"]
-                    },
-                    {
-                      "$ref": "xarf_shared.schema.json#/properties/IpBasedReport"
-                    },
-                    {
-                      "$ref": "xarf_shared.schema.json#/properties/WithTrafficStats"
-                    }
-                  ]
-                }
-              ]
+              "not": {
+                "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/WithAttacker"
             },
             {
               "$ref": "xarf_shared.schema.json#/properties/WithDestination"

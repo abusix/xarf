@@ -426,6 +426,44 @@
         }
       }
     },
+    "WithAttacker": {
+      "type": "object",
+      "description": "Specify the source of an attack. Used when attack source is not the subject of the report, eg. in an IdentityTheft report.",
+      "properties": {
+        "AttackerIp": {
+          "description": "attacker ip",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "ipv4"
+            },
+            {
+              "type": "string",
+              "format": "ipv6"
+            }
+          ]
+        },
+        "AttackerPort": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "description": "targeted port",
+                "minimum": 0,
+                "maximum": 65535
+              }
+            },
+            {
+              "type": "integer",
+              "description": "targeted port",
+              "minimum": 0,
+              "maximum": 65535
+            }
+          ]
+        }
+      }
+    },
     "WithTrafficStats": {
       "type": "object",
       "properties": {
