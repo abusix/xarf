@@ -41,11 +41,7 @@
           "minLength": 3
         }
       },
-      "required": [
-        "ReporterOrg",
-        "ReporterOrgDomain",
-        "ReporterOrgEmail"
-      ]
+      "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
     },
     "OnBehalfOf": {
       "type": "object",
@@ -109,11 +105,7 @@
           "$ref": "#/properties/InternalProcessing"
         }
       },
-      "required": [
-        "ReporterInfo",
-        "Disclosure",
-        "Version"
-      ]
+      "required": ["ReporterInfo", "Disclosure", "Version"]
     },
     "ReportBase": {
       "description": "Base properties for the report part of all xarf report types",
@@ -122,11 +114,7 @@
         "ReportClass": {
           "type": "string",
           "description": "class of the reported abuse event",
-          "enum": [
-            "Content",
-            "Activity",
-            "Vulnerability"
-          ]
+          "enum": ["Content", "Activity", "Vulnerability"]
         },
         "ReportType": {
           "type": "string",
@@ -144,11 +132,7 @@
         "ReporterSeverity": {
           "type": "string",
           "description": "class of the reported abuse event",
-          "enum": [
-            "low",
-            "medium",
-            "high"
-          ]
+          "enum": ["low", "medium", "high"]
         },
         "ReporterNotes": {
           "type": "string",
@@ -169,10 +153,7 @@
           }
         }
       },
-      "required": [
-        "ReportClass",
-        "ReportType"
-      ]
+      "required": ["ReportClass", "ReportType"]
     },
     "IpBasedReport": {
       "allOf": [
@@ -211,9 +192,7 @@
               "maximum": 4199999999
             }
           },
-          "required": [
-            "SourceIp"
-          ]
+          "required": ["SourceIp"]
         }
       ]
     },
@@ -240,9 +219,7 @@
           "anyOf": [
             {
               "type": "object",
-              "required": [
-                "SourceIp"
-              ],
+              "required": ["SourceIp"],
               "properties": {
                 "SourceIp": {
                   "description": "ip from that the abuse event originated",
@@ -267,9 +244,7 @@
             },
             {
               "type": "object",
-              "required": [
-                "SourceUrl"
-              ],
+              "required": ["SourceUrl"],
               "properties": {
                 "SourceUrl": {
                   "type": "string",
@@ -347,10 +322,7 @@
               "description": "actual sample"
             }
           },
-          "required": [
-            "ContentType",
-            "Payload"
-          ]
+          "required": ["ContentType", "Payload"]
         },
         {
           "$ref": "#/properties/File"
@@ -382,9 +354,7 @@
     "Date": {
       "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
       "type": "object",
-      "required": [
-        "Date"
-      ],
+      "required": ["Date"],
       "properties": {
         "Date": {
           "format": "date-time",
@@ -416,9 +386,7 @@
           "description": "hash value of the file"
         }
       },
-      "required": [
-        "FileName"
-      ]
+      "required": ["FileName"]
     },
     "WithDestination": {
       "type": "object",
@@ -512,9 +480,7 @@
     "Service": {
       "type": "object",
       "description": "Specify a service to report",
-      "required": [
-        "ServiceName"
-      ],
+      "required": ["ServiceName"],
       "properties": {
         "ServiceName": {
           "type": "string"
@@ -531,10 +497,7 @@
       "properties": {
         "TransportProtocol": {
           "type": "string",
-          "enum": [
-            "tcp",
-            "udp"
-          ]
+          "enum": ["tcp", "udp"]
         }
       }
     },

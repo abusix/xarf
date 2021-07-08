@@ -20,15 +20,11 @@
               "properties": {
                 "ReportClass": {
                   "type": "string",
-                  "enum": [
-                    "Activity"
-                  ]
+                  "enum": ["Activity"]
                 },
                 "ReportType": {
                   "type": "string",
-                  "enum": [
-                    "IdentityTheft"
-                  ]
+                  "enum": ["IdentityTheft"]
                 }
               }
             },
@@ -46,14 +42,10 @@
                       "properties": {
                         "ReportSubType": {
                           "type": "string",
-                          "enum": [
-                            "LoginAttack"
-                          ]
+                          "enum": ["LoginAttack"]
                         }
                       },
-                      "required": [
-                        "ReportSubType"
-                      ]
+                      "required": ["ReportSubType"]
                     },
                     {
                       "$ref": "xarf_shared.schema.json#/properties/IpBasedReport"
