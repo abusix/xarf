@@ -449,14 +449,14 @@
               "type": "array",
               "items": {
                 "type": "integer",
-                "description": "targeted port",
+                "description": "attack port",
                 "minimum": 0,
                 "maximum": 65535
               }
             },
             {
               "type": "integer",
-              "description": "targeted port",
+              "description": "attack port",
               "minimum": 0,
               "maximum": 65535
             }
