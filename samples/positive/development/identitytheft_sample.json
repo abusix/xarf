@@ -20,6 +20,10 @@
       "Name": "Karl Heinz",
       "Identifier": 89789778643782
     },
+    "PasswordHash": {
+      "HashValue": "286755fad04869ca523320acce0dc6a4",
+      "HashAlgorithm": "md5"
+    },
     "Samples": [
       {
         "ContentType": "text/plain",

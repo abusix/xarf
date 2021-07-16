@@ -41,6 +41,9 @@
             },
             {
               "$ref": "xarf_shared.schema.json#/properties/CommonProps"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/Password"
             }
           ]
         }
