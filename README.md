@@ -155,7 +155,7 @@ Use [our bundling script](bundle_xarf.js) to create a single file schema.
 git clone https://github.com/abusix/xarf.git
 cd xarf
 npm install
-npm bundle-xarf
+npm run bundle-xarf
 ```
 
 It will generate two files:
