@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/identity_theft.schema.json",
-  "title": "XARF IDENTITYTHEFT",
-  "description": "A format to report instances of identity theft. Used for reporting observed usages of possibly leaked user information in login attempts.",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/potentially_compromised_account.schema.json",
+  "title": "XARF COMPROMISED ACCOUNT",
+  "description": "Report format to notify victims of a potentially leaked login data. Used for reporting observed usages of possibly leaked user information in login attempts.",
   "allOf": [
     {
       "$ref": "xarf_shared.schema.json#/properties/XarfBase"
@@ -13,7 +13,7 @@
         "Report": {
           "allOf": [
             {
-              "$ref": "xarf_shared.schema.json#/properties/IdentityBasedReport"
+              "$ref": "xarf_shared.schema.json#/properties/AccountBasedReport"
             },
             {
               "type": "object",
@@ -24,7 +24,7 @@
                 },
                 "ReportType": {
                   "type": "string",
-                  "enum": ["IdentityTheft"]
+                  "enum": ["PotentiallyCompromisedAccount"]
                 }
               }
             },

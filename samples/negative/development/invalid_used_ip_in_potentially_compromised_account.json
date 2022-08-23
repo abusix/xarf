@@ -11,11 +11,17 @@
   "Disclosure": true,
   "Report": {
     "ReportClass": "Activity",
-    "ReportType": "IdentityTheft",
+    "ReportType": "PotentiallyCompromisedAccount",
     "Date": "2018-02-05T14:17:10Z",
     "DestinationIp": "198.51.100.33",
     "DestinationPort": 80,
     "Ongoing": true,
+    "SourceIp": "192.0.2.55",
+    "SourcePort": 54321,
+    "Account": {
+      "AccountName": "Hans Wurst",
+      "AccountNumber": 89789778643782
+    },
     "Samples": [
       {
         "ContentType": "text/plain",

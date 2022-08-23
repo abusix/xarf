@@ -32,7 +32,7 @@
       "$ref": "loginattack.schema.json"
     },
     {
-      "$ref": "identity_theft.schema.json"
+      "$ref": "potentially_compromised_account.schema.json"
     },
     {
       "$ref": "childabuse.schema.json"

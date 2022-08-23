@@ -257,7 +257,7 @@
         }
       ]
     },
-    "IdentityBasedReport": {
+    "AccountBasedReport": {
       "allOf": [
         {
           "$ref": "#/properties/ReportBase"
@@ -267,30 +267,28 @@
         },
         {
           "type": "object",
-          "required": ["Identity"],
+          "required": ["Account"],
           "properties": {
-            "Identity": {
+            "Account": {
               "type": "object",
               "minProperties": 1,
+              "description": "Account data of the reportee",
               "properties": {
-                "Name": {
-                  "description": "Name of the entity being reported on.",
-                  "type": "string"
+                "AccountName": {
+                  "type": "string",
+                  "description": "reported account name",
+                  "not": {
+                    "description": "email based user accounts should go to the AccountEmail field",
+                    "format": "email"
+                  }
                 },
-                "Identifier": {
-                  "description": "String or number to identify the individual whose identity was stolen. Could be !TODO! ",
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "string",
-                      "format": "email"
-                    }
-                  ]
+                "AccountEmail": {
+                  "type": "string",
+                  "description": "email account of the user"
+                },
+                "AccountNumber": {
+                  "description": "account number of the user",
+                  "type": "number"
                 }
               }
             }
@@ -455,7 +453,7 @@
     },
     "WithAttacker": {
       "type": "object",
-      "description": "Specify the source of an attack. Used when attack source is not the subject of the report, eg. in an IdentityTheft report.",
+      "description": "Specify the source of an attack. Used when attack source is not the subject of the report, eg. in an PotentiallyCompromisedAccount report.",
       "properties": {
         "AttackerIp": {
           "description": "attacker ip",
@@ -580,7 +578,7 @@
             },
             "SubscriberData": {
               "type": "object",
-              "description": "Data about a customer normaly returned by a resolver in the process of determining the reportee.",
+              "description": "Data about a customer normally returned by a resolver in the process of determining the reportee.",
               "additionalProperties": {
                 "type": "string"
               }
