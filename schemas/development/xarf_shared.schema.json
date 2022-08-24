@@ -439,7 +439,6 @@
     "Service": {
       "type": "object",
       "description": "Specify a service to report",
-      "required": ["ServiceName"],
       "properties": {
         "ServiceName": {
           "type": "string"
@@ -503,6 +502,64 @@
           "description": "Custom tags for classification, metrics and other internal uses.",
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "CVE": {
+      "type": "object",
+      "description": "CVE reference number",
+      "properties": {
+        "CVE": {
+          "type": "string",
+          "pattern": "^CVE-\\d{4}-\\d{4,7}$"
+        }
+      }
+    },
+    "CVSS": {
+      "type": "object",
+      "description": "CVSS Severity and Metrics",
+      "properties": {
+        "CVSS": {
+          "type": "object",
+          "required": [ "Version", "Vector" ],
+          "properties": {
+            "Score": {
+              "type": "number"
+            },
+            "Version": {
+              "type": "string",
+              "enum": ["3.1", "3.0", "2"]
+            },
+            "Vector": {
+              "type": "string"
+            },
+            "Severity": {
+              "type": "string"
+            }
+          },
+          "if": {
+            "properties": { "Version": {"const": "2"} }
+          },
+          "then": {
+            "properties": { 
+              "Severity": {
+                "enum": ["Low", "Medium", "High"]
+              },
+              "Vector": {
+                "pattern": "^\\(?AV:[LAN]\\/AC:[HML]\\/Au:[MSN]\\/C:[NPC]\\/I:[NPC]\\/A:[NPC](\\/E:((ND)|(POC)|[UFH])\\/RL:([WU]|(ND)|(OF)|(TF))\\/RC:(C|(ND)|(UC)|(UR)))?(\\/CDP:([NLH]|ND|LM|MH)\\/TD:(ND|[NLMH])\\/CR:(ND|[NLMH])\\/IR:(ND|[LMH])\\/AR:(ND|[LMH]))?\\)?$"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "Severity": {
+                "enum": ["None", "Low", "Medium", "High", "Critical"]
+              },
+              "Vector": {
+                "pattern": "^CVSS:3.[01]\/AV:[NALP]\\/AC:[LH]\\/PR:[NLH]\\/UI:[NR]\\/S:[UC]\\/C:[NLH]\\/I:[NLH]\\/A:[NLH](\\/E:[XUPFH]\\/RL:[XOTWU]\\/RC:[XURC])?(\\/CR:[XLMH]\\/IR:[XLMH]\\/AR:[XLMH]\\/MAV:[XNALP]\\/MAC:[XLH]\\/MPR:[XNLH]\\/MUI:[XNR]\\/MS:[XUC]\\/MC:[XNLH]\\/MI:[XNLH]\\/MA:[XNLH])?$"
+              }
+            }
           }
         }
       }
