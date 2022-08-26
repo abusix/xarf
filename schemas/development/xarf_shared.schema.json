@@ -522,7 +522,7 @@
       "properties": {
         "CVSS": {
           "type": "object",
-          "required": [ "Version", "Vector" ],
+          "required": ["Version", "Vector"],
           "properties": {
             "Score": {
               "type": "number"
@@ -539,10 +539,10 @@
             }
           },
           "if": {
-            "properties": { "Version": {"const": "2"} }
+            "properties": { "Version": { "const": "2" } }
           },
           "then": {
-            "properties": { 
+            "properties": {
               "Severity": {
                 "enum": ["Low", "Medium", "High"]
               },
@@ -557,7 +557,7 @@
                 "enum": ["None", "Low", "Medium", "High", "Critical"]
               },
               "Vector": {
-                "pattern": "^CVSS:3.[01]\/AV:[NALP]\\/AC:[LH]\\/PR:[NLH]\\/UI:[NR]\\/S:[UC]\\/C:[NLH]\\/I:[NLH]\\/A:[NLH](\\/E:[XUPFH]\\/RL:[XOTWU]\\/RC:[XURC])?(\\/CR:[XLMH]\\/IR:[XLMH]\\/AR:[XLMH]\\/MAV:[XNALP]\\/MAC:[XLH]\\/MPR:[XNLH]\\/MUI:[XNR]\\/MS:[XUC]\\/MC:[XNLH]\\/MI:[XNLH]\\/MA:[XNLH])?$"
+                "pattern": "^CVSS:3.[01]\\/AV:[NALP]\\/AC:[LH]\\/PR:[NLH]\\/UI:[NR]\\/S:[UC]\\/C:[NLH]\\/I:[NLH]\\/A:[NLH](\\/E:[XUPFH]\\/RL:[XOTWU]\\/RC:[XURC])?(\\/CR:[XLMH]\\/IR:[XLMH]\\/AR:[XLMH]\\/MAV:[XNALP]\\/MAC:[XLH]\\/MPR:[XNLH]\\/MUI:[XNR]\\/MS:[XUC]\\/MC:[XNLH]\\/MI:[XNLH]\\/MA:[XNLH])?$"
               }
             }
           }
