@@ -269,9 +269,9 @@
               "minProperties": 1,
               "description": "Account data of the reportee",
               "properties": {
-                "AccountName": {
+                "AccountIdentifier": {
                   "type": "string",
-                  "description": "reported account name",
+                  "description": "reported account name or other identifier",
                   "not": {
                     "description": "email based user accounts should go to the AccountEmail field",
                     "format": "email"
@@ -280,10 +280,6 @@
                 "AccountEmail": {
                   "type": "string",
                   "description": "email account of the user"
-                },
-                "AccountNumber": {
-                  "description": "account number of the user",
-                  "type": "number"
                 }
               }
             }
@@ -398,7 +394,7 @@
         },
         "HashAlgorithm": {
           "type": "string",
-          "enum": ["sha1", "sha2", "sha3", "sha256", "sha512", "md5", "argon2id", "scrypt", "bcrypt", "PBKDF2"]
+          "enum": ["sha1", "sha2", "sha3", "sha256", "sha512", "md5", "argon2id", "scrypt", "bcrypt", "pbkdf2"]
         },
         "HashComplete": {
           "type": "boolean",
