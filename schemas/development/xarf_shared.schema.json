@@ -167,23 +167,11 @@
           "type": "object",
           "properties": {
             "SourceIp": {
-              "description": "ip from that the abuse event originated",
-              "oneOf": [
-                {
-                  "type": "string",
-                  "format": "ipv4"
-                },
-                {
-                  "type": "string",
-                  "format": "ipv6"
-                }
-              ]
+              "description": "ip from which the abuse event originated",
+              "$ref": "#/properties/Ip"
             },
             "SourcePort": {
-              "type": "integer",
-              "description": "source port from that the abuse event originated",
-              "minimum": 0,
-              "maximum": 65535
+              "$ref": "#/properties/Port"
             },
             "ASN": {
               "type": "integer",
@@ -208,10 +196,7 @@
           "type": "object",
           "properties": {
             "SourcePort": {
-              "type": "integer",
-              "description": "source port from that the abuse event originated",
-              "minimum": 0,
-              "maximum": 65535
+              "$ref": "#/properties/Port"
             }
           }
         },
@@ -222,17 +207,8 @@
               "required": ["SourceIp"],
               "properties": {
                 "SourceIp": {
-                  "description": "ip from that the abuse event originated",
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "format": "ipv4"
-                    },
-                    {
-                      "type": "string",
-                      "format": "ipv6"
-                    }
-                  ]
+                  "description": "ip from which the abuse event originated",
+                  "$ref": "#/properties/Ip"
                 },
                 "ASN": {
                   "type": "integer",
@@ -256,6 +232,25 @@
           ]
         }
       ]
+    },
+    "Ip": {
+      "title": "IP information, either ipv4 or ipv6",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "ipv4"
+        },
+        {
+          "type": "string",
+          "format": "ipv6"
+        }
+      ]
+    },
+    "Port": {
+      "title": "Port information",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
     },
     "AccountBasedReport": {
       "allOf": [
@@ -419,33 +414,20 @@
       "properties": {
         "DestinationIp": {
           "description": "targeted ip",
-          "oneOf": [
-            {
-              "type": "string",
-              "format": "ipv4"
-            },
-            {
-              "type": "string",
-              "format": "ipv6"
-            }
-          ]
+          "$ref": "#/properties/Ip"
         },
         "DestinationPort": {
           "oneOf": [
             {
               "type": "array",
               "items": {
-                "type": "integer",
-                "description": "targeted port",
-                "minimum": 0,
-                "maximum": 65535
+                "$ref": "#/properties/Port",
+                "description": "targeted port"
               }
             },
             {
-              "type": "integer",
-              "description": "targeted port",
-              "minimum": 0,
-              "maximum": 65535
+              "$ref": "#/properties/Port",
+              "description": "targeted port"
             }
           ]
         }
@@ -457,33 +439,20 @@
       "properties": {
         "AttackerIp": {
           "description": "attacker ip",
-          "oneOf": [
-            {
-              "type": "string",
-              "format": "ipv4"
-            },
-            {
-              "type": "string",
-              "format": "ipv6"
-            }
-          ]
+          "$ref": "#/properties/Ip"
         },
         "AttackerPort": {
           "oneOf": [
             {
               "type": "array",
               "items": {
-                "type": "integer",
-                "description": "attack port",
-                "minimum": 0,
-                "maximum": 65535
+                "$ref": "#/properties/Port",
+                "description": "attack port"
               }
             },
             {
-              "type": "integer",
-              "description": "attack port",
-              "minimum": 0,
-              "maximum": 65535
+              "$ref": "#/properties/Port",
+              "description": "attack port"
             }
           ]
         }
