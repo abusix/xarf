@@ -4,7 +4,7 @@
     "ReporterType": "Org",
     "ReporterOrg": "ExampleOrg",
     "ReporterOrgDomain": "example.com",
-    "ReporterOrgEmail": "reports@example.com",
+    "ReporterOrgEmail": "reports@example.com"
   },
   "Disclosure": true,
   "Report": {

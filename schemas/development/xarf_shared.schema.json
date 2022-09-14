@@ -33,6 +33,7 @@
       "required": ["ReporterInfo"]
     },
     "XarfCommon": {
+      "type": "object",
       "properties": {
         "Disclosure": {
           "type": "boolean",
@@ -203,16 +204,10 @@
     },
     "XarfBasePersonal": {
       "type": "object",
+      "$comment": "Front for XarfCommon, for extensions in the future",
       "allOf": [
         {
           "$ref": "#/$defs/XarfCommon"
-        },
-        {
-          "properties": {
-            "": {
-
-            }
-          }
         }
       ]
     },
@@ -567,7 +562,15 @@
         "HarassmentType": {
           "oneOf": [
             {
-              "enum": ["doxing", "stalking", "sexual", "believes", "defamation", "extorsion", "hate"]
+              "enum": [
+                "doxing",
+                "stalking",
+                "sexual",
+                "believes",
+                "defamation",
+                "extorsion",
+                "hate"
+              ]
             },
             {
               "type": "string",
