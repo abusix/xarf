@@ -578,7 +578,8 @@
         "HarassmentLocation": {
           "enum": ["website", "chat", "game"]
         }
-      }
+      },
+      "required": ["Harasser", "HarassmentDescription"]
     }
   }
 }
