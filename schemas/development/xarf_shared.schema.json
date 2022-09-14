@@ -95,10 +95,10 @@
           "properties": {
             "ReporterType": "Person"
           }
-        },
-        "then": {
-          "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
         }
+      },
+      "then": {
+        "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
       }
     },
     "OnBehalfOf": {
