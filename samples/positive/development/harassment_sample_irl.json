@@ -1,0 +1,21 @@
+{
+  "Version": "development",
+  "ReporterInfo": {
+    "ReporterType": "Person",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Harassed McPerson",
+    "ReporterContactPhone": "+ 01 555 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Activity",
+    "ReportType": "Harassed",
+    "Date": "2022-09-09T14:17:10Z",
+    "SourceUrl": "192.168.0.11",
+    "Ongoing": true,
+    "Harasser": "x.X.Fl4m3r.X.x",
+    "HarassmentLocation": "game",
+    "HarassmentType": "hate",
+    "HarassmentDescription": "The user called me a bunch of slurs."
+  }
+}
