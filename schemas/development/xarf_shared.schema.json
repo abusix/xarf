@@ -53,6 +53,7 @@
       "type": "object",
       "properties": {
         "ReporterType": {
+          "$comment": "Contact info is optional if the reporter is a natural person",
           "enum": ["Org", "Person"]
         },
         "ReporterOrg": {
@@ -91,11 +92,7 @@
         }
       },
       "if": {
-        "not": {
-          "properties": {
-            "ReporterType": "Person"
-          }
-        }
+        "not": { "properties": { "ReporterType": { "const": "Person" } } }
       },
       "then": {
         "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
@@ -104,6 +101,10 @@
     "OnBehalfOf": {
       "type": "object",
       "properties": {
+        "ComplainantType": {
+          "$comment": "Contact info is optional if the reporter is a natural person",
+          "enum": ["Org", "Person"]
+        },
         "ComplainantOrg": {
           "type": "string",
           "description": "name of the complainant organisation",
@@ -135,11 +136,18 @@
           "minLength": 3
         }
       },
-      "required": [
-        "ComplainantOrg",
-        "ComplainantOrgDomain",
-        "ComplainantOrgEmail"
-      ]
+      "if": {
+        "not": {
+          "properties": { "ComplainantType": { "const": "Person" } }
+        }
+      },
+      "then": {
+        "required": [
+          "ComplainantOrg",
+          "ComplainantOrgDomain",
+          "ComplainantOrgEmail"
+        ]
+      }
     },
     "InternalProcessing": {
       "type": "object",
@@ -197,15 +205,6 @@
         {
           "$ref": "#/$defs/XarfInstitutional"
         },
-        {
-          "$ref": "#/$defs/XarfCommon"
-        }
-      ]
-    },
-    "XarfBasePersonal": {
-      "type": "object",
-      "$comment": "Front for XarfCommon, for extensions in the future",
-      "allOf": [
         {
           "$ref": "#/$defs/XarfCommon"
         }
@@ -291,7 +290,7 @@
             },
             "ASN": {
               "type": "integer",
-              "description": "autonomous system number the reportet ip belongs to",
+              "description": "autonomous system number the reported ip belongs to",
               "minimum": 1,
               "maximum": 4199999999
             }
@@ -340,7 +339,7 @@
                 },
                 "ASN": {
                   "type": "integer",
-                  "description": "autonomous system number the reportet ip belongs to",
+                  "description": "autonomous system number the reported ip belongs to",
                   "minimum": 1,
                   "maximum": 4199999999
                 }
@@ -560,22 +559,14 @@
           "description": "Description/Reason why the reported behavior classifies as harassment."
         },
         "HarassmentType": {
-          "oneOf": [
-            {
-              "enum": [
-                "doxing",
-                "stalking",
-                "sexual",
-                "believes",
-                "defamation",
-                "extorsion",
-                "hate"
-              ]
-            },
-            {
-              "type": "string",
-              "$comment": "Encourage the use of existing types, user input is hard to classify"
-            }
+          "enum": [
+            "doxing",
+            "stalking",
+            "sexual",
+            "believes",
+            "defamation",
+            "extorsion",
+            "hate"
           ]
         },
         "HarassmentLocation": {
