@@ -2,10 +2,58 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/xarf_shared.schema.json",
   "type": "object",
+  "$defs": {
+    "Date": {
+      "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
+      "type": "object",
+      "required": ["Date"],
   "properties": {
+        "Date": {
+          "format": "date-time",
+          "type": "string",
+          "description": "most recent date-time the event was noticed"
+        },
+        "FirstSeen": {
+          "format": "date-time",
+          "type": "string",
+          "description": "date-time the event was first noticed. Can be omitted if it is the same as Date"
+        }
+      }
+    },
+    "XarfInstitutional": {
+      "type": "object",
+      "properties": {
+        "ReporterInfo": {
+          "$ref": "#/$defs/ReporterInfo"
+        },
+        "OnBehalfOf": {
+          "$ref": "#/$defs/OnBehalfOf"
+        }
+      },
+      "required": ["ReporterInfo"]
+    },
+    "XarfCommon": {
+      "properties": {
+        "Disclosure": {
+          "type": "boolean",
+          "description": "if this event is disclosed or not",
+          "default": true
+        },
+        "Version": {
+          "const": "development"
+        },
+        "InternalProcessing": {
+          "$ref": "#/$defs/InternalProcessing"
+        }
+      },
+      "required": ["Disclosure", "Version"]
+    },
     "ReporterInfo": {
       "type": "object",
       "properties": {
+        "ReporterType": {
+          "enum": ["Org", "Person"]
+        },
         "ReporterOrg": {
           "type": "string",
           "description": "name of the reporter organisation",
@@ -41,7 +89,16 @@
           "minLength": 3
         }
       },
+      "if": {
+        "not": {
+          "properties": {
+            "ReporterType": "Person"
+          }
+        },
+        "then": {
       "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
+        }
+      }
     },
     "OnBehalfOf": {
       "type": "object",
@@ -83,29 +140,81 @@
         "ComplainantOrgEmail"
       ]
     },
+    "InternalProcessing": {
+      "type": "object",
+      "description": "Information about the reportee for internal processing. This should be ignored if the reporter isn't authorized. It's intended to be used for relaying internaly generated xarf-reports to automation software.",
+      "properties": {
+        "SubscriberInformation": {
+          "type": "object",
+          "description": "Information about the reportee/customer.",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "Internal ID of the reportee."
+        },
+            "SubscriberData": {
+              "type": "object",
+              "description": "Data about a customer normaly returned by a resolver in the process of determining the reportee.",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ContractInformation": {
+          "type": "object",
+          "description": "Information about the reportee's/customer's contract.",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "Internal ID of the reportee's contract."
+        },
+            "ResolverData": {
+              "type": "object",
+              "description": "Data about a customers contract normaly returned by a resolver in the process of determining the reportee.",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "EventTags": {
+          "type": "array",
+          "description": "Custom tags for classification, metrics and other internal uses.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+        }
+      },
+  "properties": {
     "XarfBase": {
       "description": "Base properties for all xarf reports",
       "type": "object",
-      "properties": {
-        "ReporterInfo": {
-          "$ref": "#/properties/ReporterInfo"
+      "allOf": [
+        {
+          "$ref": "#/$defs/XarfInstitutional"
         },
-        "OnBehalfOf": {
-          "$ref": "#/properties/OnBehalfOf"
-        },
-        "Disclosure": {
-          "type": "boolean",
-          "description": "if this event is disclosed or not",
-          "default": true
-        },
-        "Version": {
-          "const": "development"
-        },
-        "InternalProcessing": {
-          "$ref": "#/properties/InternalProcessing"
+        {
+          "$ref": "#/$defs/XarfCommon"
         }
-      },
-      "required": ["ReporterInfo", "Disclosure", "Version"]
+      ]
+    },
+    "XarfBasePersonal": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/XarfCommon"
+        },
+        {
+          "properties": {
+            "": {
+
+            }
+          }
+        }
+      ]
     },
     "ReportBase": {
       "description": "Base properties for the report part of all xarf report types",
@@ -161,7 +270,7 @@
           "$ref": "#/properties/ReportBase"
         },
         {
-          "$ref": "#/properties/Date"
+          "$ref": "#/$defs/Date"
         },
         {
           "type": "object",
@@ -202,7 +311,7 @@
           "$ref": "#/properties/ReportBase"
         },
         {
-          "$ref": "#/properties/Date"
+          "$ref": "#/$defs/Date"
         },
         {
           "type": "object",
@@ -307,23 +416,6 @@
             "$ref": "#/properties/Sample"
           },
           "minItems": 1
-        }
-      }
-    },
-    "Date": {
-      "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
-      "type": "object",
-      "required": ["Date"],
-      "properties": {
-        "Date": {
-          "format": "date-time",
-          "type": "string",
-          "description": "most recent date-time the event was noticed"
-        },
-        "FirstSeen": {
-          "format": "date-time",
-          "type": "string",
-          "description": "date-time the event was first noticed. Can be omitted if it is the same as Date"
         }
       }
     },
