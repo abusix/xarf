@@ -9,9 +9,9 @@
   "Disclosure": true,
   "Report": {
     "ReportClass": "Activity",
-    "ReportType": "Harassed",
+    "ReportType": "Harassment",
     "Date": "2022-09-09T14:17:10Z",
-    "SourceUrl": "192.168.0.11",
+    "SourceUrl": "https://thepetgoatgame.play",
     "Ongoing": true,
     "Harasser": "x.X.Fl4m3r.X.x",
     "HarassmentLocation": "game",
