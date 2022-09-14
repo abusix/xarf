@@ -51,6 +51,7 @@
     },
     "ReporterInfo": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "ReporterType": {
           "$comment": "Contact info is optional if the reporter is a natural person",
