@@ -39,6 +39,9 @@
     },
     {
       "$ref": "openservice.schema.json"
+    },
+    {
+      "$ref": "harassment.schema.json"
     }
   ]
 }

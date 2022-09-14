@@ -7,7 +7,7 @@
       "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
       "type": "object",
       "required": ["Date"],
-  "properties": {
+      "properties": {
         "Date": {
           "format": "date-time",
           "type": "string",
@@ -96,7 +96,7 @@
           }
         },
         "then": {
-      "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
+          "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
         }
       }
     },
@@ -151,7 +151,7 @@
             "ID": {
               "type": "string",
               "description": "Internal ID of the reportee."
-        },
+            },
             "SubscriberData": {
               "type": "object",
               "description": "Data about a customer normaly returned by a resolver in the process of determining the reportee.",
@@ -168,7 +168,7 @@
             "ID": {
               "type": "string",
               "description": "Internal ID of the reportee's contract."
-        },
+            },
             "ResolverData": {
               "type": "object",
               "description": "Data about a customers contract normaly returned by a resolver in the process of determining the reportee.",
@@ -186,8 +186,8 @@
           }
         }
       }
-        }
-      },
+    }
+  },
   "properties": {
     "XarfBase": {
       "description": "Base properties for all xarf reports",
@@ -552,50 +552,31 @@
         }
       }
     },
-    "InternalProcessing": {
+    "Harassment": {
       "type": "object",
-      "description": "Information about the reportee for internal processing. This should be ignored if the reporter isn't authorized. It's intended to be used for relaying internaly generated xarf-reports to automation software.",
+      "description": "Details of someone harassing someone else.",
       "properties": {
-        "SubscriberInformation": {
-          "type": "object",
-          "description": "Information about the reportee/customer.",
-          "properties": {
-            "ID": {
-              "type": "string",
-              "description": "Internal ID of the reportee."
-            },
-            "SubscriberData": {
-              "type": "object",
-              "description": "Data about a customer normaly returned by a resolver in the process of determining the reportee.",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          }
+        "Harasser": {
+          "type": "string",
+          "description": "Specify the identity of the harassing individual, eg. name, username, phone number or email"
         },
-        "ContractInformation": {
-          "type": "object",
-          "description": "Information about the reportee's/customer's contract.",
-          "properties": {
-            "ID": {
-              "type": "string",
-              "description": "Internal ID of the reportee's contract."
-            },
-            "ResolverData": {
-              "type": "object",
-              "description": "Data about a customers contract normaly returned by a resolver in the process of determining the reportee.",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          }
+        "HarassmentDescription": {
+          "type": "string",
+          "description": "Description/Reason why the reported behavior classifies as harassment."
         },
-        "EventTags": {
-          "type": "array",
-          "description": "Custom tags for classification, metrics and other internal uses.",
-          "items": {
-            "type": "string"
-          }
+        "HarassmentType": {
+          "oneOf": [
+            {
+              "enum": ["doxing", "stalking", "sexual", "believes", "defamation", "extorsion", "hate"]
+            },
+            {
+              "type": "string",
+              "$comment": "Encourage the use of existing types, user input is hard to classify"
+            }
+          ]
+        },
+        "HarassmentLocation": {
+          "enum": ["website", "chat", "game"]
         }
       }
     }
