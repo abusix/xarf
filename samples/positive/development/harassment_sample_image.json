@@ -1,0 +1,29 @@
+{
+  "Version": "development",
+  "ReporterInfo": {
+    "ReporterType": "Person",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Harassed McPerson",
+    "ReporterContactPhone": "+ 01 555 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Activity",
+    "ReportType": "Harassment",
+    "Date": "2022-09-09T14:17:10Z",
+    "SourceUrl": "https://social.media/comment/87896745329",
+    "Ongoing": true,
+    "Harasser": "ForumUser123",
+    "HarassmentLocation": "website",
+    "HarassmentType": "doxing",
+    "HarassmentDescription": "Someone leaked my private home address with the intention of directing hate at me.",
+    "Samples": [
+      {
+        "ContentType": "image/png",
+        "Base64Encoded": true,
+        "Description": "Image of the comment leaking my address",
+        "Payload": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAPFBMVEUZGyDBx8wyNTq5v8Sr\nsbYqLDFDRkvK0daEiY5IS1DDyc6vtbqiqK2LkZaIjpN1eX5cX2Q+QUYoKzAfISa2fY/BAAAA\nQElEQVQI12PAD5iYoQwBRiFkriCHMIKLUMzPyM3EwMDDxQjmsnMycPACGawQLpDkZIFwoXrZ\nSOUyMrIz8hFwMgCL5QFBsWv97gAAAABJRU5ErkJggg=="
+      }
+    ]
+  }
+}

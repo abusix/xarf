@@ -1,0 +1,29 @@
+{
+  "Version": "development",
+  "ReporterInfo": {
+    "ReporterType": "Person",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Harassed McPerson",
+    "ReporterContactPhone": "+ 01 555 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Activity",
+    "ReportType": "Harassment",
+    "Date": "2022-09-09T14:17:10Z",
+    "SourceUrl": "http://irc.5ch.net",
+    "Ongoing": true,
+    "Harasser": "@notarealperson",
+    "HarassmentDescription": "@notarealperson has published a deepfake of me doing something illegal, claiming that it was really me that did it.",
+    "HarassmentType": "defamation",
+    "HarassmentLocation": "chat",
+    "Samples": [
+      {
+        "ContentType": "image/x-uri",
+        "Base64Encoded": false,
+        "Description": "Url to an image ",
+        "Payload": "https://imagehostingservice.tld/image/123456789"
+      }
+    ]
+  }
+}
