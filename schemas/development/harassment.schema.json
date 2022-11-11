@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/harassment.schema.json",
+  "title": "XARF HARASSMENT",
+  "description": "A format to report harassment.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Activity"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["Harassment"]
+                }
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/Harassment"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

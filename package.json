@@ -28,7 +28,7 @@
     "istanbul-lib-instrument": "^4.0.3",
     "js-beautify": "^1.13.0",
     "lint-staged": ">=10",
-    "mocha": "^8.2.1",
+    "mocha": "^10.1.0",
     "nyc": "^15.0.1",
     "prettier": "2.2.1",
     "uuid": "^8.0.0"
