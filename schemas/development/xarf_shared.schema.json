@@ -574,7 +574,6 @@
         }
       },
       "required": ["Harasser", "HarassmentDescription"]
-      }
     },
     "CVE": {
       "type": "object",
