@@ -2,10 +2,61 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/xarf_shared.schema.json",
   "type": "object",
-  "properties": {
-    "ReporterInfo": {
+  "$defs": {
+    "Date": {
+      "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
+      "type": "object",
+      "required": ["Date"],
+      "properties": {
+        "Date": {
+          "format": "date-time",
+          "type": "string",
+          "description": "most recent date-time the event was noticed"
+        },
+        "FirstSeen": {
+          "format": "date-time",
+          "type": "string",
+          "description": "date-time the event was first noticed. Can be omitted if it is the same as Date"
+        }
+      }
+    },
+    "XarfInstitutional": {
       "type": "object",
       "properties": {
+        "ReporterInfo": {
+          "$ref": "#/$defs/ReporterInfo"
+        },
+        "OnBehalfOf": {
+          "$ref": "#/$defs/OnBehalfOf"
+        }
+      },
+      "required": ["ReporterInfo"]
+    },
+    "XarfCommon": {
+      "type": "object",
+      "properties": {
+        "Disclosure": {
+          "type": "boolean",
+          "description": "if this event is disclosed or not",
+          "default": true
+        },
+        "Version": {
+          "const": "development"
+        },
+        "InternalProcessing": {
+          "$ref": "#/$defs/InternalProcessing"
+        }
+      },
+      "required": ["Disclosure", "Version"]
+    },
+    "ReporterInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ReporterType": {
+          "$comment": "Contact info is optional if the reporter is a natural person",
+          "enum": ["Org", "Person"]
+        },
         "ReporterOrg": {
           "type": "string",
           "description": "name of the reporter organisation",
@@ -41,11 +92,20 @@
           "minLength": 3
         }
       },
-      "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
+      "if": {
+        "not": { "properties": { "ReporterType": { "const": "Person" } } }
+      },
+      "then": {
+        "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
+      }
     },
     "OnBehalfOf": {
       "type": "object",
       "properties": {
+        "ComplainantType": {
+          "$comment": "Contact info is optional if the reporter is a natural person",
+          "enum": ["Org", "Person"]
+        },
         "ComplainantOrg": {
           "type": "string",
           "description": "name of the complainant organisation",
@@ -77,35 +137,79 @@
           "minLength": 3
         }
       },
-      "required": [
-        "ComplainantOrg",
-        "ComplainantOrgDomain",
-        "ComplainantOrgEmail"
-      ]
+      "if": {
+        "not": {
+          "properties": { "ComplainantType": { "const": "Person" } }
+        }
+      },
+      "then": {
+        "required": [
+          "ComplainantOrg",
+          "ComplainantOrgDomain",
+          "ComplainantOrgEmail"
+        ]
+      }
     },
+    "InternalProcessing": {
+      "type": "object",
+      "description": "Information about the reportee for internal processing. This should be ignored if the reporter isn't authorized. It's intended to be used for relaying internaly generated xarf-reports to automation software.",
+      "properties": {
+        "SubscriberInformation": {
+          "type": "object",
+          "description": "Information about the reportee/customer.",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "Internal ID of the reportee."
+            },
+            "SubscriberData": {
+              "type": "object",
+              "description": "Data about a customer normaly returned by a resolver in the process of determining the reportee.",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ContractInformation": {
+          "type": "object",
+          "description": "Information about the reportee's/customer's contract.",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "Internal ID of the reportee's contract."
+            },
+            "ResolverData": {
+              "type": "object",
+              "description": "Data about a customers contract normaly returned by a resolver in the process of determining the reportee.",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "EventTags": {
+          "type": "array",
+          "description": "Custom tags for classification, metrics and other internal uses.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
     "XarfBase": {
       "description": "Base properties for all xarf reports",
       "type": "object",
-      "properties": {
-        "ReporterInfo": {
-          "$ref": "#/properties/ReporterInfo"
+      "allOf": [
+        {
+          "$ref": "#/$defs/XarfInstitutional"
         },
-        "OnBehalfOf": {
-          "$ref": "#/properties/OnBehalfOf"
-        },
-        "Disclosure": {
-          "type": "boolean",
-          "description": "if this event is disclosed or not",
-          "default": true
-        },
-        "Version": {
-          "const": "development"
-        },
-        "InternalProcessing": {
-          "$ref": "#/properties/InternalProcessing"
+        {
+          "$ref": "#/$defs/XarfCommon"
         }
-      },
-      "required": ["ReporterInfo", "Disclosure", "Version"]
+      ]
     },
     "ReportBase": {
       "description": "Base properties for the report part of all xarf report types",
@@ -161,7 +265,7 @@
           "$ref": "#/properties/ReportBase"
         },
         {
-          "$ref": "#/properties/Date"
+          "$ref": "#/$defs/Date"
         },
         {
           "type": "object",
@@ -187,7 +291,7 @@
             },
             "ASN": {
               "type": "integer",
-              "description": "autonomous system number the reportet ip belongs to",
+              "description": "autonomous system number the reported ip belongs to",
               "minimum": 1,
               "maximum": 4199999999
             }
@@ -202,7 +306,7 @@
           "$ref": "#/properties/ReportBase"
         },
         {
-          "$ref": "#/properties/Date"
+          "$ref": "#/$defs/Date"
         },
         {
           "type": "object",
@@ -236,7 +340,7 @@
                 },
                 "ASN": {
                   "type": "integer",
-                  "description": "autonomous system number the reportet ip belongs to",
+                  "description": "autonomous system number the reported ip belongs to",
                   "minimum": 1,
                   "maximum": 4199999999
                 }
@@ -307,23 +411,6 @@
             "$ref": "#/properties/Sample"
           },
           "minItems": 1
-        }
-      }
-    },
-    "Date": {
-      "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
-      "type": "object",
-      "required": ["Date"],
-      "properties": {
-        "Date": {
-          "format": "date-time",
-          "type": "string",
-          "description": "most recent date-time the event was noticed"
-        },
-        "FirstSeen": {
-          "format": "date-time",
-          "type": "string",
-          "description": "date-time the event was first noticed. Can be omitted if it is the same as Date"
         }
       }
     },
@@ -439,7 +526,6 @@
     "Service": {
       "type": "object",
       "description": "Specify a service to report",
-      "required": ["ServiceName"],
       "properties": {
         "ServiceName": {
           "type": "string"
@@ -460,49 +546,89 @@
         }
       }
     },
-    "InternalProcessing": {
+    "Harassment": {
       "type": "object",
-      "description": "Information about the reportee for internal processing. This should be ignored if the reporter isn't authorized. It's intended to be used for relaying internaly generated xarf-reports to automation software.",
+      "description": "Details of someone harassing someone else.",
       "properties": {
-        "SubscriberInformation": {
+        "Harasser": {
+          "type": "string",
+          "description": "Specify the identity of the harassing individual, eg. name, username, phone number or email"
+        },
+        "HarassmentDescription": {
+          "type": "string",
+          "description": "Description/Reason why the reported behavior classifies as harassment."
+        },
+        "HarassmentType": {
+          "enum": [
+            "doxing",
+            "stalking",
+            "sexual",
+            "believes",
+            "defamation",
+            "extortion",
+            "hate"
+          ]
+        },
+        "HarassmentLocation": {
+          "enum": ["website", "chat", "game"]
+        }
+      },
+      "required": ["Harasser", "HarassmentDescription"]
+    },
+    "CVE": {
+      "type": "object",
+      "description": "CVE reference number",
+      "properties": {
+        "CVE": {
+          "type": "string",
+          "pattern": "^CVE-\\d{4}-\\d{4,7}$"
+        }
+      }
+    },
+    "CVSS": {
+      "type": "object",
+      "description": "CVSS Severity and Metrics",
+      "properties": {
+        "CVSS": {
           "type": "object",
-          "description": "Information about the reportee/customer.",
+          "required": ["Version", "Vector"],
           "properties": {
-            "ID": {
-              "type": "string",
-              "description": "Internal ID of the reportee."
+            "Score": {
+              "type": "number"
             },
-            "SubscriberData": {
-              "type": "object",
-              "description": "Data about a customer normaly returned by a resolver in the process of determining the reportee.",
-              "additionalProperties": {
-                "type": "string"
+            "Version": {
+              "type": "string",
+              "enum": ["3.1", "3.0", "2"]
+            },
+            "Vector": {
+              "type": "string"
+            },
+            "Severity": {
+              "type": "string"
+            }
+          },
+          "if": {
+            "properties": { "Version": { "const": "2" } }
+          },
+          "then": {
+            "properties": {
+              "Severity": {
+                "enum": ["Low", "Medium", "High"]
+              },
+              "Vector": {
+                "pattern": "^\\(?AV:[LAN]\\/AC:[HML]\\/Au:[MSN]\\/C:[NPC]\\/I:[NPC]\\/A:[NPC](\\/E:((ND)|(POC)|[UFH])\\/RL:([WU]|(ND)|(OF)|(TF))\\/RC:(C|(ND)|(UC)|(UR)))?(\\/CDP:([NLH]|ND|LM|MH)\\/TD:(ND|[NLMH])\\/CR:(ND|[NLMH])\\/IR:(ND|[LMH])\\/AR:(ND|[LMH]))?\\)?$"
               }
             }
-          }
-        },
-        "ContractInformation": {
-          "type": "object",
-          "description": "Information about the reportee's/customer's contract.",
-          "properties": {
-            "ID": {
-              "type": "string",
-              "description": "Internal ID of the reportee's contract."
-            },
-            "ResolverData": {
-              "type": "object",
-              "description": "Data about a customers contract normaly returned by a resolver in the process of determining the reportee.",
-              "additionalProperties": {
-                "type": "string"
+          },
+          "else": {
+            "properties": {
+              "Severity": {
+                "enum": ["None", "Low", "Medium", "High", "Critical"]
+              },
+              "Vector": {
+                "pattern": "^CVSS:3.[01]\\/AV:[NALP]\\/AC:[LH]\\/PR:[NLH]\\/UI:[NR]\\/S:[UC]\\/C:[NLH]\\/I:[NLH]\\/A:[NLH](\\/E:[XUPFH]\\/RL:[XOTWU]\\/RC:[XURC])?(\\/CR:[XLMH]\\/IR:[XLMH]\\/AR:[XLMH]\\/MAV:[XNALP]\\/MAC:[XLH]\\/MPR:[XNLH]\\/MUI:[XNR]\\/MS:[XUC]\\/MC:[XNLH]\\/MI:[XNLH]\\/MA:[XNLH])?$"
               }
             }
-          }
-        },
-        "EventTags": {
-          "type": "array",
-          "description": "Custom tags for classification, metrics and other internal uses.",
-          "items": {
-            "type": "string"
           }
         }
       }

@@ -32,6 +32,9 @@
       "$ref": "loginattack.schema.json"
     },
     {
+      "$ref": "exploit.schema.json"
+    },
+    {
       "$ref": "childabuse.schema.json"
     },
     {
@@ -42,6 +45,9 @@
     },
     {
       "$ref": "webcrawler.schema.json"
+    },
+    {
+      "$ref": "harassment.schema.json"
     }
   ]
 }
