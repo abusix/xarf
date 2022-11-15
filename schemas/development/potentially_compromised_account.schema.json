@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/potentially_compromised_account.schema.json",
+  "title": "XARF COMPROMISED ACCOUNT",
+  "description": "Report format to notify victims of a potentially leaked login data. Used for reporting observed usages of possibly leaked user information in login attempts.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/properties/AccountBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Activity"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["PotentiallyCompromisedAccount"]
+                }
+              }
+            },
+            {
+              "not": {
+                "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/WithAttacker"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/WithDestination"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/$defs/Password"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

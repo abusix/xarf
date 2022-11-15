@@ -35,6 +35,9 @@
       "$ref": "exploit.schema.json"
     },
     {
+      "$ref": "potentially_compromised_account.schema.json"
+    },
+    {
       "$ref": "childabuse.schema.json"
     },
     {

@@ -3,6 +3,25 @@
   "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/xarf_shared.schema.json",
   "type": "object",
   "$defs": {
+    "Ip": {
+      "title": "IP information, either ipv4 or ipv6",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "ipv4"
+        },
+        {
+          "type": "string",
+          "format": "ipv6"
+        }
+      ]
+    },
+    "Port": {
+      "title": "Port information",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
     "Date": {
       "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
       "type": "object",
@@ -19,6 +38,45 @@
           "description": "date-time the event was first noticed. Can be omitted if it is the same as Date"
         }
       }
+    },
+    "Password": {
+      "description": "Password information",
+      "type": "object",
+      "properties": {
+        "PasswordHash": {
+          "$ref": "#/$defs/Hash"
+        }
+      }
+    },
+    "Hash": {
+      "description": "The hash value of eg. a file or a password.",
+      "type": "object",
+      "properties": {
+        "HashValue": {
+          "type": "string"
+        },
+        "HashAlgorithm": {
+          "type": "string",
+          "enum": [
+            "sha1",
+            "sha2",
+            "sha3",
+            "sha256",
+            "sha512",
+            "md5",
+            "argon2id",
+            "scrypt",
+            "bcrypt",
+            "pbkdf2"
+          ]
+        },
+        "HashComplete": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether the complete hash is attached. The alternative is to only attach the first N characters of the computed hash."
+        }
+      },
+      "required": ["HashValue", "HashAlgorithm"]
     },
     "XarfInstitutional": {
       "type": "object",
@@ -164,7 +222,7 @@
             },
             "SubscriberData": {
               "type": "object",
-              "description": "Data about a customer normaly returned by a resolver in the process of determining the reportee.",
+              "description": "Data about a customer normally returned by a resolver in the process of determining the reportee.",
               "additionalProperties": {
                 "type": "string"
               }
@@ -271,23 +329,10 @@
           "type": "object",
           "properties": {
             "SourceIp": {
-              "description": "ip from that the abuse event originated",
-              "oneOf": [
-                {
-                  "type": "string",
-                  "format": "ipv4"
-                },
-                {
-                  "type": "string",
-                  "format": "ipv6"
-                }
-              ]
+              "$ref": "#/$defs/Ip"
             },
             "SourcePort": {
-              "type": "integer",
-              "description": "source port from that the abuse event originated",
-              "minimum": 0,
-              "maximum": 65535
+              "$ref": "#/$defs/Port"
             },
             "ASN": {
               "type": "integer",
@@ -312,10 +357,7 @@
           "type": "object",
           "properties": {
             "SourcePort": {
-              "type": "integer",
-              "description": "source port from that the abuse event originated",
-              "minimum": 0,
-              "maximum": 65535
+              "$ref": "#/$defs/Port"
             }
           }
         },
@@ -326,17 +368,8 @@
               "required": ["SourceIp"],
               "properties": {
                 "SourceIp": {
-                  "description": "ip from that the abuse event originated",
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "format": "ipv4"
-                    },
-                    {
-                      "type": "string",
-                      "format": "ipv6"
-                    }
-                  ]
+                  "description": "ip from which the abuse event originated",
+                  "$ref": "#/$defs/Ip"
                 },
                 "ASN": {
                   "type": "integer",
@@ -358,6 +391,41 @@
               }
             }
           ]
+        }
+      ]
+    },
+    "AccountBasedReport": {
+      "allOf": [
+        {
+          "$ref": "#/properties/ReportBase"
+        },
+        {
+          "$ref": "#/$defs/Date"
+        },
+        {
+          "type": "object",
+          "required": ["Account"],
+          "properties": {
+            "Account": {
+              "type": "object",
+              "minProperties": 1,
+              "description": "Account data of the reportee",
+              "properties": {
+                "AccountIdentifier": {
+                  "type": "string",
+                  "description": "reported account name or other identifier",
+                  "not": {
+                    "description": "email based user accounts should go to the AccountEmail field",
+                    "format": "email"
+                  }
+                },
+                "AccountEmail": {
+                  "type": "string",
+                  "description": "email account of the user"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -428,8 +496,7 @@
           "minimum": 0
         },
         "FileHash": {
-          "type": "string",
-          "description": "hash value of the file"
+          "$ref": "#/$defs/Hash"
         }
       },
       "required": ["FileName"]
@@ -440,33 +507,45 @@
       "properties": {
         "DestinationIp": {
           "description": "targeted ip",
-          "oneOf": [
-            {
-              "type": "string",
-              "format": "ipv4"
-            },
-            {
-              "type": "string",
-              "format": "ipv6"
-            }
-          ]
+          "$ref": "#/$defs/Ip"
         },
         "DestinationPort": {
           "oneOf": [
             {
               "type": "array",
               "items": {
-                "type": "integer",
-                "description": "targeted port",
-                "minimum": 0,
-                "maximum": 65535
+                "$ref": "#/$defs/Port",
+                "description": "targeted port"
               }
             },
             {
-              "type": "integer",
-              "description": "targeted port",
-              "minimum": 0,
-              "maximum": 65535
+              "$ref": "#/$defs/Port",
+              "description": "targeted port"
+            }
+          ]
+        }
+      }
+    },
+    "WithAttacker": {
+      "type": "object",
+      "description": "Specify the source of an attack. Used when attack source is not the subject of the report, eg. in an PotentiallyCompromisedAccount report.",
+      "properties": {
+        "AttackerIp": {
+          "description": "attacker ip",
+          "$ref": "#/$defs/Ip"
+        },
+        "AttackerPort": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Port",
+                "description": "attack port"
+              }
+            },
+            {
+              "$ref": "#/$defs/Port",
+              "description": "attack port"
             }
           ]
         }

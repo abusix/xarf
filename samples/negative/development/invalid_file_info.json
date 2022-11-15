@@ -27,6 +27,9 @@
     "FileName": "badexamplesong.mp3",
     "CourtOrder": "https://court.example.com/courtorder.pdf",
     "FileSize": -3,
-    "FileHash": 15
+    "FileHash": {
+      "HashValue": "0049f43fcf5f023593395735a0fef31ff35ae7f7",
+      "HashAlgorithm": "sha1"
+    }
   }
 }
