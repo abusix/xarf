@@ -143,9 +143,9 @@ ajv -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.
 ## Release a new schema version
 
 1. Make sure tests are green
-1. Script dependencies: 
-    - [jq](https://stedolan.github.io/jq/download/)
-    - [sponge (part of moreutils in debian/ubuntu)](http://joeyh.name/code/moreutils/)
+1. Script dependencies:
+   - [jq](https://stedolan.github.io/jq/download/)
+   - [sponge (part of moreutils in debian/ubuntu)](http://joeyh.name/code/moreutils/)
 1. ./relase_new_version.sh {version}
 1. Update "Current Release" Info in this Readme
 
