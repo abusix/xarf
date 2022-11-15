@@ -400,7 +400,7 @@
           "$ref": "#/properties/ReportBase"
         },
         {
-          "$ref": "#/properties/Date"
+          "$ref": "#/$defs/Date"
         },
         {
           "type": "object",
