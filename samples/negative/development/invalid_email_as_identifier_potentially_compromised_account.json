@@ -20,7 +20,7 @@
     "SourcePort": 54321,
     "Account": {
       "AccountIdentifier": "leaked@company.com",
-      "AccountEmail": "leaked@company.com" 
+      "AccountEmail": "leaked@company.com"
     },
     "Samples": [
       {
