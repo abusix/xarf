@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/openservice.schema.json",
-  "title": "XARF OPENSERVICE",
-  "description": "A format to report open service events.",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/harassment.schema.json",
+  "title": "XARF HARASSMENT",
+  "description": "A format to report harassment.",
   "allOf": [
     {
       "$ref": "xarf_shared.schema.json#/properties/XarfBase"
@@ -20,22 +20,16 @@
               "properties": {
                 "ReportClass": {
                   "type": "string",
-                  "enum": ["Vulnerability"]
+                  "enum": ["Activity"]
                 },
                 "ReportType": {
                   "type": "string",
-                  "enum": ["OpenService"]
+                  "enum": ["Harassment"]
                 }
               }
             },
             {
-              "$ref": "xarf_shared.schema.json#/properties/TransportProtocol"
-            },
-            {
-              "$ref": "xarf_shared.schema.json#/properties/Service"
-            },
-            {
-              "required": ["ServiceName"]
+              "$ref": "xarf_shared.schema.json#/properties/Harassment"
             },
             {
               "$ref": "xarf_shared.schema.json#/properties/CommonProps"

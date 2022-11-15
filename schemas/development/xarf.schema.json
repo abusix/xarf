@@ -32,6 +32,9 @@
       "$ref": "loginattack.schema.json"
     },
     {
+      "$ref": "exploit.schema.json"
+    },
+    {
       "$ref": "potentially_compromised_account.schema.json"
     },
     {
@@ -42,6 +45,12 @@
     },
     {
       "$ref": "openservice.schema.json"
+    },
+    {
+      "$ref": "webcrawler.schema.json"
+    },
+    {
+      "$ref": "harassment.schema.json"
     }
   ]
 }
