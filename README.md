@@ -133,21 +133,21 @@ ajv -s xarf.schema.json -d "samples/positive/**/*.json" -r "schemas/**/*.schema.
 ## Adding a new schema
 
 1. Fork the github repo
-2. Add a new schema in `schemas/development/` as [subtype].schema.json and try to reuse as much as possible from xarf_shared.schema.json
-3. Add an example sample to `samples/positive/development/`
-4. Add the new schema to the list in `schemas/development/xarf.schema.json`
-5. Run tests locally: `npm run test-xarf`
-6. Open up a github PR
-7. Discuss and improve
+1. Add a new schema in `schemas/development/` as [subtype].schema.json and try to reuse as much as possible from xarf_shared.schema.json
+1. Add an example sample to `samples/positive/development/`
+1. Add the new schema to the list in `schemas/development/xarf.schema.json`
+1. Run tests locally: `npm run test-xarf`
+1. Open up a github PR
+1. Discuss and improve
 
 ## Release a new schema version
 
 1. Make sure tests are green
-2. Script dependencies: 
+1. Script dependencies: 
   - [jq](https://stedolan.github.io/jq/download/)
   - [sponge (part of moreutils in debian/ubuntu)](http://joeyh.name/code/moreutils/)
-3. ./relase_new_version.sh {version}
-4. Update "Current Release" Info in this Readme
+1. ./relase_new_version.sh {version}
+1. Update "Current Release" Info in this Readme
 
 ## Writing the schema to a single file:
 
