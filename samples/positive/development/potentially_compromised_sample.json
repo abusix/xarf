@@ -17,8 +17,7 @@
     "DestinationPort": 80,
     "Ongoing": true,
     "Account": {
-      "AccountName": "Karl Heinz",
-      "AccountNumber": 89789778643782
+      "AccountIdentifier": "Karl Heinz"
     },
     "PasswordHash": {
       "HashValue": "286755fad04869ca523320acce0dc6a4",
