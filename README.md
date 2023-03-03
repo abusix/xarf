@@ -25,7 +25,7 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
 
 ## Build status
 
-[![Build Status](https://img.shields.io/github/workflow/status/abusix/xarf/xarf-ci/master)](https://github.com/abusix/xarf/actions?query=workflow%3Axarf-ci)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/abusix/xarf/.github/workflows/ci.yml?branch=master)](https://github.com/abusix/xarf/actions?query=workflow%3Axarf-ci)
 
 ## Coverage
 
