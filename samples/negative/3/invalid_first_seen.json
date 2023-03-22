@@ -1,0 +1,19 @@
+{
+  "Version": "3",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportType": "Trademark",
+    "ReportClass": "Content",
+    "FirstSeen": "This is no date",
+    "Date": "2018-10-23T18:17:10Z",
+    "SourceUrl": "http://www.i-steal-your-trademark.com/your.logo",
+    "TrademarkedMaterial": "The logo of my company",
+    "RegistrationOffice": "uspto",
+    "RegistrationNumber": "99999999999"
+  }
+}

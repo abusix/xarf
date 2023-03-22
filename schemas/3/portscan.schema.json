@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/3/portscan.schema.json",
+  "title": "XARF PORTSCAN",
+  "description": "A format to report PORTSCAN events.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/properties/IpBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Activity"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["PortScan"]
+                }
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/WithDestination"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/WithTrafficStats"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

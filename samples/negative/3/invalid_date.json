@@ -1,0 +1,29 @@
+{
+  "Version": "3",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Content",
+    "ReportType": "Phishing",
+    "Date": "This is not a date",
+    "SourceIp": "192.0.2.55",
+    "SourcePort": 80,
+    "SourceUrl": "http://phish.example.org/index.html",
+    "Ongoing": true,
+    "Samples": [
+      {
+        "ContentType": "text/html",
+        "Base64Encoded": false,
+        "Description": "Just a test sample",
+        "Payload": "<html>Phishy</html>"
+      }
+    ]
+  }
+}

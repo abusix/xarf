@@ -1,0 +1,716 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/3/xarf_shared.schema.json",
+  "type": "object",
+  "$defs": {
+    "Ip": {
+      "title": "IP information, either ipv4 or ipv6",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "ipv4"
+        },
+        {
+          "type": "string",
+          "format": "ipv6"
+        }
+      ]
+    },
+    "Port": {
+      "title": "Port information",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "Date": {
+      "description": "stores either a single date or two dates, one for the first occurrence of the event, one for the most recent",
+      "type": "object",
+      "required": ["Date"],
+      "properties": {
+        "Date": {
+          "format": "date-time",
+          "type": "string",
+          "description": "most recent date-time the event was noticed"
+        },
+        "FirstSeen": {
+          "format": "date-time",
+          "type": "string",
+          "description": "date-time the event was first noticed. Can be omitted if it is the same as Date"
+        }
+      }
+    },
+    "Password": {
+      "description": "Password information",
+      "type": "object",
+      "properties": {
+        "PasswordHash": {
+          "$ref": "#/$defs/Hash"
+        }
+      }
+    },
+    "Hash": {
+      "description": "The hash value of eg. a file or a password.",
+      "type": "object",
+      "properties": {
+        "HashValue": {
+          "type": "string"
+        },
+        "HashAlgorithm": {
+          "type": "string",
+          "enum": [
+            "sha1",
+            "sha2",
+            "sha3",
+            "sha256",
+            "sha512",
+            "md5",
+            "argon2id",
+            "scrypt",
+            "bcrypt",
+            "pbkdf2"
+          ]
+        },
+        "HashComplete": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether the complete hash is attached. The alternative is to only attach the first N characters of the computed hash."
+        }
+      },
+      "required": ["HashValue", "HashAlgorithm"]
+    },
+    "XarfInstitutional": {
+      "type": "object",
+      "properties": {
+        "ReporterInfo": {
+          "$ref": "#/$defs/ReporterInfo"
+        },
+        "OnBehalfOf": {
+          "$ref": "#/$defs/OnBehalfOf"
+        }
+      },
+      "required": ["ReporterInfo"]
+    },
+    "XarfCommon": {
+      "type": "object",
+      "properties": {
+        "Disclosure": {
+          "type": "boolean",
+          "description": "if this event is disclosed or not",
+          "default": true
+        },
+        "Version": {
+          "const": "3"
+        },
+        "InternalProcessing": {
+          "$ref": "#/$defs/InternalProcessing"
+        }
+      },
+      "required": ["Disclosure", "Version"]
+    },
+    "ReporterInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ReporterType": {
+          "$comment": "Contact info is optional if the reporter is a natural person",
+          "enum": ["Org", "Person"]
+        },
+        "ReporterOrg": {
+          "type": "string",
+          "description": "name of the reporter organisation",
+          "minLength": 3
+        },
+        "ReporterOrgDomain": {
+          "type": "string",
+          "description": "domain.tld of the reporter organisation",
+          "format": "hostname"
+        },
+        "ReporterOrgEmail": {
+          "type": "string",
+          "description": "email-address of the reporter organisation",
+          "format": "email"
+        },
+        "ReporterOrgAddress": {
+          "type": "string",
+          "description": "address of the reporter organisation"
+        },
+        "ReporterContactEmail": {
+          "type": "string",
+          "description": "email-address of the reporter contact",
+          "format": "email"
+        },
+        "ReporterContactName": {
+          "type": "string",
+          "description": "name of the reporter contact",
+          "minLength": 3
+        },
+        "ReporterContactPhone": {
+          "type": "string",
+          "description": "phone number of the reporter contact",
+          "minLength": 3
+        }
+      },
+      "if": {
+        "not": { "properties": { "ReporterType": { "const": "Person" } } }
+      },
+      "then": {
+        "required": ["ReporterOrg", "ReporterOrgDomain", "ReporterOrgEmail"]
+      }
+    },
+    "OnBehalfOf": {
+      "type": "object",
+      "properties": {
+        "ComplainantType": {
+          "$comment": "Contact info is optional if the reporter is a natural person",
+          "enum": ["Org", "Person"]
+        },
+        "ComplainantOrg": {
+          "type": "string",
+          "description": "name of the complainant organisation",
+          "minLength": 3
+        },
+        "ComplainantOrgDomain": {
+          "type": "string",
+          "description": "domain.tld of the complainant organisation",
+          "format": "hostname"
+        },
+        "ComplainantOrgEmail": {
+          "type": "string",
+          "description": "email-address of the complainant organisation",
+          "format": "email"
+        },
+        "ComplainantContactEmail": {
+          "type": "string",
+          "description": "email-address of the complainant contact",
+          "format": "email"
+        },
+        "ComplainantContactName": {
+          "type": "string",
+          "description": "name of the complainant contact",
+          "minLength": 3
+        },
+        "ComplainantContactPhone": {
+          "type": "string",
+          "description": "phone number of the complainant contact",
+          "minLength": 3
+        }
+      },
+      "if": {
+        "not": {
+          "properties": { "ComplainantType": { "const": "Person" } }
+        }
+      },
+      "then": {
+        "required": [
+          "ComplainantOrg",
+          "ComplainantOrgDomain",
+          "ComplainantOrgEmail"
+        ]
+      }
+    },
+    "InternalProcessing": {
+      "type": "object",
+      "description": "Information about the reportee for internal processing. This should be ignored if the reporter isn't authorized. It's intended to be used for relaying internaly generated xarf-reports to automation software.",
+      "properties": {
+        "SubscriberInformation": {
+          "type": "object",
+          "description": "Information about the reportee/customer.",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "Internal ID of the reportee."
+            },
+            "SubscriberData": {
+              "type": "object",
+              "description": "Data about a customer normally returned by a resolver in the process of determining the reportee.",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ContractInformation": {
+          "type": "object",
+          "description": "Information about the reportee's/customer's contract.",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "Internal ID of the reportee's contract."
+            },
+            "ResolverData": {
+              "type": "object",
+              "description": "Data about a customers contract normaly returned by a resolver in the process of determining the reportee.",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "EventTags": {
+          "type": "array",
+          "description": "Custom tags for classification, metrics and other internal uses.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "XarfBase": {
+      "description": "Base properties for all xarf reports",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/XarfInstitutional"
+        },
+        {
+          "$ref": "#/$defs/XarfCommon"
+        }
+      ]
+    },
+    "ReportBase": {
+      "description": "Base properties for the report part of all xarf report types",
+      "type": "object",
+      "properties": {
+        "ReportClass": {
+          "type": "string",
+          "description": "class of the reported abuse event",
+          "enum": ["Content", "Activity", "Vulnerability"]
+        },
+        "ReportType": {
+          "type": "string",
+          "description": "type of the reported abuse event",
+          "minLength": 1
+        },
+        "ReportSubType": {
+          "type": "string",
+          "description": "subtype of the reported abuse event"
+        },
+        "ReporterCaseID": {
+          "type": "string",
+          "description": "case id of this report given by the reporter"
+        },
+        "ReporterSeverity": {
+          "type": "string",
+          "description": "class of the reported abuse event",
+          "enum": ["low", "medium", "high"]
+        },
+        "ReporterNotes": {
+          "type": "string",
+          "description": "free text - notes by the reporter"
+        },
+        "Custom": {
+          "type": "object",
+          "description": "allows for custom key-value fields",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          }
+        }
+      },
+      "required": ["ReportClass", "ReportType"]
+    },
+    "IpBasedReport": {
+      "allOf": [
+        {
+          "$ref": "#/properties/ReportBase"
+        },
+        {
+          "$ref": "#/$defs/Date"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "SourceIp": {
+              "$ref": "#/$defs/Ip"
+            },
+            "SourcePort": {
+              "$ref": "#/$defs/Port"
+            },
+            "ASN": {
+              "type": "integer",
+              "description": "autonomous system number the reported ip belongs to",
+              "minimum": 1,
+              "maximum": 4199999999
+            }
+          },
+          "required": ["SourceIp"]
+        }
+      ]
+    },
+    "IpAndUrlBasedReport": {
+      "allOf": [
+        {
+          "$ref": "#/properties/ReportBase"
+        },
+        {
+          "$ref": "#/$defs/Date"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "SourcePort": {
+              "$ref": "#/$defs/Port"
+            }
+          }
+        },
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": ["SourceIp"],
+              "properties": {
+                "SourceIp": {
+                  "description": "ip from which the abuse event originated",
+                  "$ref": "#/$defs/Ip"
+                },
+                "ASN": {
+                  "type": "integer",
+                  "description": "autonomous system number the reported ip belongs to",
+                  "minimum": 1,
+                  "maximum": 4199999999
+                }
+              }
+            },
+            {
+              "type": "object",
+              "required": ["SourceUrl"],
+              "properties": {
+                "SourceUrl": {
+                  "type": "string",
+                  "description": "url of the abuse event origin",
+                  "format": "uri"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "AccountBasedReport": {
+      "allOf": [
+        {
+          "$ref": "#/properties/ReportBase"
+        },
+        {
+          "$ref": "#/$defs/Date"
+        },
+        {
+          "type": "object",
+          "required": ["Account"],
+          "properties": {
+            "Account": {
+              "type": "object",
+              "minProperties": 1,
+              "description": "Account data of the reportee",
+              "properties": {
+                "AccountIdentifier": {
+                  "type": "string",
+                  "description": "reported account name or other identifier",
+                  "not": {
+                    "description": "email based user accounts should go to the AccountEmail field",
+                    "format": "email"
+                  }
+                },
+                "AccountEmail": {
+                  "type": "string",
+                  "description": "email account of the user"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Sample": {
+      "description": "Evidence sample",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "ContentType": {
+              "type": "string",
+              "description": "content type of the sample (e.g. application/rfc822 or image/jpg)"
+            },
+            "Base64Encoded": {
+              "type": "boolean",
+              "description": "if payload is base64 encoded. Useful to avoid losing encoding information (e.g. in mails)",
+              "default": false
+            },
+            "Description": {
+              "type": "string",
+              "description": "description of the sample in plain text"
+            },
+            "Payload": {
+              "type": "string",
+              "description": "actual sample"
+            }
+          },
+          "required": ["ContentType", "Payload"]
+        },
+        {
+          "$ref": "#/properties/File"
+        }
+      ]
+    },
+    "CommonProps": {
+      "type": "object",
+      "description": "collection of common, but not easily classified fields",
+      "properties": {
+        "Ongoing": {
+          "type": "boolean",
+          "description": "is the reported abuse ongoing?"
+        },
+        "ThreatActor": {
+          "type": "string",
+          "description": "!TODO!"
+        },
+        "Samples": {
+          "type": "array",
+          "description": "Samples of the abuse taking place, e.g. malware file or spam email",
+          "items": {
+            "$ref": "#/properties/Sample"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "File": {
+      "description": "Additional properties for xarf report types about a specific file",
+      "type": "object",
+      "properties": {
+        "FileName": {
+          "type": "string",
+          "description": "name of the file"
+        },
+        "FileSize": {
+          "type": "integer",
+          "description": "file size in byte",
+          "minimum": 0
+        },
+        "FileHash": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": ["FileName"]
+    },
+    "WithDestination": {
+      "type": "object",
+      "description": "specify a target or destination",
+      "properties": {
+        "DestinationIp": {
+          "description": "targeted ip",
+          "$ref": "#/$defs/Ip"
+        },
+        "DestinationPort": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Port",
+                "description": "targeted port"
+              }
+            },
+            {
+              "$ref": "#/$defs/Port",
+              "description": "targeted port"
+            }
+          ]
+        }
+      }
+    },
+    "WithAttacker": {
+      "type": "object",
+      "description": "Specify the source of an attack. Used when attack source is not the subject of the report, eg. in an PotentiallyCompromisedAccount report.",
+      "properties": {
+        "AttackerIp": {
+          "description": "attacker ip",
+          "$ref": "#/$defs/Ip"
+        },
+        "AttackerPort": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Port",
+                "description": "attack port"
+              }
+            },
+            {
+              "$ref": "#/$defs/Port",
+              "description": "attack port"
+            }
+          ]
+        }
+      }
+    },
+    "WithTrafficStats": {
+      "type": "object",
+      "properties": {
+        "ByteCount": {
+          "type": "integer",
+          "description": "Bytes per second"
+        },
+        "PacketCount": {
+          "type": "integer",
+          "description": "Packets per second"
+        }
+      }
+    },
+    "EMail": {
+      "type": "object",
+      "description": "Simplified e-mail object to attach the source e-mail to a report",
+      "properties": {
+        "SmtpMailFromAddress": {
+          "type": "string",
+          "format": "email"
+        },
+        "SmtpRcptToAddress": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    },
+    "IP": {
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "IPv4 address",
+          "properties": {
+            "IP": {
+              "type": "string",
+              "format": "ipv4"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "description": "IPv6 address",
+          "properties": {
+            "IP": {
+              "type": "string",
+              "format": "ipv6"
+            }
+          }
+        }
+      ]
+    },
+    "Service": {
+      "type": "object",
+      "description": "Specify a service to report",
+      "properties": {
+        "ServiceName": {
+          "type": "string"
+        },
+        "ServiceVersion": {
+          "type": "string",
+          "description": "Affected service version or version range"
+        }
+      }
+    },
+    "TransportProtocol": {
+      "type": "object",
+      "description": "Transport protocol used by the reportee",
+      "properties": {
+        "TransportProtocol": {
+          "type": "string",
+          "enum": ["tcp", "udp"]
+        }
+      }
+    },
+    "Harassment": {
+      "type": "object",
+      "description": "Details of someone harassing someone else.",
+      "properties": {
+        "Harasser": {
+          "type": "string",
+          "description": "Specify the identity of the harassing individual, eg. name, username, phone number or email"
+        },
+        "HarassmentDescription": {
+          "type": "string",
+          "description": "Description/Reason why the reported behavior classifies as harassment."
+        },
+        "HarassmentType": {
+          "enum": [
+            "doxing",
+            "stalking",
+            "sexual",
+            "believes",
+            "defamation",
+            "extortion",
+            "hate"
+          ]
+        },
+        "HarassmentLocation": {
+          "enum": ["website", "chat", "game"]
+        }
+      },
+      "required": ["Harasser", "HarassmentDescription"]
+    },
+    "CVE": {
+      "type": "object",
+      "description": "CVE reference number",
+      "properties": {
+        "CVE": {
+          "type": "string",
+          "pattern": "^CVE-\\d{4}-\\d{4,7}$"
+        }
+      }
+    },
+    "CVSS": {
+      "type": "object",
+      "description": "CVSS Severity and Metrics",
+      "properties": {
+        "CVSS": {
+          "type": "object",
+          "required": ["Version", "Vector"],
+          "properties": {
+            "Score": {
+              "type": "number"
+            },
+            "Version": {
+              "type": "string",
+              "enum": ["3.1", "3.0", "2"]
+            },
+            "Vector": {
+              "type": "string"
+            },
+            "Severity": {
+              "type": "string"
+            }
+          },
+          "if": {
+            "properties": { "Version": { "const": "2" } }
+          },
+          "then": {
+            "properties": {
+              "Severity": {
+                "enum": ["Low", "Medium", "High"]
+              },
+              "Vector": {
+                "pattern": "^\\(?AV:[LAN]\\/AC:[HML]\\/Au:[MSN]\\/C:[NPC]\\/I:[NPC]\\/A:[NPC](\\/E:((ND)|(POC)|[UFH])\\/RL:([WU]|(ND)|(OF)|(TF))\\/RC:(C|(ND)|(UC)|(UR)))?(\\/CDP:([NLH]|ND|LM|MH)\\/TD:(ND|[NLMH])\\/CR:(ND|[NLMH])\\/IR:(ND|[LMH])\\/AR:(ND|[LMH]))?\\)?$"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "Severity": {
+                "enum": ["None", "Low", "Medium", "High", "Critical"]
+              },
+              "Vector": {
+                "pattern": "^CVSS:3.[01]\\/AV:[NALP]\\/AC:[LH]\\/PR:[NLH]\\/UI:[NR]\\/S:[UC]\\/C:[NLH]\\/I:[NLH]\\/A:[NLH](\\/E:[XUPFH]\\/RL:[XOTWU]\\/RC:[XURC])?(\\/CR:[XLMH]\\/IR:[XLMH]\\/AR:[XLMH]\\/MAV:[XNALP]\\/MAC:[XLH]\\/MPR:[XNLH]\\/MUI:[XNR]\\/MS:[XUC]\\/MC:[XNLH]\\/MI:[XNLH]\\/MA:[XNLH])?$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

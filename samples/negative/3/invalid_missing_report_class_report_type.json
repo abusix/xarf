@@ -1,0 +1,17 @@
+{
+  "Version": "3",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "Date": "2018-02-05T14:17:10Z",
+    "SourceIp": "not an IP",
+    "SourcePort": 80
+  }
+}
