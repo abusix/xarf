@@ -18,10 +18,9 @@
   },
   "devDependencies": {
     "ajv": "^7.0.3",
-    "ajv-cli": "^4.0.1",
+    "ajv-cli": "https://github.com/G-Rath/ajv-cli/tarball/update-fast-json-patch",
     "ajv-formats": "^1.5.1",
     "codecov": "^3.7.1",
-    "coveralls": "^3.1.0",
     "eslint": "^7.0.0",
     "eslint-plugin-mocha": "^8.0.0",
     "husky": "^5.1.2",
