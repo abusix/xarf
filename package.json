@@ -17,9 +17,9 @@
     "jsonfile": "^6.0.1"
   },
   "devDependencies": {
-    "ajv": "^7.0.3",
-    "ajv-cli": "https://github.com/G-Rath/ajv-cli/tarball/update-fast-json-patch",
-    "ajv-formats": "^1.5.1",
+    "ajv": "^8.12.0",
+    "ajv-cli": "5.0.0",
+    "ajv-formats": "^2.1.1",
     "codecov": "^3.7.1",
     "eslint": "^7.0.0",
     "eslint-plugin-mocha": "^8.0.0",
@@ -35,5 +35,8 @@
   "lint-staged": {
     "*.js": "eslint",
     "*.{js,json,md,yml}": "prettier --check"
+  },
+  "overrides": {
+    "fast-json-patch": "^3.1.1"
   }
 }

@@ -1,5 +1,5 @@
 "use strict";
-var validate;
+let validate;
 try {
   validate = require("../gen_validate_schema_pretty.js");
 } catch (error) {
