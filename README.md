@@ -31,7 +31,7 @@ Find the latest schema release [on the releases page](https://github.com/abusix/
 
 [![Coverage Status](https://img.shields.io/codecov/c/github/abusix/xarf)](https://codecov.io/gh/abusix/xarf/branch/master)
 
-Please note that you won't be able to see source code for the generated code due to the way coveralls works. CodeCov is even worse, it doesn't even show percentages for code that doesn't exist in the repo.
+Please note that you won't be able to see source code for the generated code due to the way CodeCov works. CodeCov doesn't show percentages for code that doesn't exist in the repo.
 The coverage will probably never reach 100% because of the way the code is generated, but it is still a useful metric to see how well our samples cover the schema.
 
 ## Superschema
