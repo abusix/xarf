@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/childabuse.schema.json",
-  "title": "XARF CHILDABUSE",
-  "description": "A format to report child abuse events.",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/csam-links.schema.json",
+  "title": "XARF CHILDSEXUALABUSEMATERIAL DISTRIBUTION",
+  "description": "A format to report the distribution of links to content depicting child sexual abuse.",
   "allOf": [
     {
       "$ref": "xarf_shared.schema.json#/properties/XarfBase"
@@ -24,7 +24,11 @@
                 },
                 "ReportType": {
                   "type": "string",
-                  "enum": ["ChildAbuse"]
+                  "enum": ["ChildSexualAbuseMaterial"]
+                },
+                "ReportSubType": {
+                  "type": "string",
+                  "enum": ["Link-Sharing"]
                 }
               }
             }

@@ -1,0 +1,22 @@
+{
+  "Version": "development",
+  "ReporterInfo": {
+    "ReporterType": "Person",
+    "ReporterContactEmail": "reporter@mailprovider.com"
+  },
+  "OnBehalfOf": {
+      "ComplainantOrg": "Parents against CSAM",
+      "ComplainantOrgDomain": "parents-against-csam-example.org",
+      "ComplainantOrgEmail": "info@parents-against-csam-example.org"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Content",
+    "ReportType": "ChildSexualAbuseMaterial",
+    "ReportSubType": "Link-Sharing",
+    "Date": "2023-08-05T14:17:10Z",
+    "SourceUrl": "https://evil.hoster.com",
+    "ReporterNotes": "People on this forum have been distributing links to CSAM since 20XX",
+    "ReporterCaseID": "CASE-1235-2023"
+  }
+}

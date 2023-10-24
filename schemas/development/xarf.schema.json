@@ -38,7 +38,10 @@
       "$ref": "potentially_compromised_account.schema.json"
     },
     {
-      "$ref": "childabuse.schema.json"
+      "$ref": "csam.schema.json"
+    },
+    {
+      "$ref": "csam-links.schema.json"
     },
     {
       "$ref": "botnet.schema.json"
