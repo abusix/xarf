@@ -1,0 +1,21 @@
+{
+  "Version": "development",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Content",
+    "ReportType": "ChildSexualAbuseMaterial",
+    "ReportSubType": "Link-Sharing",
+    "Date": "2023-08-05T14:17:10Z",
+    "SourceUrl": "https://evil.hoster.com/csam.zip",
+    "ReporterNotes": "The zip file requires this password to open: 'example'",
+    "ReporterCaseID": "CASE-1234-2023"
+  }
+}

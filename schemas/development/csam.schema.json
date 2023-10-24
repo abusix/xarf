@@ -25,6 +25,10 @@
                 "ReportType": {
                   "type": "string",
                   "enum": ["ChildSexualAbuseMaterial"]
+                },
+                "ReportSubType": {
+                  "type": "string",
+                  "enum": ["Link-Sharing"]
                 }
               }
             }
