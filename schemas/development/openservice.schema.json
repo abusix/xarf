@@ -35,6 +35,7 @@
               "$ref": "xarf_shared.schema.json#/properties/Service"
             },
             {
+              "type": "object",
               "required": ["ServiceName"]
             },
             {
