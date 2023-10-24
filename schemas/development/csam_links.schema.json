@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/csam-links.schema.json",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/csam_links.schema.json",
   "title": "XARF CHILDSEXUALABUSEMATERIAL DISTRIBUTION",
   "description": "A format to report the distribution of links to content depicting child sexual abuse.",
   "allOf": [
