@@ -11,10 +11,10 @@
   "Disclosure": true,
   "Report": {
     "ReportClass": "Content",
-    "ReportType": "ChildAbuse",
-    "Date": "2018-02-05T14:17:10Z",
-    "SourceIp": "192.0.2.55",
-    "SourcePort": 80,
-    "SourceUrl": "http://evil.website.com/index.html"
+    "ReportType": "ChildSexualAbuseMaterial",
+    "Date": "2023-08-05T14:17:10Z",
+    "SourceUrl": "https://evil.hoster.com/csam.zip",
+    "ReporterNotes": "The zip file requires this password to open: 'example'",
+    "ReporterCaseID": "CASE-1234-2023"
   }
 }

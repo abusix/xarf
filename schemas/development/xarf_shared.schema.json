@@ -695,7 +695,8 @@
                 "enum": ["Low", "Medium", "High"]
               },
               "Vector": {
-                "pattern": "^\\(?AV:[LAN]\\/AC:[HML]\\/Au:[MSN]\\/C:[NPC]\\/I:[NPC]\\/A:[NPC](\\/E:((ND)|(POC)|[UFH])\\/RL:([WU]|(ND)|(OF)|(TF))\\/RC:(C|(ND)|(UC)|(UR)))?(\\/CDP:([NLH]|ND|LM|MH)\\/TD:(ND|[NLMH])\\/CR:(ND|[NLMH])\\/IR:(ND|[LMH])\\/AR:(ND|[LMH]))?\\)?$"
+                "pattern": "^\\(?AV:[LAN]\\/AC:[HML]\\/Au:[MSN]\\/C:[NPC]\\/I:[NPC]\\/A:[NPC](\\/E:((ND)|(POC)|[UFH])\\/RL:([WU]|(ND)|(OF)|(TF))\\/RC:(C|(ND)|(UC)|(UR)))?(\\/CDP:([NLH]|ND|LM|MH)\\/TD:(ND|[NLMH])\\/CR:(ND|[NLMH])\\/IR:(ND|[LMH])\\/AR:(ND|[LMH]))?\\)?$",
+                "type": "string"
               }
             }
           },
@@ -705,7 +706,8 @@
                 "enum": ["None", "Low", "Medium", "High", "Critical"]
               },
               "Vector": {
-                "pattern": "^CVSS:3.[01]\\/AV:[NALP]\\/AC:[LH]\\/PR:[NLH]\\/UI:[NR]\\/S:[UC]\\/C:[NLH]\\/I:[NLH]\\/A:[NLH](\\/E:[XUPFH]\\/RL:[XOTWU]\\/RC:[XURC])?(\\/CR:[XLMH]\\/IR:[XLMH]\\/AR:[XLMH]\\/MAV:[XNALP]\\/MAC:[XLH]\\/MPR:[XNLH]\\/MUI:[XNR]\\/MS:[XUC]\\/MC:[XNLH]\\/MI:[XNLH]\\/MA:[XNLH])?$"
+                "pattern": "^CVSS:3.[01]\\/AV:[NALP]\\/AC:[LH]\\/PR:[NLH]\\/UI:[NR]\\/S:[UC]\\/C:[NLH]\\/I:[NLH]\\/A:[NLH](\\/E:[XUPFH]\\/RL:[XOTWU]\\/RC:[XURC])?(\\/CR:[XLMH]\\/IR:[XLMH]\\/AR:[XLMH]\\/MAV:[XNALP]\\/MAC:[XLH]\\/MPR:[XNLH]\\/MUI:[XNR]\\/MS:[XUC]\\/MC:[XNLH]\\/MI:[XNLH]\\/MA:[XNLH])?$",
+                "type": "string"
               }
             }
           }
