@@ -1,0 +1,24 @@
+{
+  "Version": "development",
+  "ReporterInfo": {
+    "ReporterType": "Person",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Harassed McPerson",
+    "ReporterContactPhone": "+ 01 555 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Content",
+    "ReportType": "Violence",
+    "Date": "2022-09-09T14:17:10Z",
+    "SourceUrl": "http://irc.5ch.net",
+    "Samples": [
+      {
+        "ContentType": "image/x-uri",
+        "Base64Encoded": false,
+        "Description": "Url to an image ",
+        "Payload": "https://imagehostingservice.tld/image/123456789"
+      }
+    ]
+  }
+}
