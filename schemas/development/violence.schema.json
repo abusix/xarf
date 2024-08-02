@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/3/violence.schema.json",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/violence.schema.json",
   "title": "XARF VIOLENCE",
   "description": "A format to report violence.",
   "allOf": [
