@@ -119,7 +119,8 @@ jobs:
       #   uses: coverallsapp/github-action@master
       #   with:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)
+          token: ${{ secrets.CODECOV_TOKEN }}
