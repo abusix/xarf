@@ -113,6 +113,6 @@ jobs:
           name: coverage
       - uses: codecov/codecov-action@v4
         with:
-          fail_ci_if_error: true # optional (default = false)
+          fail_ci_if_error: false # optional (default = false)
           verbose: true # optional (default = false)
           token: ${{ secrets.CODECOV_TOKEN }}
