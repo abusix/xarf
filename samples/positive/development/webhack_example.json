@@ -1,0 +1,30 @@
+{
+  "Version": "development",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Activity",
+    "ReportType": "WebHack",
+    "Date": "2018-02-05T14:17:10Z",
+    "SourceIp": "192.0.2.59",
+    "SourcePort": 443,
+    "Ongoing": true,
+    "ThreatActor": "malicious devil",
+    "Samples": [
+      {
+        "ContentType": "text/plain",
+        "Base64Encoded": false,
+        "Description": "Requested page does't exist",
+        "Payload": "GET /login.php 404"
+      }
+    ],
+    "CVE": "CVE-1234-56789"
+  }
+}
