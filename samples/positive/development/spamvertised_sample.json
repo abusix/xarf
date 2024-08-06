@@ -1,0 +1,32 @@
+{
+  "Version": "development",
+  "ReporterInfo": {
+    "ReporterOrg": "ExampleOrg",
+    "ReporterOrgDomain": "example.com",
+    "ReporterOrgEmail": "reports@example.com",
+    "ReporterContactEmail": "contact@example.com",
+    "ReporterContactName": "Mr. Example",
+    "ReporterContactPhone": "+ 01 000 1234567"
+  },
+  "Disclosure": true,
+  "Report": {
+    "ReportClass": "Activity",
+    "ReportType": "Spamvertised",
+    "Date": "2024-08-03T14:17:10Z",
+    "SourceIp": "192.0.2.55",
+    "SourcePort": 54321,
+    "SourceUrl": "http://bad-spamvertised.spam",
+    "DestinationIp": "198.51.100.33",
+    "DestinationPort": 25,
+    "SmtpMailFromAddress": "spamvertised@example.com",
+    "SmtpRcptToAddress": "victim@example.com",
+    "Samples": [
+      {
+        "ContentType": "message/rfc822",
+        "Base64Encoded": true,
+        "Description": "The spamvertised mail",
+        "Payload": "bWFpbA=="
+      }
+    ]
+  }
+}

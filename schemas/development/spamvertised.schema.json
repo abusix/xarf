@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/spamvertised.schema.json",
+  "title": "XARF SPAMVERTISED",
+  "description": "A format to report SPAMVERTISED events.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/properties/IpAndUrlBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Activity"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["Spamvertised"]
+                }
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/WithDestination"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/EMail"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
