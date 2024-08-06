@@ -41,7 +41,7 @@
       "$ref": "csam.schema.json"
     },
     {
-      "$ref": "botnet.schema.json"
+      "$ref": "bot.schema.json"
     },
     {
       "$ref": "openservice.schema.json"

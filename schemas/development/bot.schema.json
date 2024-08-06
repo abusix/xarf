@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/botnet.schema.json",
-  "title": "XARF BOTNET",
-  "description": "A format to report Botnet events.",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/bot.schema.json",
+  "title": "XARF BOT",
+  "description": "A format to report Bot events.",
   "allOf": [
     {
       "$ref": "xarf_shared.schema.json#/properties/XarfBase"
@@ -24,11 +24,11 @@
                 },
                 "ReportType": {
                   "type": "string",
-                  "enum": ["Botnet"]
+                  "enum": ["Bot"]
                 },
-                "BotnetName": {
+                "BotName": {
                   "type": "string",
-                  "description": "name of the botnet"
+                  "description": "name of the bot"
                 }
               }
             },

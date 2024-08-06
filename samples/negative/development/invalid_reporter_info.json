@@ -6,17 +6,17 @@
   "Disclosure": true,
   "Report": {
     "ReportClass": "Content",
-    "ReportType": "Botnet",
+    "ReportType": "Bot",
     "Date": "2018-02-05T14:17:10Z",
     "SourceIp": "192.0.2.55",
     "SourcePort": 54321,
-    "BotnetName": "Mariposa",
+    "BotName": "Mariposa",
     "Ongoing": true,
     "Samples": [
       {
         "ContentType": "application/octet-stream",
         "Base64Encoded": true,
-        "Description": "botnet executable",
+        "Description": "bot executable",
         "FileName": "run_me.exe",
         "Payload": "AAAAAAAAAAAAAAAAAAAAAA"
       }
