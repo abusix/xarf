@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/xarf/schema-discussion/master/schemas/development/trap.schema.json",
+  "title": "XARF SPAM",
+  "description": "A format to report TRAP events.",
+  "allOf": [
+    {
+      "$ref": "xarf_shared.schema.json#/properties/XarfBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Report": {
+          "allOf": [
+            {
+              "$ref": "xarf_shared.schema.json#/properties/IpBasedReport"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ReportClass": {
+                  "type": "string",
+                  "enum": ["Activity"]
+                },
+                "ReportType": {
+                  "type": "string",
+                  "enum": ["Trap"]
+                }
+              }
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/WithDestination"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/CommonProps"
+            },
+            {
+              "$ref": "xarf_shared.schema.json#/properties/EMail"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
