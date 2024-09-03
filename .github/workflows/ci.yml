@@ -70,7 +70,7 @@ jobs:
         run: |
           echo "${{ env.CURRENT_DATETIME }}-${{ github.sha }}"
       - name: Download bundled schemas from test build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: bundled-schema
       - name: Create Release
@@ -108,7 +108,7 @@ jobs:
     needs: test
     steps:
       - name: Download coverage from test build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: coverage
       - uses: codecov/codecov-action@v4
