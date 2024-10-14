@@ -93,7 +93,7 @@ jobs:
           asset_path: ./xarf_bundled.schema.json
           asset_name: xarf_bundled.schema.json
           asset_content_type: application/json
-      - name: Upload XARF Deref
+      - name: Upload XARF d
         id: upload-xarf-deref
         uses: actions/upload-release-asset@v1
         env:
@@ -108,7 +108,7 @@ jobs:
     needs: test
     steps:
       - name: Download coverage from test build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: coverage
       - uses: codecov/codecov-action@v4
