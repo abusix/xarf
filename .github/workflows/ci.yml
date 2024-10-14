@@ -41,7 +41,7 @@ jobs:
           ajv -c ajv-formats -s xarf_deref.schema.json -d "samples/positive/**/*.json"
       - name: Archive schemas
         id: archive_schemas
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: bundled-schema
           path: |
@@ -49,7 +49,7 @@ jobs:
             xarf_deref.schema.json
       - name: Archive coverage
         id: archive_coverage
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: |
@@ -70,7 +70,7 @@ jobs:
         run: |
           echo "${{ env.CURRENT_DATETIME }}-${{ github.sha }}"
       - name: Download bundled schemas from test build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: bundled-schema
       - name: Create Release
@@ -108,7 +108,7 @@ jobs:
     needs: test
     steps:
       - name: Download coverage from test build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: coverage
       - uses: codecov/codecov-action@v4
