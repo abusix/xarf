@@ -9,7 +9,7 @@
 > |---|---|
 > | 🌐 Website & docs | **https://xarf.org** |
 > | 📖 Specification | **https://github.com/xarf/xarf-spec** |
-> | 🧩 Schemas (stable URLs) | **https://xarf.org/schemas/** |
+> | 🧩 v4 Schemas | **https://xarf.org/schemas/v4/** |
 > | 💻 Libraries | https://github.com/xarf (Python, JavaScript/TS, Perl, Go, Java, C#) |
 >
 > **New integrations:** use XARF v4 — start at https://xarf.org and https://github.com/xarf/xarf-spec.
@@ -20,14 +20,12 @@
 
 ## Already consuming the XARF v3 schema?
 
-The v3 schema is **preserved** and will keep resolving, but you should **repoint your references** to the stable, domain-based URLs so you are not depending on this archived repository:
+**Nothing breaks.** The v3 schema remains available at its existing locations:
 
-| If you currently fetch… | Switch to… |
-|---|---|
-| `https://github.com/abusix/xarf/releases/download/.../xarf_bundled.schema.json` | `https://xarf.org/schemas/v3/xarf-v3-legacy.json` |
-| `https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json` (the legacy `$id`) | `https://xarf.org/schemas/v3/xarf-v3-legacy.json` |
+- This repository's **release assets** (e.g. `xarf_bundled.schema.json`) continue to resolve.
+- The legacy `$id` URL (`https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json`) continues to resolve.
 
-The existing release assets and URLs will remain available for the foreseeable future, but **no new v3 releases will be published** and the repository is read-only (archived).
+However, **no new v3 releases will be published** and this repository is now read-only (archived). The long-term canonical home for all XARF schemas is **[xarf.org](https://xarf.org)**; new integrations should adopt **XARF v4** via the [spec repo](https://github.com/xarf/xarf-spec).
 
 ---
 
