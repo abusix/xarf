@@ -1,3 +1,47 @@
+# XARF — eXtended Abuse Reporting Format
+
+> ## ⚠️ This repository is deprecated
+>
+> **This repo hosts the legacy XARF v3 schema and is no longer maintained.**
+> XARF has moved to a new home and a new major version, **XARF v4**.
+>
+> | | New canonical location |
+> |---|---|
+> | 🌐 Website & docs | **https://xarf.org** |
+> | 📖 Specification | **https://github.com/xarf/xarf-spec** |
+> | 🧩 Schemas (stable URLs) | **https://xarf.org/schemas/** |
+> | 💻 Libraries | https://github.com/xarf (Python, JavaScript/TS, Perl, Go, Java, C#) |
+>
+> **New integrations:** use XARF v4 — start at https://xarf.org and https://github.com/xarf/xarf-spec.
+>
+> **Migrating from v3?** See the v3 → v4 migration guide in the [spec repo](https://github.com/xarf/xarf-spec).
+
+---
+
+## Already consuming the XARF v3 schema?
+
+The v3 schema is **preserved** and will keep resolving, but you should **repoint your references** to the stable, domain-based URLs so you are not depending on this archived repository:
+
+| If you currently fetch… | Switch to… |
+|---|---|
+| `https://github.com/abusix/xarf/releases/download/.../xarf_bundled.schema.json` | `https://xarf.org/schemas/v3/xarf-v3-legacy.json` |
+| `https://raw.githubusercontent.com/xarf/schema-discussion/master/xarf.schema.json` (the legacy `$id`) | `https://xarf.org/schemas/v3/xarf-v3-legacy.json` |
+
+The existing release assets and URLs will remain available for the foreseeable future, but **no new v3 releases will be published** and the repository is read-only (archived).
+
+---
+
+## Why the move?
+
+XARF v4 is a ground-up revision: a unified, machine-readable format with a per-type schema model, real-world sample reports, a published migration path, and officially maintained libraries across multiple languages. Development, issues, and discussion all happen in the **[xarf organization](https://github.com/xarf)** now.
+
+## Historical v3 information
+
+The original v3 README content below is retained for historical reference.
+
+<details>
+<summary>Legacy XARF v3 README (archived)</summary>
+
 # XARF - eXtended Abuse Reporting Format
 
 ## Latest Release
@@ -166,3 +210,5 @@ It will generate two files:
 | ------------------------ | :-------------------------------------------------------------------------------------: |
 | xarf_bundled.schema.json |  bundled and minimized using internal refs, might not work with all json schema tools   |
 | xarf_deref.schema.json   | bundled and completely derefed. might be bigger in size, but should work with all tools |
+
+</details>
